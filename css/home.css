@@ -1,0 +1,17 @@
+
+body {
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+.show_list{
+	position:absolute;
+	top:50%;
+	left:0;
+	right:0
+	transform:translateY(-50%);
+	background-color:#fff;
+	width:100%;
+	height:200px;
+}
