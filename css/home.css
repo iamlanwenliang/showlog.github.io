@@ -43,6 +43,8 @@ body {
 
 @-webkit-keyframes hinge {
   0% {
+    -webkit-transform: translate3d(0, -300px, 0);
+    transform: translate3d(0, -300px, 0);
     -webkit-transform-origin: top left;
     transform-origin: top left;
     -webkit-animation-timing-function: ease-in-out;
@@ -69,14 +71,16 @@ body {
   }
 
   to {
-    -webkit-transform: translate3d(0, 300px, 0);
-    transform: translate3d(0, 300px, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
 
 @keyframes hinge {
-  0% {
+   0% {
+    -webkit-transform: translate3d(0, -300px, 0);
+    transform: translate3d(0, -300px, 0);
     -webkit-transform-origin: top left;
     transform-origin: top left;
     -webkit-animation-timing-function: ease-in-out;
@@ -103,8 +107,8 @@ body {
   }
 
   to {
-    -webkit-transform: translate3d(0, 300px, 0);
-    transform: translate3d(0, 300px, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
