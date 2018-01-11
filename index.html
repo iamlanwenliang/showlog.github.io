@@ -2,8 +2,9 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>背景动画</title>
+  <title>myloghome</title>
 <meta name="keywords" content="canvas动画, css3动画, html5特效, 网页特效" />
+<link rel="stylesheet" type="text/css" href="css/home.css" />
   
   
       <style>
@@ -20,37 +21,37 @@
 
 </head>
 
-	<body><a href="demo.html">这是测试链接</a>
+<body><a href="demo.html">这是测试链接</a>
   <canvas id=c></canvas>
-  
+	<div class="show_list">
+		<div class="user_infor">
+			<div class="user_img"></div>
+			<div class="user_name"></div>
+		</div>
+		<div class="go_home">去主页</div>
+	</div>
     <script>
 	var w = c.width = window.innerWidth,
     h = c.height = window.innerHeight,
     ctx = c.getContext('2d'),
-    
     count = (w*h/3000)|0,
     speed = 100,
     range = 100,
     lineAlpha = .05,
-    
     particles = [],
     huePart = 360/count;
-
 for(var i = 0; i < count; ++i)
   particles.push(new Particle((huePart*i)|0));
-
 function Particle(hue){
   this.x = Math.random()*w;
   this.y = Math.random()*h;
   this.vx = (Math.random()-.5)*speed;
   this.vy = (Math.random()-.5)*speed;
-  
   this.hue = hue;
 }
 Particle.prototype.update = function(){
   this.x += this.vx;
   this.y += this.vy;
-  
   if(this.x < 0 || this.x > w) this.vx *= -1;
   if(this.y < 0 || this.y > h) this.vy *= -1;
 }
@@ -58,20 +59,15 @@ Particle.prototype.update = function(){
 function checkDist(a, b, dist){
   var x = a.x - b.x,
       y = a.y - b.y;
-  
   return x*x + y*y <= dist*dist;
 }
-
 function anim(){
   window.requestAnimationFrame(anim);
-  
   ctx.fillStyle = 'rgba(255, 255, 255, .005)';
   ctx.fillRect(0, 0, w, h);
-  
   for(var i = 0; i < particles.length; ++i){
     var p1 = particles[i];
     p1.update();
-    
     for(var j = i+1; j < particles.length; ++j){
       var p2 = particles[j];
       if(checkDist(p1, p2, range)){
