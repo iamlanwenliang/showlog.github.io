@@ -35,8 +35,8 @@ body {
 	line-height:130px;
 	text-align:center;
 	font-size:26px;
-	-webkit-animation: hinge 60s infinite linear;
-	animation: hinge 60s infinite linear;
+	-webkit-animation: hinge 5s infinite linear;
+	animation: hinge 5s infinite linear;
 }
 
 
