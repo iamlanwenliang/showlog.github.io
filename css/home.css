@@ -52,8 +52,8 @@ body {
   }
 
   20%, 60% {
-    -webkit-transform: rotate3d(0, 0, 1, 80deg);
-    transform: rotate3d(0, 0, 1, 80deg);
+    -webkit-transform: rotate3d(0, 0, 1, 80deg) translate3d(0, -300px, 0);
+    transform: rotate3d(0, 0, 1, 80deg) translate3d(0, -300px, 0);
     -webkit-transform-origin: top left;
     transform-origin: top left;
     -webkit-animation-timing-function: ease-in-out;
@@ -61,8 +61,8 @@ body {
   }
 
   40%, 80% {
-    -webkit-transform: rotate3d(0, 0, 1, 60deg);
-    transform: rotate3d(0, 0, 1, 60deg);
+    -webkit-transform: rotate3d(0, 0, 1, 60deg) translate3d(0, -300px, 0);
+    transform: rotate3d(0, 0, 1, 60deg) translate3d(0, -300px, 0);
     -webkit-transform-origin: top left;
     transform-origin: top left;
     -webkit-animation-timing-function: ease-in-out;
@@ -88,8 +88,8 @@ body {
   }
 
   20%, 60% {
-    -webkit-transform: rotate3d(0, 0, 1, 80deg);
-    transform: rotate3d(0, 0, 1, 80deg);
+    -webkit-transform: rotate3d(0, 0, 1, 80deg) translate3d(0, -300px, 0);
+    transform: rotate3d(0, 0, 1, 80deg) translate3d(0, -300px, 0);
     -webkit-transform-origin: top left;
     transform-origin: top left;
     -webkit-animation-timing-function: ease-in-out;
@@ -97,8 +97,8 @@ body {
   }
 
   40%, 80% {
-    -webkit-transform: rotate3d(0, 0, 1, 60deg);
-    transform: rotate3d(0, 0, 1, 60deg);
+    -webkit-transform: rotate3d(0, 0, 1, 60deg) translate3d(0, -300px, 0);
+    transform: rotate3d(0, 0, 1, 60deg) translate3d(0, -300px, 0);
     -webkit-transform-origin: top left;
     transform-origin: top left;
     -webkit-animation-timing-function: ease-in-out;
