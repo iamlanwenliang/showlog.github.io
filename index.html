@@ -104,7 +104,19 @@ function anim(){
 
 anim();
 	    window.onresize = function(){
-			anim();
+			w = c.width = window.innerWidth;
+    h = c.height = window.innerHeight;
+    ctx = c.getContext('2d');
+    
+    count = (w*h/3000)|0;
+    speed = 10;
+    range = 200;
+    lineAlpha = 0.05;
+    
+    particles = [];
+    huePart = 360/count;
+for(var i = 0; i < count; ++i)
+  particles.push(new Particle((huePart*i)|0));
 		}
  
 	</script>
