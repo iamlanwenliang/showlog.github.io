@@ -103,6 +103,9 @@ function anim(){
 }
 
 anim();
+	    document.body.addEventListener('resize', function(){
+	    	anim();
+	    });
 	</script>
 
 </body>
