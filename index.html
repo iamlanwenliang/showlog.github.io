@@ -69,9 +69,10 @@ function checkDist(a, b, dist){
   
   return x*x + y*y <= dist*dist;
 }
-
+var index = 0;
 function anim(){
   window.requestAnimationFrame(anim);
+  
   
   ctx.fillStyle = 'rgba(255, 255, 255, 0)';
   ctx.fillRect(0, 0, w, h);
@@ -92,14 +93,24 @@ function anim(){
 		
         ctx.stroke();
 		//
+		//ctx.clearRect(Math.abs(Math.random()*10000%c.width),Math.abs(Math.random()*10000%c.height),1,1); 
+		
+		
       }
-	 
+	  /* if(index%600 == 0){
+			ctx.clearRect(0,0,c.width,c.height); 
+			//alert(index%600);
+		} */
+	 break;
     }
+	
 	//ctx.clearRect(0,0,c.width,c.height); 
-	//ctx.clearPath(0,0,c.width,c.height); 
-	  break;
+	//ctx.clearPath(0,0,c.width,c.height);
+		//break;
   }
    
+   index++;
+   console.log(index);
 }
 
 anim();
