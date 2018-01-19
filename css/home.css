@@ -14,8 +14,8 @@ body {
 	background-color:#fff;
 	width:100%;
 	height:200px;
-	-webkit-animation: zoomInDown 2s forwards linear;
-  	animation: zoomInDown 2s forwards linear;
+	-webkit-animation: zoomInDown 2s forwards ease-in-out;
+  	animation: zoomInDown 2s forwards ease-in-out;
 }
 .user_infor{
 	height:150px;
