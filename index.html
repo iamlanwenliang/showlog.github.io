@@ -22,6 +22,7 @@
 </head>
 
 <body>
+
   <canvas id=c></canvas>
 	<div class="show_list">
 		<div class="user_infor">
@@ -31,6 +32,7 @@
 		<div class="go_home">去主页</div>
 		<a href="css/Gradients/linear/linear.html">这是线性渐变链接</a>
 	</div>
+	<canvas id="word"></canvas>
     <script>
 	var w = c.width = window.innerWidth,
     h = c.height = window.innerHeight,
@@ -130,6 +132,23 @@ for(var i = 0; i < count; ++i)
   particles.push(new Particle((huePart*i)|0));
 		}
  
+	    
+	    
+	    var c=document.getElementById("word");
+var ctx=c.getContext("2d");
+
+ctx.font="20px Georgia";
+ctx.strokeText("Hello World!",10,50);
+
+ctx.font="30px Verdana";
+// 创建渐变
+var gradient=ctx.createLinearGradient(0,0,c.width,0);
+gradient.addColorStop("0","magenta");
+gradient.addColorStop("0.5","blue");
+gradient.addColorStop("1.0","red");
+// 用渐变填色
+ctx.strokeStyle=gradient;
+ctx.strokeText("w3school.com.cn",10,90);
 	</script>
 
 </body>
