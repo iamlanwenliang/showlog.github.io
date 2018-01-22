@@ -32,8 +32,8 @@ body {
 	border-radius:50%;
 	border: 2px solid #eee;
 	background-color:#c33;
-	-webkit-animation: zhuan 10s infinite linear;
-	animation: zhuan 10s  linear infinite;
+	-webkit-animation: zhuan 20s infinite ease-in-out;
+	animation: zhuan 20s  ease-in-out infinite;
 }
 .user_infor .user_name{
 	height:120px;
