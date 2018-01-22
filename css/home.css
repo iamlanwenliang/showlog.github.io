@@ -28,6 +28,7 @@ body {
 	height:120px;
 	width:120px;
 	border-radius:50%;
+	border: 2px solid #eee;
 	background-color:#c33;
 	-webkit-animation: zhuan 10s infinite linear;
 	animation: zhuan 10s  linear infinite;
