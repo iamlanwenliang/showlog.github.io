@@ -52,7 +52,7 @@ body {
 
 @-webkit-keyframes zhuan {
   0% {
-    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
   }
   5%  {
     -webkit-transform: translate3d(0, -120px, 0);
@@ -70,7 +70,7 @@ body {
     -webkit-transform: translate3d(0px, 120px, 0);
   }
   100% {
-    -webkit-transform: translate3d(0px, 0px, 0);
+    -webkit-transform: translate3d(0px, 0px, 0) rotate(1440deg);
   }
   
 	
@@ -78,7 +78,7 @@ body {
 
 @keyframes zhuan {
     0% {
-    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
   }
   5%  {
     -webkit-transform: translate3d(0, -120px, 0);
@@ -96,7 +96,7 @@ body {
     -webkit-transform: translate3d(0px, 120px, 0);
   }
   100% {
-    -webkit-transform: translate3d(0px, 0px, 0);
+    -webkit-transform: translate3d(0px, 0px, 0) rotate(1440deg);
   }
 }
 @-webkit-keyframes zoomInDown {
