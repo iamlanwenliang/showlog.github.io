@@ -34,12 +34,16 @@ body {
 	height:130px;
 	width:auto;
 	border-radius:20px;
-	background-color:green;
-	line-height:130px;
+	line-height:113px;
 	text-align:center;
 	font-size:26px;
 	-webkit-animation: hinge 5s forwards linear;
 	animation: hinge 5s forwards linear;
+	    border: 2px solid #333;
+	    padding: 5px;
+	    box-sizing: border-box;
+	    background-color: rgba(0,0,0,.76);
+	    color: #fff;
 }
 
 
