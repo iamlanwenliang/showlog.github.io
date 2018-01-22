@@ -6,6 +6,9 @@ body {
 	padding:0;
 	background: url(//www.sinaimg.cn/rny/sinamail57/skins/140924/12/bg_body.jpg?v=12041814);
 }
+#word{
+	background-color:transparent;
+}
 .show_list{
 	position:absolute;
 	top:50%;
