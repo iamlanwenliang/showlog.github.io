@@ -62,7 +62,7 @@ body {
   5%  {
     -webkit-transform: translate3d(6px, -120px, 0);
   }
-	}
+	
   6%  {
     -webkit-transform: translate3d(9px, -120px, 0);
   }
@@ -86,11 +86,18 @@ body {
 }
 
 @keyframes zhuan {
-    0% {
+     0% {
     -webkit-transform: translate3d(0, 0, 0) rotate(1,1,0,0deg);
   }
+4%  {
+    -webkit-transform: translate3d(2px, -120px, 0);
+  }
   5%  {
-    -webkit-transform: translate3d(0, -120px, 0);
+    -webkit-transform: translate3d(6px, -120px, 0);
+  }
+	
+  6%  {
+    -webkit-transform: translate3d(9px, -120px, 0);
   }
   45%  {
     -webkit-transform: translate3d(480px, -120px, 0);
