@@ -30,7 +30,7 @@ body {
 	height:120px;
 	width:120px;
 	border-radius:50%;
-	border: 2px solid #eee;
+	border: 2px solid #333;
 	background-color:#c33;
 	-webkit-animation: zhuan 20s infinite ease-in-out;
 	animation: zhuan 20s  ease-in-out infinite;
