@@ -32,8 +32,8 @@ body {
 	border-radius:50%;
 	border: 2px solid #333;
 	background-color:#c33;
-	-webkit-animation: zhuan 20s infinite ease-in-out;
-	animation: zhuan 20s  ease-in-out infinite;
+	-webkit-animation: zhuan 20s infinite linear;
+	animation: zhuan 20s  linear infinite;
 }
 .user_infor .user_name{
 	height:120px;
@@ -56,17 +56,22 @@ body {
   0% {
     -webkit-transform: translate3d(0, 0, 0) rotate(1,1,0,0deg);
   }
-5%  {
-    -webkit-transform: translate3d(0px, -60px, 0);
-  }
-  5%  {
-    -webkit-transform: translate3d(10px, -100px, 0);
-  }
-	
-  5%  {
-    -webkit-transform: translate3d(20px, -120px, 0);
+5% {
+    -webkit-transform: translate3d(5px, -80px, 0);
+}
+7% {
+    -webkit-transform: translate3d(25px, -100px, 0);
+}
+9% {
+    -webkit-transform: translate3d(55px, -120px, 0);
+}
+	43%  {
+    -webkit-transform: translate3d(425px, -80px, 0);
   }
   45%  {
+    -webkit-transform: translate3d(455px, -100px, 0);
+  }
+	47%  {
     -webkit-transform: translate3d(480px, -120px, 0);
   }
   50%  {
@@ -99,7 +104,13 @@ body {
   5%  {
     -webkit-transform: translate3d(20px, -120px, 0);
   }
+  43%  {
+    -webkit-transform: translate3d(425px, -80px, 0);
+  }
   45%  {
+    -webkit-transform: translate3d(455px, -100px, 0);
+  }
+	47%  {
     -webkit-transform: translate3d(480px, -120px, 0);
   }
   50%  {
