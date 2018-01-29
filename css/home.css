@@ -88,13 +88,13 @@ body {
     -webkit-transform: translate3d(423px, 117px, 0);
   }
   91%  {
-    -webkit-transform: translate3d(20px, 117px, 0);
+    -webkit-transform: translate3d(45px, 117px, 0);
   }
   93%  {
-    -webkit-transform: translate3d(10px, 100px, 0);
+    -webkit-transform: translate3d(10px, 80px, 0);
   }
   95%  {
-    -webkit-transform: translate3d(0px, 90px, 0);
+    -webkit-transform: translate3d(0px, 65px, 0);
   }
   100% {
     -webkit-transform: translate3d(0px, 0px, 0) rotate(1,1,1,1440deg);
@@ -139,13 +139,13 @@ body {
     -webkit-transform: translate3d(423px, 117px, 0);
   }
   91%  {
-    -webkit-transform: translate3d(20px, 117px, 0);
+    -webkit-transform: translate3d(45px, 117px, 0);
   }
   93%  {
-    -webkit-transform: translate3d(10px, 100px, 0);
+    -webkit-transform: translate3d(10px, 80px, 0);
   }
   95%  {
-    -webkit-transform: translate3d(0px, 90px, 0);
+    -webkit-transform: translate3d(0px, 65px, 0);
   }
   100% {
     -webkit-transform: translate3d(0px, 0px, 0) rotate(1,1,1,1440deg);
