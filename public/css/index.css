@@ -9,6 +9,7 @@ html,body{
 	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	overflow-x:hidden;
 }
 .iconfont  {
 	font-size:20px;
@@ -105,6 +106,9 @@ summary {
 	min-height:30px;
 	line-height:30px;
 	border-radius:20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-o-border-radius:20px;
 
 }
 .lan_child:hover{
