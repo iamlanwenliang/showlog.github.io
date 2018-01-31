@@ -75,17 +75,24 @@
 		"isopen":false,
 		"parent":true,
 		"children":[{
-			"name":"animation1",
+			"name":"Gradients",
 			"url":"",
 			"isopen":false,
 			"parent":true,
 			"children":[{
-				"name":"animation11",
+				"name":"Linear Gradients",
 				"url":"",
 				"isopen":false,
 				"parent":false,
 				"children":""
-			}]
+			},{
+				"name":"Radial Gradients",
+				"url":"",
+				"isopen":false,
+				"parent":false,
+				"children":""
+			}
+				   ]
 		},{
 			"name":"animation2",
 			"url":"",
