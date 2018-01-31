@@ -110,7 +110,6 @@ summary {
 .right_content{
 	width:calc(100% - 300px );
 	height:100%;
-	padding:10px;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
