@@ -115,6 +115,7 @@ summary {
 	-o-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	overflow:hidden;
+	background-color:#fff;
 }
 .lan_child{
 	min-height:30px;
