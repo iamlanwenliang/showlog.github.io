@@ -1,1 +1,10 @@
-11
+@font-face{
+	font-family:'font2style';
+	src:url(../font/font2.ttf);
+	font-weight:normal;
+	font-style:normal;
+}
+html,body{
+	
+	font-family:'font2style';
+}
