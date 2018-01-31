@@ -5,14 +5,8 @@ html,body{
 	padding:20px;
 	margin:0;
 	box-sizing: border-box;
-	font-family:'font2style';
 }
-@font-face{
-	font-family:'font2style';
-	src:url(../../../pubilc/font/font2.ttf);
-	font-weight:normal;
-	font-style:normal;
-}
+
 .code{
 	min-height:100px;
 	width:100%;
