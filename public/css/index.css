@@ -116,3 +116,7 @@ html,body{
 				background-image: url(//www.sinaimg.cn/rny/sinamail57/skins/140924/12/writeReceive.png?v=12041814);
 				color:#FFE8D8;
 			}
+.lan_child a {
+	color:#f0cfae;
+	text-decoration: none;
+}
