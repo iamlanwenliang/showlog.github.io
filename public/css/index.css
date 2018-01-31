@@ -115,15 +115,15 @@ summary {
 
 }
 .lan_child:hover{
-	background-image: url(public/img/02.png);
+	background-image: url(../img/02.png);
 	color:#FFE8D8;
 }
 summary:hover{
-	background-image: url(public/img/01.png);
+	background-image: url(../img/01.png);
 	color:#FFE8D8;
 }
 .lan_active{
-	background-image: url(public/img/02.png);
+	background-image: url(../img/02.png);
 	color:#FFE8D8;
 }
 .lan_child a {
