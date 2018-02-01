@@ -26,8 +26,27 @@
 		"name":"数组",
 		"url":"",
 		"isopen":false,
-		"parent":false,
-		"children":""
+		"parent":true,
+		"children":[{
+			"name":"数组",
+			"url":"",
+			"isopen":false,
+			"parent":true,
+			"children":[{
+				"name":"数据基础",
+				"url":"css/Gradients/linear/linear.html",
+				"isopen":false,
+				"parent":false,
+				"children":""
+			},{
+				"name":"数组操作方法",
+				"url":"",
+				"isopen":false,
+				"parent":false,
+				"children":""
+			}
+				   ]
+		}]
 	},{
 		"name":"对象",
 		"url":"",
