@@ -5,7 +5,7 @@
 	"parent":true,
 	"children":[{
 		"name":"前言",
-		"url":"",
+		"url":"javascript/preface/index.html",
 		"isopen":false,
 		"parent":false,
 		"children":""
