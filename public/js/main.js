@@ -13,7 +13,12 @@ var dic_create = {};
 							if(obj[i]['children'][j]['parent']){
 								str += '<div class="childp">' + this.build(obj[i]['children'][j]['children']) + '</div>';
 							}else{
-								str += '<div class="childp lan_child">' +this.childstr +'<a href="'+obj[i]['children'][j]['url']+'" target="content">'+ obj[i]['children'][j]['name'] + '</a></div>';
+								if(obj[i]['children'][j]['active']){
+									str += '<div class="childp lan_child lan_active">' +this.childstr +'<a href="'+obj[i]['children'][j]['url']+'" target="content">'+ obj[i]['children'][j]['name'] + '</a></div>';
+								}else{
+									str += '<div class="childp lan_child">' +this.childstr +'<a href="'+obj[i]['children'][j]['url']+'" target="content">'+ obj[i]['children'][j]['name'] + '</a></div>';
+								}
+								
 							}
 						}
 					}
