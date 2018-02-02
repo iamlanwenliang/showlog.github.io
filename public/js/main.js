@@ -46,3 +46,4 @@ var dic_create = {};
 				$('.lan_child').removeClass('lan_active');
 				$(this).addClass('lan_active');
 			});
+$('#content').attr('src','javascript/preface/index.html');
