@@ -1,5 +1,5 @@
 [{
-	"name":"JavaScript学习",
+	"name":"JavaScript",
 	"url":"",
 	"isopen":true,
 	"parent":true,
@@ -67,7 +67,7 @@
 		"children":""
 	}]
 },{
-	"name":"CSS学习",
+	"name":"CSS",
 	"url":"",
 	"isopen":false,
 	"parent":true,
