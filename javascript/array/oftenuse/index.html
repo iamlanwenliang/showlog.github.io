@@ -38,18 +38,81 @@
 
     </p>
 </div>
-		<p>在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这大佬在两周之内就设计出了JavaScript语言。我写错了吗？没错，大佬只用了10天时间就搞定了。
-为什么起名叫JavaScript？原因是当时Java语言非常红火，所以网景公司希望借Java的名气来推广，但事实上JavaScript除了语法上有点像Java，其他部分基本上没啥关系，就像老婆和老婆饼的关系。</p>
-		<h2>JavaScript简述</h2>
-		<p>简单地说，JavaScript是一种运行在浏览器中的解释型的编程语言。随着HTML5在PC和移动端越来越流行，JavaScript变得更加重要了。并且，新兴的Node.js把JavaScript引入到了服务器端，JavaScript已经变成了全能型选手。
-JavaScript一度被认为是一种玩具编程语言，它有很多缺陷，所以不被大多数后端开发人员所重视。很多人认为，写JavaScript代码很简单，并且JavaScript只是为了在网页上添加一点交互和动画效果。
-但这是完全错误的理解。JavaScript确实很容易上手，但其精髓却不为大多数开发人员所熟知。编写高质量的JavaScript代码更是难上加难。</p>
-		<h2>ECMAScript</h2>
-		<p>说到JavaScript那么必然会设计到ECMAScript，也就是JavaScript语言标准，因为网景开发了JavaScript，一年后微软又模仿JavaScript开发了JScript，为了让JavaScript成为全球标准，几个公司联合ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准，被称为ECMAScript标准。
-所以简单说来就是，ECMAScript是一种语言标准，而JavaScript是网景公司对ECMAScript标准的一种实现。
-那为什么不直接把JavaScript定为标准呢？因为JavaScript是网景的注册商标。
-不过大多数时候，我们还是用JavaScript这个词。如果你遇到ECMAScript这个词，简单把它替换为JavaScript就行了。</p>
-	
+		<h2>数组去重</h2>
+<div style="padding-left:25px;">
+	<p>
+		const arr = ary => Array.from(new Set(ary));</br>
+
+  const arr2 = ary => ary.filter((v, k) => ary.indexOf(v) == k);</br>
+
+  const ary = [1, 2, 1, 2, 3, 4, 3];</br>
+
+  arr(ary)   //[1,2,3,4]</br>
+
+  arr2(ary)  //[1,2,3,4]</p>
+</div>
+		<h2>平均分割</h2>
+<div style="padding-left:25px;">
+	<p>
+		const ary = [1, 2, 3, 4, 5, 6, 7];</br>
+
+const splitAry = (ary, size) => {</br>
+ &nbsp;&nbsp; let i = Math.ceil(ary.length / size),</br>
+    &nbsp;&nbsp;&nbsp;count = 0,</br>
+    &nbsp;&nbsp;&nbsp;box = [];</br>
+  &nbsp;&nbsp;while (count < i) {</br>
+    &nbsp;&nbsp;&nbsp;let s = count * size;</br>
+    &nbsp;&nbsp;&nbsp;box.push(ary.slice(s, s + size));</br>
+    &nbsp;&nbsp;&nbsp;count++;</br>
+  &nbsp;}</br>
+  &nbsp;return box;</br>
+};</br>
+
+console.log(splitAry(ary, 3)); //[[1,2,3],[4,5,6],[7]]</br>
+
+console.log(splitAry(ary,2)); // [[1,2],[3,4],[5,6],[7]]</p>
+</div>
+<h2>数组深拷贝</h2>
+<div style="padding-left:25px;">
+	<p>
+		const copyArry = [1, 2, 3, 4];</br>
+ 
+ const ary = [].slice.apply(copyArry);</br>
+
+ ary.push(5);</br>
+
+ console.log(ary);     //[1, 2, 3, 4, 5]</br>
+
+ console.log(copyArry); //[1, 2, 3, 4]</br>
+
+ const ary2 = JSON.parse(JSON.stringify(copyArry));</br>
+
+ ary2.push(5);</br>
+
+ console.log(ary2);   //[1, 2, 3, 4, 5]</br>
+
+ console.log(copyArry); //[1, 2, 3, 4]</p>
+</div>
+	<h2>多维数组扁平化</h2>
+<div style="padding-left:25px;">
+	<p>
+	<h5>	二维数组扁平化</h5>
+
+const ary = [[1, 2], [3, 4], [5, 6]];</br>
+
+const flatten = ary => ary.reduce((a, b) => [...a, ...b]);</br>
+
+console.log(flatten(ary)); //[1, 2, 3, 4, 5, 6]
+
+<h5>多维数组扁平化</h5>
+
+const ary2 = [[1, [2, 3]], [4, [5, [6, 7]]]];</br>
+
+const flattenS = ary =>
+  ary.reduce((a, b) => a.concat(Array.isArray(b) ? flattenS(b) : b), []);</br>
+
+console.log(flattenS(ary2)); //[1, 2, 3, 4, 5, 6, 7]</p>
+</div>
 	</body>
 </html>
 
