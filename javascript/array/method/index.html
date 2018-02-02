@@ -21,25 +21,25 @@
 			<h2>二、用法：</h2>
 			 <p >
 数组操作的方法下面详细介绍。
-			<h5>1)lengh:</h5>
+			<h5>lengh</h5>
 			表示数组的长度，可以通过改变数组的长度改变数组，例如： </br>
 var arr = [1,2,3,4,5];arr.length;//5 </br>
 arr.length = 7;//arr = [1,2,3,4,5,undefined,undefined] </br>
 也可以对超过长度的数组赋值，例如 </br>
 arr[6]=’0’;//数组的下标从0开始，arr=[1,2,3,4,5,undefined,0] </br>
 注：一般不建议这么使用，因为这样会越界，在其他语言中如果越界就会报错，但是在JavaScript语言中不会报错，但是这种越界的操作不建议使用。
-<h5>2)push:</h5>
+<h5>push</h5>
 			在数组最后添加一个或者多个元素（数组变大）返回添加后数组的长度（arr.length），<span class="danger">会改变原数组</span>。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 arr1.push(7);</br>
 console.log(arr1.push(7));// 8</br>
 console.log(arr1);//[1,2,3,4,5,6,7,7]</br>
-<h5>3)pop:</h5>在数组最后取出一个元素（数组变小），返回的是数组的最后一个元素（也就是取出的元素）,<span class="danger">会改变原数组</span>。</br>
+<h5>pop</h5>在数组最后取出一个元素（数组变小），返回的是数组的最后一个元素（也就是取出的元素）,<span class="danger">会改变原数组</span>。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 arr1.pop();</br>
 console.log(arr1.pop());// 5</br>
 console.log(arr1);//[1,2,3,4]</br>
-<h5>4)join:</h5>将数字转换为字符串，返回数组转成的字符串，<span class="danger">不操作原数组</span>（括号里面的分隔符为''空时，否则会用所传字符将数组连接成一个字符串）。</br>
+<h5>join</h5>将数字转换为字符串，返回数组转成的字符串，<span class="danger">不操作原数组</span>（括号里面的分隔符为''空时，否则会用所传字符将数组连接成一个字符串）。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 arr1.join('');</br>
 console.log(arr1.join(''));//123456</br>
@@ -47,17 +47,17 @@ console.log(arr1);//[1,2,3,4,5,6]</br>
 arr1.join('7');</br>
 console.log(arr1.join(''));//17273747576</br>
 console.log(arr1);//[1,2,3,4,5,6]</br>
-<h5>5)unshift:</h5>从头部开始添加一个或者多个元素，返回操作后数组的长度（length），<span class="danger">会改变原数组</span>。</br>
+<h5>unshift</h5>从头部开始添加一个或者多个元素，返回操作后数组的长度（length），<span class="danger">会改变原数组</span>。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 arr1.unshift(7);</br>
 console.log(arr1.unshift(7));//8</br>
 console.log(arr1);//[7,7,1,2,3,4,5,6]</br>
-<h5>6)shift：</h5>从数组的头部开始取出元素，返回所取出的元素，<span class="danger">会改变原数组</span>。</br>
+<h5>shift</h5>从数组的头部开始取出元素，返回所取出的元素，<span class="danger">会改变原数组</span>。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 arr1.shift();</br>
 console.log(arr1.shift());//2</br>
 console.log(arr1);//[3,4,5,6]</br>
-<h5>7)sort:</h5>数组方法，默认从小到大排序，<span class="danger">会改变原数组</span>。</br>
+<h5>sort</h5>数组方法，默认从小到大排序，<span class="danger">会改变原数组</span>。</br>
 用法：var arr1 = [1,2,8,3,4,5,6];</br>
 arr1.sort();</br>
 console.log(arr1.sort());//[1,2,3,4,5,6,8]</br>
@@ -80,11 +80,11 @@ console.log(arr1.sort(function(a,b){</br>
 return a-b;</br>
 }));//[1, 4, 5, 6, 13, 18, 21]</br>
 console.log(arr1);//[1, 4, 5, 6, 13, 18, 21]</br>
-<h5>8)reverse：</h5>调换数组的顺序，也就是将数组反转，返回原数组，<span class="danger">会改变原数组</span>。</br>
+<h5>reverse</h5>调换数组的顺序，也就是将数组反转，返回原数组，<span class="danger">会改变原数组</span>。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 arr1.reverse();</br>
 console.log(arr1);//[6, 5, 4, 3, 2, 1]</br>
-<h5>9)concat:</h5>连接一个或者多个数组，返回新数组，<span class="danger">不操作原数组</span>。</br>
+<h5>concat</h5>连接一个或者多个数组，返回新数组，<span class="danger">不操作原数组</span>。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 var arr2 = [7,8,9,10,11]</br>
 arr1 = arr1.concat(arr2);</br>
@@ -92,7 +92,7 @@ console.log(arr1.concat(arr2));//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 7, 8, 9, 10
 console.log(arr1);//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</br>
 一般情况下合并数组大家都是用array1.concat(array2)来合并的，如果是大型数组的话就不适合了，这样将消耗大量的内存来存储新创建的数组，在大型数组下可以使用这个方法</br>
 array1.push().apply(arr1,arr2);</br>
-<h5>10)slice:</h5>slice(start,end),从start开始到end(不包含end)返回数组的一段，<span class="danger">不操作原数组</span>，果参数为空，即复制整个数组，如果start为负数，则从最后一个开始返回对应的个数，大于数组返回整个数组。</br>
+<h5>slice</h5>slice(start,end),从start开始到end(不包含end)返回数组的一段，<span class="danger">不操作原数组</span>，果参数为空，即复制整个数组，如果start为负数，则从最后一个开始返回对应的个数，大于数组返回整个数组。</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 arr1 = arr1.slice(2,5);</br>
 console.log(arr1.slice(2,5));//[5]</br>
@@ -101,7 +101,7 @@ console.log(arr1);//[ 3, 4, 5]</br>
 arr1 = arr1.slice(-5);</br>
 console.log(arr1.slice(-5));//[2, 3, 4, 5, 6]</br>
 console.log(arr1);//[2, 3, 4, 5, 6]</br>
-<h5>11)splice：</h5>splice（start，delcount,arr1）,从一个数组中移除一个或者多个元素，如果必要，在所移除的位置上插入新元素，返回所移除的元素，<span class="danger">操作的是原数组</span>，</br>
+<h5>splice</h5>splice（start，delcount,arr1）,从一个数组中移除一个或者多个元素，如果必要，在所移除的位置上插入新元素，返回所移除的元素，<span class="danger">操作的是原数组</span>，</br>
 用法：var arr1 = [1,2,3,4,5,6];</br>
 console.log(arr1.splice(-5));//[2, 3, 4, 5, 6]</br>
 console.log(arr1);//[1]</br>
@@ -110,7 +110,7 @@ var arr1 = [1,2,3,4,5,6];</br>
 var arr2 = [7,8,9,10,11]</br>
 console.log(arr1.splice(2,5,arr2));//[2, 3, 4, 5, 6]</br>
 console.log(arr1);//[1,2, [7,8,9,10,11]]</br>
-<h5>12)indexOf :</h5>与字符串类似，可以通过indexOf来索引指定元素的位置，<span class="danger">不改变原数组</span>，例如：</br>
+<h5>indexOf </h5>与字符串类似，可以通过indexOf来索引指定元素的位置，<span class="danger">不改变原数组</span>，例如：</br>
 var arr = [10, 20, '30', '40'];</br>
 arr.indexOf(10); // 元素10的索引为0</br>
 arr.indexOf('30'); // 元素'30'的索引为2</br>
