@@ -44,6 +44,12 @@
 				"isopen":false,
 				"parent":false,
 				"children":""
+			},{
+				"name":"数组常用姿势",
+				"url":"javascript/array/oftenuse/index.html",
+				"isopen":false,
+				"parent":false,
+				"children":""
 			}
 				   ]
 		}]
