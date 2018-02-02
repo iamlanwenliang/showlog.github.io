@@ -10,35 +10,115 @@
 		<h2>数据的操作方法</h2>
 		<div style="padding-left:25px;">
     <p >
-     Javascript 的语法和许多计算机语言很类似，如果学者在学习JavaScript之前有其他语言的基础，比如c++/c/java等等，那么JavaScript学习起来就很容易了，以为大部分语法都很类似。
-</br>1、JavaScript的每个语句以‘;’结束，语句块用‘{}’，但是在JavaScript中并不是强制要求说是在每个语句的结尾必须加‘;’,只要代码编写中没有语法错误，浏览器的执行JavaScript代码的引擎会在执行的时候会自动在语句末尾加上‘;’。
-</br>2、在JavaScript里面变量 是用var去声明的，在es6中还与几种声明方式，let和const，这两个后面会详细讲到。
-</br>3、基本数据类型有：number，object，undefined，null，Boolean，string这些都是基本数据类型，还有两种比较常用的数据类型：array和function，这些都是属于引用类型。
-</br>4、再写嵌套语句块的时候建议增加缩进，虽然JavaScript对嵌套层级没有限制，但是不建议过多的嵌套，这样会增减代码的可读性，如果这种情况建议把部分代码抽出来单独作为一个功能函数来调用，不建议一行写多句代码，有缩进的时候有助于我们对代码层次的理解和后期维护，</br>
+     在这一篇里面会详细的介绍到数组的的定义，使用方法，注意事项和小技巧之类等。
+	     </p >
+			<h2>一、定义：</h2>
+			 <p >
+数组是一组按顺序排列的集合，集合的每个元素可以是任何的数据类型，声明有两种，
+第一种：var arr = new Array();//arr = new Array(‘a’,’b’)就等于arr = [‘a’,’b’]
+第二种：var arr = [‘a’,’b’];
+				  </p >
+			<h2>二、用法：</h2>
+			 <p >
+数组操作的方法下面详细介绍。
+			<h5>1)lengh:</h5>
+			表示数组的长度，可以通过改变数组的长度改变数组，例如： </br>
+var arr = [1,2,3,4,5];arr.length;//5 </br>
+arr.length = 7;//arr = [1,2,3,4,5,undefined,undefined] </br>
+也可以对超过长度的数组赋值，例如 </br>
+arr[6]=’0’;//数组的下标从0开始，arr=[1,2,3,4,5,undefined,0] </br>
+注：一般不建议这么使用，因为这样会越界，在其他语言中如果越界就会报错，但是在JavaScript语言中不会报错，但是这种越界的操作不建议使用。
+<h5>2)push:</h5>
+			在数组最后添加一个或者多个元素（数组变大）返回添加后数组的长度（arr.length），<span class="danger">会改变原数组</span>。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+arr1.push(7);</br>
+console.log(arr1.push(7));// 8</br>
+console.log(arr1);//[1,2,3,4,5,6,7,7]</br>
+<h5>3)pop:</h5>在数组最后取出一个元素（数组变小），返回的是数组的最后一个元素（也就是取出的元素）,<span class="danger">会改变原数组</span>。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+arr1.pop();</br>
+console.log(arr1.pop());// 5</br>
+console.log(arr1);//[1,2,3,4]</br>
+<h5>4)join:</h5>将数字转换为字符串，返回数组转成的字符串，<span class="danger">不操作原数组</span>（括号里面的分隔符为''空时，否则会用所传字符将数组连接成一个字符串）。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+arr1.join('');</br>
+console.log(arr1.join(''));//123456</br>
+console.log(arr1);//[1,2,3,4,5,6]</br>
+arr1.join('7');</br>
+console.log(arr1.join(''));//17273747576</br>
+console.log(arr1);//[1,2,3,4,5,6]</br>
+<h5>5)unshift:</h5>从头部开始添加一个或者多个元素，返回操作后数组的长度（length），<span class="danger">会改变原数组</span>。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+arr1.unshift(7);</br>
+console.log(arr1.unshift(7));//8</br>
+console.log(arr1);//[7,7,1,2,3,4,5,6]</br>
+<h5>6)shift：</h5>从数组的头部开始取出元素，返回所取出的元素，<span class="danger">会改变原数组</span>。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+arr1.shift();</br>
+console.log(arr1.shift());//2</br>
+console.log(arr1);//[3,4,5,6]</br>
+<h5>7)sort:</h5>数组方法，默认从小到大排序，<span class="danger">会改变原数组</span>。</br>
+用法：var arr1 = [1,2,8,3,4,5,6];</br>
+arr1.sort();</br>
+console.log(arr1.sort());//[1,2,3,4,5,6,8]</br>
+console.log(arr1);//[1,2,3,4,5,6,8]</br>
+注：这种排序方法只能排序10以下的数字，否则会只取每个数组元素的第一个位置的元素去排序。</br>
+例：var arr1 = [1,21,18,13,4,5,6];</br>
+arr1.sort();</br>
+console.log(arr1.sort());//[1, 13, 18, 21, 4, 5, 6]</br>
+console.log(arr1);//[1, 13, 18, 21, 4, 5, 6]</br>
+解决方法：arr.sort(function(a,b){</br>
+return a-b ;//从小到大</br>
+//return b-a ;//从大到小</br>
+//return Math.random()-0.5;//乱序排</br>
+});</br>
+例：var arr1 = [1,21,18,13,4,5,6];</br>
+arr1.sort(function(a,b){</br>
+return a-b;</br>
+});</br>
+console.log(arr1.sort(function(a,b){</br>
+return a-b;</br>
+}));//[1, 4, 5, 6, 13, 18, 21]</br>
+console.log(arr1);//[1, 4, 5, 6, 13, 18, 21]</br>
+<h5>8)reverse：</h5>调换数组的顺序，也就是将数组反转，返回原数组，<span class="danger">会改变原数组</span>。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+arr1.reverse();</br>
+console.log(arr1);//[6, 5, 4, 3, 2, 1]</br>
+<h5>9)concat:</h5>连接一个或者多个数组，返回新数组，<span class="danger">不操作原数组</span>。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+var arr2 = [7,8,9,10,11]</br>
+arr1 = arr1.concat(arr2);</br>
+console.log(arr1.concat(arr2));//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 7, 8, 9, 10, 11]</br>
+console.log(arr1);//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</br>
+一般情况下合并数组大家都是用array1.concat(array2)来合并的，如果是大型数组的话就不适合了，这样将消耗大量的内存来存储新创建的数组，在大型数组下可以使用这个方法</br>
+array1.push().apply(arr1,arr2);</br>
+<h5>10)slice:</h5>slice(start,end),从start开始到end(不包含end)返回数组的一段，<span class="danger">不操作原数组</span>，果参数为空，即复制整个数组，如果start为负数，则从最后一个开始返回对应的个数，大于数组返回整个数组。</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+arr1 = arr1.slice(2,5);</br>
+console.log(arr1.slice(2,5));//[5]</br>
+console.log(arr1);//[ 3, 4, 5]</br>
+负数：var arr1 = [1,2,3,4,5,6];</br>
+arr1 = arr1.slice(-5);</br>
+console.log(arr1.slice(-5));//[2, 3, 4, 5, 6]</br>
+console.log(arr1);//[2, 3, 4, 5, 6]</br>
+<h5>11)splice：</h5>splice（start，delcount,arr1）,从一个数组中移除一个或者多个元素，如果必要，在所移除的位置上插入新元素，返回所移除的元素，<span class="danger">操作的是原数组</span>，</br>
+用法：var arr1 = [1,2,3,4,5,6];</br>
+console.log(arr1.splice(-5));//[2, 3, 4, 5, 6]</br>
+console.log(arr1);//[1]</br>
+插入：</br>
+var arr1 = [1,2,3,4,5,6];</br>
+var arr2 = [7,8,9,10,11]</br>
+console.log(arr1.splice(2,5,arr2));//[2, 3, 4, 5, 6]</br>
+console.log(arr1);//[1,2, [7,8,9,10,11]]</br>
+<h5>12)indexOf :</h5>与字符串类似，可以通过indexOf来索引指定元素的位置，<span class="danger">不改变原数组</span>，例如：</br>
+var arr = [10, 20, '30', '40'];</br>
+arr.indexOf(10); // 元素10的索引为0</br>
+arr.indexOf('30'); // 元素'30'的索引为2</br>
 
-  
-    </p>
-</div>
-<h2>数据类型</h2>
-		<div style="padding-left:25px;">
-    <p >
-			<h5>1、number</h5>
-在JavaScript中浮点数和整数都是number类型的，数据采用IEEE754标准定义的64位浮点格式，
-常见的数据类型大概有：整数，浮点数（带有小数的），用科学计数法表示的（1.02e5=1.02x100000）,负数，NaN；此类情况经常在数据转换或者运算的时候出现，表示not a number，最后一种是infinity，这是数值超过了JavaScript的number类型所能表示的最大数时就表示为infinity（JavaScript中number所能表示的最大数范围是：整数-253---253也就是16位，超过的全部显示为0，浮点数±1.7976931348623157 × 10308-----±5 × 10−324），
-Number数据可以做四则运算；+,-,*,/,%,>,<,=,==,===,<=,>=.
-<h5>2、string</h5>JavaScript中的字符串是用单引号或者双引号括起来的字符，还可以引号里面直接写字符的ascII编码，小tips：多行字符串，如果觉得\n写起来麻烦，那么还有一种方式，在es6里面新增了一种便是方法，就是用反引号，用反引号括起来的字符串了面可以换行展示，（反引号在数字键1的左边），字符串可以进行四则运算中的加运算，其他的运算不能进行。
-<h5>3、Boolean</h5>布尔值的取值只有两种即：true，和false，白话的说就是存在和不存在，也可以去判断一个运算式成立或者不成立，比如a>b，成立或者不成立，多个判断或者存在不存在的时候总体就有两种运算符‘||’和“&&”,前者就是意思是什么或者什么，也就是说在多个判断中，只要有一个判断是成立的，那么整个判断就是成立的，后者刚好相反，同样的在多个判断中，只要有一个不成立，那么整个判断就是不成立的。
-<h5>4、Object</h5>在JavaScript中的object通常叫做对象，就是又一组键和值组成的无序集合，对象的键都是字符串类型的，值可以是任意的数据类型，例如：</br>
-Obj={</br>
-  &nbsp; &nbsp; Nema:’小明’,</br>
-   &nbsp; &nbsp; Sex:’男’,</br>
-    &nbsp; &nbsp;Age:’19’,</br>
-    &nbsp; &nbsp;Height:’187’</br>
-}</br>
-其中键值可以是任何的数据类型，在引用的时候，比如要引用‘小明’，就是obj.Name.
-<h5>5、null和undefined</h5>null表示一个空的值，数据类型是object，null和0不同，0是一个数值，undefined表示未定义，也就是没有定义数据类型，通常在给变量值的时候就给变量赋予了数据类型，但是undefined就是你声明了这个变量，但是没有给变量赋值，也就是没有给变量数据类型。至于null、undefined，0，’’，[]，{}，的区别和识别后面会详细讲到。
-<h5>6、Array</h5>这是数组类型，也就是说是一组按顺序排列的集合，集合中的每个元素的值也可以是任意数据类型的数据，一般我们用到的最多就是一维数组和二维数组，虽然对数组的维度没有限制，但是严格的来说数组的数据维度越多那么我们操作数据和读取数据的复杂度和难度就会相对提升，所以一般情况下我们通常在使用中，一维数组基本就可以满足我们的需求了，二维数组几乎也很少用到。
-<h5>7、Function</h5>Function，这是一种很特殊的数据类型，这是一个小的代码集合用于处理特殊的加工，这样来说吧，function就是具有特定功能的代码集合，打个比方，就是一个小的加工厂，材料从这个加工厂进来经过这个小加工厂的处理输出特定的成品或者半成品产品。这个后面也会详细讲到。
+
+
+<span class="danger">不改变原数组</span>
+数组的讲解暂时到这里，后面可能还会有补充。
     </p>
 </div>
 	
