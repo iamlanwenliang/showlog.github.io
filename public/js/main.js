@@ -14,9 +14,9 @@ var dic_create = {};
 								str += '<div class="childp">' + this.build(obj[i]['children'][j]['children']) + '</div>';
 							}else{
 								if(obj[i]['children'][j]['active']){
-									str += '<div class="childp lan_child lan_active">' +this.childstr +'<a class="tips_sign" data-href="'+obj[i]['children'][j]['url']+'" >'+ obj[i]['children'][j]['name'] + '</a></div>';
+									str += '<div class="childp lan_child lan_active" data-href="'+obj[i]['children'][j]['url']+'">' +this.childstr + obj[i]['children'][j]['name'] + '</div>';
 								}else{
-									str += '<div class="childp lan_child">' +this.childstr +'<a class="tips_sign" data-href="'+obj[i]['children'][j]['url']+'" >'+ obj[i]['children'][j]['name'] + '</a></div>';
+									str += '<div class="childp lan_child" data-href="'+obj[i]['children'][j]['url']+'">' +this.childstr + obj[i]['children'][j]['name'] + '</div>';
 								}
 								
 							}
@@ -45,8 +45,6 @@ var dic_create = {};
 				//alert(0)
 				$('.lan_child').removeClass('lan_active');
 				$(this).addClass('lan_active');
-			});
-			$('body').on('click','.tips_sign',function(){
 				let url = $(this).attr('data-href');
 				if(url){
 				   $('#content').attr('src',url);
@@ -54,5 +52,6 @@ var dic_create = {};
 				   $('#content').attr('src','javascript/preface/index.html');
 				}
 			});
+			
 //tips_sign
 $('#content').attr('src','javascript/preface/index.html');
