@@ -102,6 +102,190 @@ console.log(str1)'  hello friends!  '</br>
 用法：</br>var str1 = '  hello friends!  '</br>
 console.log(str1.trim());//'  hello friends!'</br>
 console.log(str1)'  hello friends!  </br>
+<h5>fromCharCode</h5>
+fromCharCode() 方法返回使用指定的Unicode值序列创建的字符串。</br>
+用法：</br>String.fromCharCode(num1, ..., numN) </br>
+
+num1, ..., numN</br>
+一组序列数字，表示 Unicode 值。</br>
+该方法返回一个字符串，而不是一个 String 对象。</br>
+例如：</br>
+String.fromCharCode(65,66,67)//ABC</br>
+
+<h5>fromCodePoint</h5>
+fromCodePoint() 静态方法返回使用指定的代码点序列创建的字符串。</br>
+用法：</br>String.fromCodePoint(num1[, ...[, numN]])</br>
+num1, ..., numN</br>
+一串 Unicode 编码。</br>
+RangeError</br>
+如果传入无效的 Unicode 编码，将会抛出一个RangeError (例如： "RangeError: NaN is not a valid code point")。</br>
+例如：</br>
+String.fromCodePoint(42);       // "*"</br>
+String.fromCodePoint(65, 90);   // "AZ"</br>
+String.fromCodePoint(0x404);    // "\u0404"</br>
+String.fromCodePoint(0x2F804);  // "\uD87E\uDC04"</br>
+String.fromCodePoint(194564);   // "\uD87E\uDC04"</br>
+
+
+
+<h5>endsWith</h5>
+endsWith()方法用来判断当前字符串是否是以另外一个给定的子字符串“结尾”的，根据判断结果返回 true 或 false。（ES6规范，使用注意兼容性）</br>
+用法：</br>str.endsWith(searchString [, position]);</br>
+searchString</br>
+要搜索的子字符串。</br>
+position</br>
+在 str 中搜索 searchString 的结束位置，默认值为 str.length，也就是真正的字符串结尾处。</br>
+例如：</br>
+var str = "To be, or not to be, that is the question.";</br>
+
+alert( str.endsWith("question.") );  // true</br>
+alert( str.endsWith("to be") );      // false</br>
+alert( str.endsWith("to be", 19) );  // true</br>
+alert( str.endsWith("To be", 5) );   // true</br>
+
+<h5>includes</h5>
+
+includes() 方法用于判断一个字符串是否包含在另一个字符串中，根据情况返回true或false。</br>
+用法：</br>str.includes(searchString[, position])</br>
+searchString</br>
+要在此字符串中搜索的字符串。</br>
+position</br>
+可选。从当前字符串的哪个索引位置开始搜寻子字符串；默认值为0。</br>
+如果当前字符串包含被搜寻的字符串，就返回true；否则，返回false。</br>
+includes() 方法是区分大小写的。</br>
+例如：</br>
+var str = 'To be, or not to be, that is the question.';</br>
+
+console.log(str.includes('To be'));       // true</br>
+console.log(str.includes('question'));    // true</br>
+console.log(str.includes('nonexistent')); // false</br>
+console.log(str.includes('To be', 1));    // false</br>
+console.log(str.includes('TO BE'));       // false</br>
+
+
+
+<h5>match</h5>
+当一个字符串与一个正则表达式匹配时， match()方法检索匹配项。</br>
+语法：</br>
+str.match(regexp);</br>
+regexp</br>
+一个正则表达式对象。如果传入一个非正则表达式对象，则会隐式地使用 new RegExp(obj) 将其转换为一个 RegExp 。如果你未提供任何参数，直接使用 match() ，那么你会得到一个包含空字符串的 Array ：[""] 。
+</br>array</br>
+如果字符串匹配到了表达式，会返回一个数组，数组的第一项是进行匹配完整的字符串，之后的项是用圆括号捕获的结果。如果没有匹配到，返回null</br>
+
+
+<h5>padEnd</h5>
+padEnd()  方法会用一个字符串填充当前字符串（如果需要的话则重复填充），返回填充后达到指定长度的字符串。从当前字符串的末尾（右侧）开始填充。</br>
+语法：</br>str.padEnd(targetLength [, padString])</br>
+targetLength</br>
+当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。</br>
+padString 可选</br>
+填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的缺省值为 " "（U+0020）。</br>
+在原字符串末尾填充指定的填充字符串直到目标长度所形成的新字符串。</br>
+例如：</br>
+'abc'.padEnd(10);          // "abc       "</br>
+'abc'.padEnd(10, "foo");   // "abcfoofoof"</br>
+'abc'.padEnd(6, "123456"); // "abc123"</br>
+'abc'.padEnd(1);           // "abc"</br>
+
+
+
+<h5>padStart</h5>
+padStart() 方法用另一个字符串填充当前字符串(重复，如果需要的话)，以便产生的字符串达到给定的长度。填充从当前字符串的开始(左侧)应用的。</br>
+用法：</br>str.padStart(targetLength [, padString])</br>
+
+targetLength</br>
+当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。</br>
+padString 可选</br>
+填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的缺省值为 " "（U+0020）。</br>
+在原字符串开头填充指定的填充字符串直到目标长度所形成的新字符串。</br>
+例如：</br>
+'abc'.padStart(10);         // "       abc"</br>
+'abc'.padStart(10, "foo");  // "foofoofabc"</br>
+'abc'.padStart(6,"123465"); // "123abc"</br>
+'abc'.padStart(8, "0");     // "00000abc"</br>
+'abc'.padStart(1);          // "abc"</br>
+
+
+
+<h5>repeat</h5>
+
+repeat() 构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。</br>
+/** </br>
+ * str: String</br>
+ * count: Number</br>
+ */</br>
+
+let resultString = str.repeat(count);</br>
+count</br>
+介于0和正无穷大之间的整数 : [0, +∞) 。表示在新构造的字符串中重复了多少遍原字符串。</br>
+包含指定字符串的指定数量副本的新字符串。</br>
+例如：</br>
+"abc".repeat(-1)     // RangeError: repeat count must be positive and less than inifinity</br>
+"abc".repeat(0)      // ""</br>
+"abc".repeat(1)      // "abc"</br>
+"abc".repeat(2)      // "abcabc"</br>
+"abc".repeat(3.5)    // "abcabcabc" 参数count将会被自动转换成整数.</br>
+"abc".repeat(1/0)    // RangeError: repeat count must be positive and less than inifinity</br>
+
+({toString : () => "abc", repeat : String.prototype.repeat}).repeat(2)   
+//"abcabc",repeat是一个通用方法,也就是它的调用者可以不是一个字符串对象.</br>
+
+
+
+<h5>search</h5>
+search() 方法执行正则表达式和 String对象之间的一个搜索匹配。</br>
+用法：</br>str.search(regexp)</br>
+regexp</br>
+一个正则表达式（regular expression）对象。如果传入一个非正则表达式对象，则会使用 new RegExp(obj) 隐式地将其转换为正则表达式对象。</br>
+如果匹配成功，则 search() 返回正则表达式在字符串中首次匹配项的索引。否则，返回 -1。</br>
+当你想要知道字符串中是否存在某个模式（pattern）时可使用 search，类似于正则表达式的 test 方法。当要了解更多匹配信息时，可使用 match（会更慢），该方法类似于正则表达式的 exec 方法。
+</br>例如：</br>
+
+function testinput(re, str){</br>
+  var midstring;</br>
+  if (str.search(re) != -1){</br>
+    midstring = " contains ";</br>
+  } else {</br>
+    midstring = " does not contain ";</br>
+  }</br>
+  console.log (str + midstring + re);</br>
+}</br>
+<h5>startsWith</h5>
+startsWith()方法用来判断当前字符串是否是以另外一个给定的子字符串“开头”的，根据判断结果返回 true 或 false。（ES6新规范，使用注意兼容）</br>
+用法：</br>
+str.startsWith(searchString [, position]);</br>
+searchString</br>
+要搜索的子字符串。</br>
+position</br>
+在 str 中搜索 searchString 的开始位置，默认值为 0，也就是真正的字符串开头处。</br>
+例如：</br>
+var str = "To be, or not to be, that is the question.";</br>
+
+alert(str.startsWith("To be"));         // true</br>
+alert(str.startsWith("not to be"));     // false</br>
+alert(str.startsWith("not to be", 10)); // true</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </br></br></br>
 补充：在上面讲到了字符串中的字符查找和字符替换，这里就有一些实践的问题了，在字符串造作中会经常用到将字符串中的特定字符全部替换为指定字符，并且是全部替换，那就需要下面的这几种方法的配合使用了。
 1)var reg=new RegExp("我们","g"); //创建正则RegExp对象   </br>
