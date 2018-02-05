@@ -8,10 +8,10 @@
 	</head>
 	<body>
 		<h2>字符串的操作方法</h2>
-		<div style="padding-left:20px;">
+		<div style="padding-left:25px;">
 		<p>
 在这篇里面会详细的讲到字符串相关的用法，注意事项等等
-			<h5>一、定义</h5>
+			<h2>一、定义</h2>
 			字符串就是用单引号或者双引号括起来的字符，其中的字符可以是任何字符，
 声明有两种方式：</br>
 var str = new String();</br>(效果等于str = {})这种方式严格的来说也可以，但是平时不建议使用，因为使用new出来的数据类型是object，但是这种声明出来的是一个类似于数组的字符串，将字符串按照length分割开来分别存在对象里面了。
@@ -27,38 +27,38 @@ Var str = ‘’;</br>这是常用的字符串声明方式，这种声明出来�
   var talk = ‘${man}${using}${strong}’;</br>
   这样就拼起来了，是不是很方便呢</br>
 
-			<h5>二用法</h5>这里将一一介绍我们使用中用到的方法</br>
-1)Length：这是字符串的一个属性，类似于数组的下标，例如</br>
+			<h2>二用法</h2>这里将一一介绍我们使用中用到的方法</br>
+<h5>Length</h5>这是字符串的一个属性，类似于数组的下标，例如</br>
    var str =’HELLO’;</br>这时想取到字符串指定位置的一个字符，那就是：
    Str[指定位置的下标]，str[0],str[1],str[2].</br>
 但是这里你要是想改变字符串指定位置的字符怎么办呢？</br>
 Str[0]=’P’;</br>这样可以改变字符串第一个位置的字符吗？答案是否定的，那么该用什么方式去实现这种需求呢？下面会讲到。</br>
-2)CharAt：获取字符串中的指定下标字符，不操作原字符串，返回获取到的字符。</br>
+<h5>CharAt</h5>获取字符串中的指定下标字符，不操作原字符串，返回获取到的字符。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 str1.charAt(0);</br>
 console.log(str1.charAt(2));/l</br>
 console.log(str1);//hello friends!</br>
-3)charCodeAt:获取指定下标字符的ASCII码，返回字符的ASCII码，不操作原字符串。</br>
+<h5>charCodeAt</h5>获取指定下标字符的ASCII码，返回字符的ASCII码，不操作原字符串。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.charCodeAt(5));//32</br>
 console.log(str1);//hello friends!</br>
-4)fromCharCode：获取指定编码的字符。</br>
+<h5>fromCharCode</h5>获取指定编码的字符。</br>
 用法：console.log(String.fromCharCode(104));//h</br>
-5)indexOf:查找字符串中指定字符第一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
+<h5>indexOf</h5>查找字符串中指定字符第一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.indexOf('e'));//1</br>
 console.log(str1.indexOf('k'));//-1</br>
 console.log(str1);//hello friends!</br>
-6)lastIndexOf:查找字符串中指定字符最后一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
+<h5>lastIndexOf</h5>查找字符串中指定字符最后一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.lastIndexOf('e'));//9</br>
 console.log(str1.lastIndexOf('k'));//-1</br>
 console.log(str1);//hello friends!</br>
-7)replace:将字符串中的一部分替换为指定部分或者字符，返回新的字符串，不改变原字符串。</br>
+<h5>replace</h5>将字符串中的一部分替换为指定部分或者字符，返回新的字符串，不改变原字符串。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.replace('hello','hi'));//hi friends!</br>
 console.log(str1);//hello friends!</br>
-8)substring:从指定位置开始截取字符串，不包括结束的下标，返回新的字符串，不改变原字符串，</br>
+<h5>substring</h5>从指定位置开始截取字符串，不包括结束的下标，返回新的字符串，不改变原字符串，</br>
 当开始下标大于结束下标时，就返回来截取，</br>
 当结束下标不写时，就会从起始下标截完，</br>
 当结束下标为负数时，从0开始截取，</br>
@@ -69,7 +69,7 @@ console.log(str1.substring(3,0));//hel</br>
 console.log(str1.substring(3));//lo friends!</br>
 console.log(str1.substring(-3));//hello friends!</br>
 console.log(str1);//hello friends!</br>
-9)substr:从指定位置开始截取指定长度的字符串，返回截取的字符串，不改变原字符串，</br>
+<h5>substr</h5>从指定位置开始截取指定长度的字符串，返回截取的字符串，不改变原字符串，</br>
 当长度为0或者负数时，会返回一个空字符串，</br>
 当长度不写时，从开始位置截取完。</br>
 用法：</br>var str1 = 'hello friends!'</br>
@@ -77,28 +77,28 @@ console.log(str1.substr(0,3));//hel</br>
 console.log(str1.substr(3,0));//空</br>
 console.log(str1.substr(3));//lo friends!</br>
 console.log(str1);//hello friends!</br>
-10)split:根据指定分隔符将字符串分割为数组，不改变原字符串，返回分割成的数组。</br>
+<h5>split</h5>根据指定分隔符将字符串分割为数组，不改变原字符串，返回分割成的数组。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.split(' '));//["hello", "friends!"]</br>
 console.log(str1.split('e'));//["h", "llo fri", "nds!"]</br>
 console.log(str1);//hello friends!</br>
-11)toLowerCase：将字符串转为小写，不操作原字符串，返回转换后的字符串。</br>
+<h5>toLowerCase</h5>将字符串转为小写，不操作原字符串，返回转换后的字符串。</br>
 用法：</br>var str1 = 'hEllo fRiends!'</br>
 console.log(str1.toLowerCase());//hello friends!</br>
 console.log(str1);//hEllo fRiends!</br>
-12)toUpperCase:将字符转换为大写，不操作原字符串，返回转换后的字符串。</br>
+<h5>toUpperCase</h5>将字符转换为大写，不操作原字符串，返回转换后的字符串。</br>
 用法：</br>var str1 = 'hEl4lo fRie3nds!'</br>
 console.log(str1.toUpperCase());//HEL4LO FRIE3NDS!</br>
 console.log(str1);//hEl4lo fRie3nds!</br>
-13)trim:去掉字符串中的前后空格，返回修改后的字符串，不改变原字符串。</br>
+<h5>trim</h5>去掉字符串中的前后空格，返回修改后的字符串，不改变原字符串。</br>
 用法：var str1 = '  hello friends!  '
 console.log(str1.trim());//'hello friends!'
 console.log(str1)'  hello friends!  '
-14)trimLeft:去掉字符串中的前空格，返回修改后的字符串，不改变原字符串。
+<h5>trimLeft</h5>去掉字符串中的前空格，返回修改后的字符串，不改变原字符串。
 用法：</br>var str1 = '  hello friends!  '</br>
 console.log(str1.trim());//'hello friends  !'</br>
 console.log(str1)'  hello friends!  '</br>
-15)trimRight:去掉字符串中的后空格，返回修改后的字符串，不改变原字符串。</br>
+<h5>trimRight</h5>去掉字符串中的后空格，返回修改后的字符串，不改变原字符串。</br>
 用法：</br>var str1 = '  hello friends!  '</br>
 console.log(str1.trim());//'  hello friends!'</br>
 console.log(str1)'  hello friends!  </br>
