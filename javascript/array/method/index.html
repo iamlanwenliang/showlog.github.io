@@ -114,7 +114,7 @@ console.log(arr1);//[1,2, [7,8,9,10,11]]</br>
 var arr = [10, 20, '30', '40'];</br>
 arr.indexOf(10); // 元素10的索引为0</br>
 arr.indexOf('30'); // 元素'30'的索引为2</br>
-<h5>indexOf </h5>
+
 
 
 
@@ -123,7 +123,7 @@ arr.indexOf('30'); // 元素'30'的索引为2</br>
 数组迭代器，一般用于过滤数组，every() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。 
 every() 方法使用指定函数检测数组中的所有元素： </br>
 如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。 </br>
-如果所有元素都满足条件，则返回 true，不会对空数组进行检测，不改变原数组，</br>
+如果所有元素都满足条件，则返回 true，不会对空数组进行检测，<span class="danger">不改变原数组</span>，</br>
 
 例如：</br>
 arr.every(function(item,index,arr){</br>
@@ -139,7 +139,7 @@ console.log(everyResult); //false   </br> 就如every的意思(每一个)，数�
 
 
 <h5>some </h5>
-对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true，也就是只要有一项满足就会返回 true。不改变原数组。
+对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true，也就是只要有一项满足就会返回 true。<span class="danger">不改变原数组</span>。
 </br>
 var arr = [1,2,3,4,5,4,3,2,1];</br>
 var everyResult = arr.some(function(item, index, array){</br>
@@ -151,7 +151,7 @@ console.log(everyResult); //true  </br>  就如some的意思(某一个)，数组
 
 
 <h5>filter </h5>
-对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组，它利用指定的函数确定是否在返回的数组中包含某一项，也就是过滤符合条件的项返回。不改变原数组。
+对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组，它利用指定的函数确定是否在返回的数组中包含某一项，也就是过滤符合条件的项返回。<span class="danger">不改变原数组</span>。
 </br>
 var arr = [1,2,3,4,5,4,3,2,1];</br>
 var newarr= arr.filter(function(item, index, array){</br>
@@ -174,7 +174,7 @@ alert(maparr );   //[2,4,6,8,10,8,6,4,2]
 
 
 <h5>isArray </h5>
-判断参数是不是数组,返回布尔值;不改变原数组。
+判断参数是不是数组,返回布尔值;<span class="danger">不改变原数组</span>。
 </br>
 Array.isArray(参数); // 判断参数是不是数组,返回布尔值;</br>
 例：</br>
@@ -185,7 +185,7 @@ console.log(Array.isArray(num)); //false</br>
 
 
 <h5>toString </h5>
-数组.toString(); // 把数组变成字符串,去除了[],内容用逗号链接;不改变原数组。</br>
+数组.toString(); // 把数组变成字符串,去除了[],内容用逗号链接;<span class="danger">不改变原数组</span>。</br>
 
  var arr = ["aaa","bbb","ccc"];</br>
 console.log(arr.toString());      //返回 aaa,bbb,ccc</br>
@@ -194,7 +194,7 @@ console.log(arr.toString());      //返回 aaa,bbb,ccc</br>
 
 
 <h5>Keys </h5>
-这个方法在处理对象的时候很好用，用于获取键值对的键名。以数组的方式返回。</br>
+这个方法在处理对象的时候很好用，用于获取键值对的键名。以数组的方式返回。<span class="danger">不改变原数组</span></br>
 例如：</br>arr={</br>
     CName: "wjh",</br>
     EName: "Bruce",</br>
@@ -205,7 +205,7 @@ Console.log(Object.keys(arr));//["ChineseName", "EnglishName", "sex", "age"]</br
 
 
 <h5>Includes </h5>
-方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。</br>
+方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。<span class="danger">不改变原数组</span></br>
 let a = [1, 2, 3,4,5,5,6];</br>
 a.includes(6); 
 // true  </br>
@@ -225,7 +225,7 @@ fromIndex （可选）</br>
 
 
 <h5>From </h5>
-方法从一个类似数组或可迭代对象中创建一个新的数组实例。不改变原数组。</br>
+方法从一个类似数组或可迭代对象中创建一个新的数组实例。<span class="danger">不改变原数组</span>。</br>
 用法：Array.from(arrayLike, mapFn, thisArg)</br>
 arrayLike：想要转换成数组的伪数组对象或可迭代对象。</br>
 mapFn (可选参数)：如果指定了该参数，新数组中的每个元素会执行该回调函数。</br>
@@ -244,7 +244,7 @@ Array.of(1, 2, 3); // [1, 2, 3]</br>
 Array(7);          // [ , , , , , , ]</br>
 Array(1, 2, 3);    // [1, 2, 3]</br>
 <h5>copyWithin </h5>
-copyWithin 方法浅复制数组的一部分到同一数组中的另一个位置，并返回它，而不修改其大小。会改变原数组。</br>
+copyWithin 方法浅复制数组的一部分到同一数组中的另一个位置，并返回它，而不修改其大小。<span class="danger">会改变原数组</span>。</br>
 用法：arr.copyWithin(target)</br>
 
 arr.copyWithin(target, start)</br>
@@ -267,7 +267,7 @@ End：0 为基底的索引，开始复制元素的结束位置。copyWithin 将�
 
 
 <h5>fill </h5>
-fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。会改变原数组。</br>
+fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。<span class="danger">会改变原数组</span>。</br>
 用法：</br>
 arr.fill(value) </br>
 arr.fill(value, start) </br>
@@ -286,7 +286,7 @@ numbers.fill(1);
 
 
 <h5>find </h5>
-find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。不改变原数组。</br>
+find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。<span class="danger">不改变原数组</span>。</br>
 用法：</br>arr.find(callback[, thisArg])</br>
 
 Callback：在数组每一项上执行的函数，接收 3 个参数：</br>
@@ -305,7 +305,7 @@ thisArg ：可选，指定 callback 的 this 参数。</br>
 
 
 <h5>forEach </h5>
-forEach() 方法对数组的每个元素执行一次提供的函数。</br>
+forEach() 方法对数组的每个元素执行一次提供的函数。<span class="danger">不改变原数组</span></br>
 用法：</br>
 array.forEach(callback(currentValue, index, array){</br>
     //do something</br>
