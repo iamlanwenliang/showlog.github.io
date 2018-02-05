@@ -8,17 +8,111 @@
 	</head>
 	<body>
 		<h2>字符串的操作方法</h2>
-		<p>在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这大佬在两周之内就设计出了JavaScript语言。我写错了吗？没错，大佬只用了10天时间就搞定了。
-为什么起名叫JavaScript？原因是当时Java语言非常红火，所以网景公司希望借Java的名气来推广，但事实上JavaScript除了语法上有点像Java，其他部分基本上没啥关系，就像老婆和老婆饼的关系。</p>
-		<h2>JavaScript简述</h2>
-		<p>简单地说，JavaScript是一种运行在浏览器中的解释型的编程语言。随着HTML5在PC和移动端越来越流行，JavaScript变得更加重要了。并且，新兴的Node.js把JavaScript引入到了服务器端，JavaScript已经变成了全能型选手。
-JavaScript一度被认为是一种玩具编程语言，它有很多缺陷，所以不被大多数后端开发人员所重视。很多人认为，写JavaScript代码很简单，并且JavaScript只是为了在网页上添加一点交互和动画效果。
-但这是完全错误的理解。JavaScript确实很容易上手，但其精髓却不为大多数开发人员所熟知。编写高质量的JavaScript代码更是难上加难。</p>
-		<h2>ECMAScript</h2>
-		<p>说到JavaScript那么必然会设计到ECMAScript，也就是JavaScript语言标准，因为网景开发了JavaScript，一年后微软又模仿JavaScript开发了JScript，为了让JavaScript成为全球标准，几个公司联合ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准，被称为ECMAScript标准。
-所以简单说来就是，ECMAScript是一种语言标准，而JavaScript是网景公司对ECMAScript标准的一种实现。
-那为什么不直接把JavaScript定为标准呢？因为JavaScript是网景的注册商标。
-不过大多数时候，我们还是用JavaScript这个词。如果你遇到ECMAScript这个词，简单把它替换为JavaScript就行了。</p>
+		<div style="padding-left:20px;">
+		<p>
+在这篇里面会详细的讲到字符串相关的用法，注意事项等等
+			<h5>一、定义</h5>
+			字符串就是用单引号或者双引号括起来的字符，其中的字符可以是任何字符，
+声明有两种方式：</br>
+var str = new String();</br>(效果等于str = {})这种方式严格的来说也可以，但是平时不建议使用，因为使用new出来的数据类型是object，但是这种声明出来的是一个类似于数组的字符串，将字符串按照length分割开来分别存在对象里面了。
+Var str = ‘’;</br>这是常用的字符串声明方式，这种声明出来数据类型就是string的，也是比较正常的使用方式；</br>
+①　如果单引号中还包括单引号或者双引号里面还包括双引号，其中包涵的单引号或者双引号也是字符内容的话，一般可以用反斜杠（\）来表示，位置在特殊符号前面。这里要提醒的一点是字符串里面如果是ascII编码的话，在输出时浏览器会自动解析为相对应的字符。
+</br>②　这里介绍常用的两个小技巧，不过这是es6标准，如果你的浏览器不支持的话这里就需要更新到支持es6的最新版或者在支持es6的浏览器上调试。第一个就是怎么让字符串换行呢？我们一般第一想法都是在想要换行的地方添加\n就可以换行了，今天在这里介绍的是另一种es6标准里面的，用反引号括起来，反引号在键盘的esc键的下方第一个，字符串用反引号括起来，你在书写的时候字符串里面有几个换行，在显示时就显示几个换行
+</br>例如：`你的</br>
+我的`  那么字符串输出的时候也就是这样输出的。</br>
+第二个是字符串拼接，这个我相信在平时使用中大家是很常用到的，基本上大家现在的方式都是使用加号（+）把多个字符串连起来，今天介绍的是es6新增的一种模板字符串，
+</br>例如：var man = ‘那个男人’;</br>
+  var using = ‘看起来’;</br>
+  var strong = ‘很强壮’;</br>
+  var talk = ‘${man}${using}${strong}’;</br>
+  这样就拼起来了，是不是很方便呢</br>
+
+			<h5>二用法</h5>这里将一一介绍我们使用中用到的方法</br>
+1)Length：这是字符串的一个属性，类似于数组的下标，例如</br>
+   var str =’HELLO’;</br>这时想取到字符串指定位置的一个字符，那就是：
+   Str[指定位置的下标]，str[0],str[1],str[2].</br>
+但是这里你要是想改变字符串指定位置的字符怎么办呢？</br>
+Str[0]=’P’;</br>这样可以改变字符串第一个位置的字符吗？答案是否定的，那么该用什么方式去实现这种需求呢？下面会讲到。</br>
+2)CharAt：获取字符串中的指定下标字符，不操作原字符串，返回获取到的字符。</br>
+用法：</br>var str1 = 'hello friends!'</br>
+str1.charAt(0);</br>
+console.log(str1.charAt(2));/l</br>
+console.log(str1);//hello friends!</br>
+3)charCodeAt:获取指定下标字符的ASCII码，返回字符的ASCII码，不操作原字符串。</br>
+用法：</br>var str1 = 'hello friends!'</br>
+console.log(str1.charCodeAt(5));//32</br>
+console.log(str1);//hello friends!</br>
+4)fromCharCode：获取指定编码的字符。</br>
+用法：console.log(String.fromCharCode(104));//h</br>
+5)indexOf:查找字符串中指定字符第一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
+用法：</br>var str1 = 'hello friends!'</br>
+console.log(str1.indexOf('e'));//1</br>
+console.log(str1.indexOf('k'));//-1</br>
+console.log(str1);//hello friends!</br>
+6)lastIndexOf:查找字符串中指定字符最后一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
+用法：</br>var str1 = 'hello friends!'</br>
+console.log(str1.lastIndexOf('e'));//9</br>
+console.log(str1.lastIndexOf('k'));//-1</br>
+console.log(str1);//hello friends!</br>
+7)replace:将字符串中的一部分替换为指定部分或者字符，返回新的字符串，不改变原字符串。</br>
+用法：</br>var str1 = 'hello friends!'</br>
+console.log(str1.replace('hello','hi'));//hi friends!</br>
+console.log(str1);//hello friends!</br>
+8)substring:从指定位置开始截取字符串，不包括结束的下标，返回新的字符串，不改变原字符串，</br>
+当开始下标大于结束下标时，就返回来截取，</br>
+当结束下标不写时，就会从起始下标截完，</br>
+当结束下标为负数时，从0开始截取，</br>
+当参数只有一个且为负数时，就截取完。</br>
+用法：</br>var str1 = 'hello friends!'</br>
+console.log(str1.substring(0,3));//hel</br>
+console.log(str1.substring(3,0));//hel</br>
+console.log(str1.substring(3));//lo friends!</br>
+console.log(str1.substring(-3));//hello friends!</br>
+console.log(str1);//hello friends!</br>
+9)substr:从指定位置开始截取指定长度的字符串，返回截取的字符串，不改变原字符串，</br>
+当长度为0或者负数时，会返回一个空字符串，</br>
+当长度不写时，从开始位置截取完。</br>
+用法：</br>var str1 = 'hello friends!'</br>
+console.log(str1.substr(0,3));//hel</br>
+console.log(str1.substr(3,0));//空</br>
+console.log(str1.substr(3));//lo friends!</br>
+console.log(str1);//hello friends!</br>
+10)split:根据指定分隔符将字符串分割为数组，不改变原字符串，返回分割成的数组。</br>
+用法：</br>var str1 = 'hello friends!'</br>
+console.log(str1.split(' '));//["hello", "friends!"]</br>
+console.log(str1.split('e'));//["h", "llo fri", "nds!"]</br>
+console.log(str1);//hello friends!</br>
+11)toLowerCase：将字符串转为小写，不操作原字符串，返回转换后的字符串。</br>
+用法：</br>var str1 = 'hEllo fRiends!'</br>
+console.log(str1.toLowerCase());//hello friends!</br>
+console.log(str1);//hEllo fRiends!</br>
+12)toUpperCase:将字符转换为大写，不操作原字符串，返回转换后的字符串。</br>
+用法：</br>var str1 = 'hEl4lo fRie3nds!'</br>
+console.log(str1.toUpperCase());//HEL4LO FRIE3NDS!</br>
+console.log(str1);//hEl4lo fRie3nds!</br>
+13)trim:去掉字符串中的前后空格，返回修改后的字符串，不改变原字符串。</br>
+用法：var str1 = '  hello friends!  '
+console.log(str1.trim());//'hello friends!'
+console.log(str1)'  hello friends!  '
+14)trimLeft:去掉字符串中的前空格，返回修改后的字符串，不改变原字符串。
+用法：</br>var str1 = '  hello friends!  '</br>
+console.log(str1.trim());//'hello friends  !'</br>
+console.log(str1)'  hello friends!  '</br>
+15)trimRight:去掉字符串中的后空格，返回修改后的字符串，不改变原字符串。</br>
+用法：</br>var str1 = '  hello friends!  '</br>
+console.log(str1.trim());//'  hello friends!'</br>
+console.log(str1)'  hello friends!  </br>
+</br></br></br>
+补充：在上面讲到了字符串中的字符查找和字符替换，这里就有一些实践的问题了，在字符串造作中会经常用到将字符串中的特定字符全部替换为指定字符，并且是全部替换，那就需要下面的这几种方法的配合使用了。
+1)var reg=new RegExp("我们","g"); //创建正则RegExp对象   </br>
+var stringObj="大家是幸福的，大家是快乐的";   </br>
+var newstr=stringObj.replace(reg,"大家");   </br>
+alert(newstr);   </br>
+2)var str = “JavaScript预压是强大的计算机预压”;</br>
+alert(str.replace(“预压”,”语言“));//只替换最后一个</br>
+alert(str.replace(/预压/g,”语言“)) //全部替换【正则】</br>
+这是最常用的两个替换方式，里面有正则表达式，现在不懂的同学照着用就行，正则后面会说到。</p>
+			</div>
 	
 	</body>
 </html>
