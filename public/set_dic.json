@@ -27,12 +27,6 @@
 			"isopen":false,
 			"parent":true,
 			"children":[{
-				"name":"数据基础",
-				"url":"css/Gradients/linear/linear.html",
-				"isopen":false,
-				"parent":false,
-				"children":""
-			},{
 				"name":"数组操作方法",
 				"url":"javascript/array/method/index.html",
 				"isopen":false,
