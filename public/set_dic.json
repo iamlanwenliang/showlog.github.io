@@ -63,8 +63,32 @@
 		"name":"字符串",
 		"url":"",
 		"isopen":false,
-		"parent":false,
-		"children":""
+		"parent":true,
+		"children":[{
+				"name":"字符串",
+				"url":"",
+				"isopen":false,
+				"parent":true,
+				"children":[{
+					"name":"字符串基础",
+					"url":"css/Gradients/linear/linear.html",
+					"isopen":false,
+					"parent":false,
+					"children":""
+				},{
+					"name":"字符串操作方法",
+					"url":"css/Gradients/linear/linear.html",
+					"isopen":false,
+					"parent":false,
+					"children":""
+				},{
+					"name":"字符串常用姿势",
+					"url":"css/Gradients/linear/linear.html",
+					"isopen":false,
+					"parent":false,
+					"children":""
+				}]
+			}]
 	}]
 },{
 	"name":"CSS",
