@@ -70,14 +70,8 @@
 				"isopen":false,
 				"parent":true,
 				"children":[{
-					"name":"字符串基础",
-					"url":"css/Gradients/linear/linear.html",
-					"isopen":false,
-					"parent":false,
-					"children":""
-				},{
 					"name":"字符串操作方法",
-					"url":"css/Gradients/linear/linear.html",
+					"url":"javascript/string/index.html",
 					"isopen":false,
 					"parent":false,
 					"children":""
