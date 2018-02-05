@@ -11,12 +11,6 @@
 		"parent":false,
 		"children":""
 	},{
-		"name":"基础",
-		"url":"",
-		"isopen":false,
-		"parent":false,
-		"children":""
-	},{
 		"name":"数据类型和变量",
 		"url":"javascript/datatype/index.html",
 		"isopen":false,
