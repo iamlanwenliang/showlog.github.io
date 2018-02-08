@@ -126,13 +126,13 @@
 			}
 				   ]
 		},{
-			"name":"animation2",
+			"name":"Shadow",
 			"url":"",
 			"isopen":false,
 			"parent":true,
 			"children":[{
-				"name":"animation21",
-				"url":"",
+				"name":"box-shadow",
+				"url":"css/shadow/box-shadow/index.html",
 				"isopen":false,
 				"parent":false,
 				"children":""
