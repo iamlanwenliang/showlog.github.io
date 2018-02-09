@@ -252,15 +252,15 @@
 				</select>
 			</p>
 			<script>
-				var svg = document.getElementById("svg1"),
+				var svg1 = document.getElementById("svg1"),
 				    select0 = document.getElementById("select0"), 
 				    select1 = document.getElementById("select1"), 
 				    select2 = document.getElementById("select2");
 				    
-				if (svg && select0 && select1 && select2) {
+				if (svg1 && select0 && select1 && select2) {
 				    [select0, select1, select2].forEach(function(select) {
 				        select.onchange = function() {
-				            svg.setAttribute("preserveAspectRatio", select1.value + select2.value + " " + select0.value);
+				            svg1.setAttribute("preserveAspectRatio", select1.value + select2.value + " " + select0.value);
 				        }
 				    });
 				}
