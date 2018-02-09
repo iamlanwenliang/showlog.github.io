@@ -1,1 +1,350 @@
-11
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			textarea{
+				height:200px;
+				width:100%;
+				background-color:#333;
+				color:#fff;
+				font-size:16px;
+				font-weight:700;
+			}
+			th{
+				border:1px #333 solid;
+				background-color:#eee;
+			}
+			tr{
+				border:1px #999 solid;
+			}
+			td{
+				padding:0 5px;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<strong style="text-align:center;">这里是svg的学习网址：http://know.webhek.com/svg/svg-line.html</strong>
+		<h1 style="height:50px;width:100%;background-color:#666;text-align: center;color:#fff;font-size:24px;line-height: 50px;">基础图形修炼篇</h1>
+		<h1>直线</h1>
+		<svg width="100%" height="200" version="1.1" >
+			<line x1="0" y1="0" x2="300" y2="300" style="stroke:rgb(99,99,99);stroke-width:2"/>
+		</svg>
+		<textarea style="height:220px;">解释：
+			<svg width="100%" height="200" version="1.1" >
+				<line x1="0" y1="0" x2="300" y2="300" style="stroke:rgb(99,99,99);stroke-width:2"/>
+			</svg>
+			标签line代表直线
+			x1属性定义了直线的x轴起始坐标
+			y1属性定义了直线的y轴起始坐标
+			x2属性定义了直线的x轴终止坐标
+			y2属性定义了直线的y轴终止坐标
+			stroke的值可以使用rgb定义线条颜色
+			stroke-width的值定义线条的宽度
+		</textarea>
+		<h1>折线</h1>
+		<svg width="100%" height="200" version="1.1" >
+			<polyline points="20,20 40,25 60,40 80,120 120,140 200,180"style="fill:none;stroke:black;stroke-width:3" />
+			<polyline points="200,40 240,40 240,80 280,80 280,120 320,120 320,160"style="fill:white;stroke:red;stroke-width:4" />
+		</svg>
+		<textarea>解释：
+			<svg width="100%" height="200" version="1.1" >
+				<polyline points="20,20 40,25 60,40 80,120 120,140 200,180"style="fill:none;stroke:black;stroke-width:3" />
+				<polyline points="200,40 240,40 240,80 280,80 280,120 320,120 320,160"style="fill:white;stroke:red;stroke-width:4" />
+			</svg>
+			标签polyline代表折线
+			points属性里定义了各个点的坐标，x和y坐标之间用逗号分别，多个坐标之间用空格分割
+			fill如果曲线是封闭的话，代表内部填充颜色
+			stroke的值可以使用rgb定义线条颜色
+			stroke-width的值定义线条的宽度
+		</textarea>
+		<h1>矩形</h1>
+		<svg width="100%" height="200" version="1.1" >
+			<rect width="200" height="100" style="fill:rgb(200,200,200);stroke-width:1;stroke:rgb(0,0,0)"/>
+			<rect x="210" y="20" width="150" height="150"style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+			<rect x="370" y="20" width="150" height="150" style="fill:blue;stroke:pink;stroke-width:5;opacity:0.5" />
+			<rect x="550" y="20" rx="20" ry="20" width="150" height="150" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+		</svg>
+		<textarea style="height:370px;">解释：
+			<svg width="100%" height="200" version="1.1" >
+				<rect width="200" height="100" style="fill:rgb(200,200,200);stroke-width:1;stroke:rgb(0,0,0)"/>
+				<rect x="210" y="20" width="150" height="150"style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+				<rect x="370" y="20" width="150" height="150" style="fill:blue;stroke:pink;stroke-width:5;opacity:0.5" />
+				<rect x="550" y="20" rx="20" ry="20" width="150" height="150" style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+			</svg>
+			标签rect代表矩形
+			元素里的width和width属性定义了矩形的高度和宽度
+			style属性定义了这个矩形的CSS属性。
+			style属性里的fill属性定义了这个矩形填充的颜色
+			style属性里的stroke-width属性定义了矩形边线的宽度
+			style属性里的stroke属性定义了矩形的边线的颜色
+			x属性定义矩形距离左边的距离，比如，x="50"相对于CSS里的margin-left: 50px
+			y属性定义了矩形距离上边的距离，比如y="20"相当于CSS里的margin-top: 20px
+			CSS fill-opacity属性定义了填充颜色的透明度，值范围为 0 到 1
+			CSS stroke-opacity属性定义了边线颜色的透明度，值范围为 0 到 1
+			CSS opacity属性定义了整个图形元素的透明度
+			rx和ry定义了矩形四个角的圆角效果
+		</textarea>
+		<h1>多边形</h1>
+		<svg width="100%" height="220" version="1.1" >
+			<polygon points="250,10 300,190 210,210" style="fill:lime;stroke:purple;stroke-width:1" />
+			<polygon points="100,10 40,198 190,78 10,78 160,198" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;" />
+		</svg>
+		<textarea>解释：
+			<svg width="100%" height="220" version="1.1" >
+				<polygon points="250,10 300,190 210,210" style="fill:lime;stroke:purple;stroke-width:1" />
+				<polygon points="100,10 40,198 190,78 10,78 160,198" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;" />
+			</svg>
+			标签polyline代表折线
+			points属性里定义了各个点的坐标，x和y坐标之间用逗号分别，多个坐标之间用空格分割
+			fill-rule属性的取值可以是nonzero | evenodd | inherit
+		</textarea>
+		<h1>圆形</h1>
+		<svg width="100%" height="220" version="1.1" >
+			<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+		</svg>
+		<textarea>解释：
+			<svg width="100%" height="220" version="1.1" >
+				<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+			</svg>
+			标签circle圆形
+			cx和cy属性是用来定义圆心的坐标。如果没有提供cx和cy的值，则缺省圆心是(0,0)
+			r属性定义了圆的半径长度
+		</textarea>
+		<h1>椭圆</h1>
+		<svg width="100%" height="220" version="1.1" >
+			<ellipse cx="200" cy="80" rx="100" ry="50" style="fill:yellow;stroke:purple;stroke-width:2" />
+		</svg>
+		<textarea>解释：
+			<svg width="100%" height="220" version="1.1" >
+				<ellipse cx="200" cy="80" rx="100" ry="50" style="fill:yellow;stroke:purple;stroke-width:2" />
+			</svg>
+			标签ellipse是椭圆
+			cx属性定义了椭圆的x坐标
+			cy属性定义了椭圆的y坐标
+			rx属性定义了椭圆的横向半径
+			ry属性定义了椭圆的纵向半径
+		</textarea>
+		<h1>路径</h1>
+		<h2>这里先介绍一下相关参数</h2>
+		<table border="1" style= 'border-collapse:collapse; border-spacing:0px 10px;'>
+			<thead>
+				<tr>
+					<th>指令</th>
+					<th>参数</th>
+					<th style="width: 150px;">名称</th>
+					<th>描述</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>M</td>
+					<td>x,y</td>
+					<td>moveto<br>移动到</td>
+					<td>移动虚拟画笔到指定的（x,y）坐标，仅移动不绘制</td>
+				</tr>
+				<tr>
+					<td>m</td>
+					<td>x,y</td>
+					<td>moveto</td>
+					<td>同M，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>L</td>
+					<td>x,y</td>
+					<td>lineto<br>连直线到</td>
+				<td>从当前画笔所在位置绘制一条直线到指定的（x,y）坐标</td>
+				</tr>
+				<tr>
+					<td>l</td>
+					<td>x,y</td>
+					<td>lineto</td>
+					<td>同L，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>H</td>
+					<td>x</td>
+					<td>horizontal lineto<br>水平连线到</td>
+					<td>绘制一条水平直线到参数指定的x坐标点，y坐标为画笔的y坐标</td>
+				</tr>
+				<tr>
+					<td>h</td>
+					<td>x</td>
+					<td>horizontal lineto</td>
+					<td>同H，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>V</td>
+					<td>y</td>
+					<td>vertical lineto<br>垂直连线到</td>
+					<td>从当前位置绘制一条垂直直线到参数指定的y坐标</td>
+				</tr>
+				<tr>
+					<td>v</td>
+					<td>y</td>
+					<td>vertical lineto</td>
+					<td>同V，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>C</td>
+					<td>x1,y1 x2,y2 x,y</td>
+					<td>curveto<br>三次方贝塞尔曲线</td>
+					<td>从当前画笔位置绘制一条三次贝兹曲线到参数（x,y）指定的坐标。x1，y1和x2,y2是曲线的开始和结束控制点，用于控制曲线的弧度</td>
+				</tr>
+				<tr>
+					<td>c</td>
+					<td>x1,y1 x2,y2 x,y</td>
+					<td>curveto</td>
+					<td>同C，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>S</td>
+					<td>x2,y2 x,y</td>
+					<td>shorthand / 平滑三次方贝塞尔曲线</td>
+					<td>从当前画笔位置绘制一条三次贝塞尔曲线到参数（x,y）指定的坐标。x2,y2是结束控制点。开始控制点和前一条曲线的结束控制点相同</td>
+				</tr>
+				<tr>
+					<td>s</td>
+					<td>x2,y2 x,y</td>
+					<td>shorthand / 平滑三次方贝塞尔曲线</td>
+					<td>同S，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>Q</td>
+					<td>x1,y1 x,y</td>
+					<td>二次方贝塞尔曲线</td>
+					<td>从当前画笔位置绘制一条二次方贝塞尔曲线到参数（x,y）指定的坐标。x1,y1是控制点，用于控制曲线的弧度</td>
+				</tr>
+				<tr>
+					<td>q</td>
+					<td>x1,y1 x,y</td>
+					<td>二次方贝塞尔曲线</td>
+					<td>同Q，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>T</td>
+					<td>x,y</td>
+					<td>平滑的二次贝塞尔曲线</td>
+					<td>从当前画笔位置绘制一条二次贝塞尔曲线到参数（x,y）指定的坐标。控制点被假定为最后一次使用的控制点</td>
+				</tr>
+				<tr>
+					<td>t</td>
+					<td>x,y</td>
+					<td>平滑的二次贝塞尔曲线</td>
+					<td>同T，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>A</td>
+					<td>rx,ry x-axis-rotation large-arc-flag,sweepflag x,y</td>
+					<td>椭圆弧线</td>
+					<td>从当前画笔位置开始绘制一条椭圆弧线到（x,y）指定的坐标。rx和ry分别为椭圆弧线水平和垂直方向上的半径。x-axis-rotation指定弧线绕x轴旋转的度数。它只在rx和ry的值不相同是有效果。large-arc-flag是大弧标志位，取值0或1，用于决定绘制大弧还是小弧。sweep-flag用于决定弧线绘制的方向</td>
+				</tr>
+				<tr>
+					<td>a</td>
+					<td>rx,ry x-axis-rotation large-arc-flag,sweepflag x,y</td>
+					<td>椭圆弧线</td>
+					<td>同A，但使用相对坐标</td>
+				</tr>
+				<tr>
+					<td>Z</td>
+					<td>无</td>
+					<td>闭合路径</td>
+					<td>从结束点绘制一条直线到开始点，闭合路径</td>
+				</tr>
+				<tr>
+					<td>z</td>
+					<td>无</td>
+					<td>闭合路径</td>
+					<td>同Z</td>
+				</tr>
+			</tbody>
+			</table>
+		<h2>路径例1</h2>
+		<svg width="100%" height="220" version="1.1" >
+	  		<path d="M150 0 L75 200 L225 200 Z" />
+		</svg>
+		<textarea>解释：
+			<svg width="100%" height="220" version="1.1" >
+		  		<path d="M150 0 L75 200 L225 200 Z" />
+			</svg>
+			标签path是路径
+			从点 150,0 开始，连直线到点 75,200，然后连直线到点 225,200，最后闭合这个路径，连直线回到点 150,0
+		</textarea>
+		<h2>路径例2</h2>
+		<svg width="100%" height="800" version="1.1" >
+	  		<path id="lineAB" d="M 100 350 l 150 -300" stroke="red" stroke-width="3" fill="none" />
+			<path id="lineBC" d="M 250 50 l 150 300" stroke="red" stroke-width="3" fill="none" />
+			<path d="M 175 200 l 150 0" stroke="green" stroke-width="3"fill="none" />
+			<!--蓝色曲线-->
+			<path d="M 100 350 q 150 -300 300 0" stroke="blue"stroke-width="5" fill="none" />
+			<!--<path d="M 100 350 q 150 300 300 0" stroke="blue"stroke-width="5" fill="none" />-->
+			<path d="M 100 350 c 100 300 200 300 300 0" stroke="blue"stroke-width="5" fill="none" />
+			<path d="M 100 350 c 125 300 150 300 175 300 s 200 300 300 0" stroke="blue"stroke-width="5" fill="none" />
+			<!-- Mark relevant points -->
+			<g stroke="black" stroke-width="3" fill="black">
+			  <circle id="pointA" cx="100" cy="350" r="3" />
+			  <circle id="pointB" cx="250" cy="50" r="3" />
+			  <circle id="pointC" cx="400" cy="350" r="3" />
+			  <circle id="pointD" cx="250" cy="200" r="3" />
+			</g>
+			<!-- Label the points -->
+			<g font-size="30" font-family="sans-serif" fill="black" stroke="none" text-anchor="middle">
+			  <text x="100" y="350" dx="-30">A</text>
+			  <text x="250" y="50" dy="-10">B</text>
+			  <text x="400" y="350" dx="30">C</text>
+			  <text x="250" y="50" dy="140">D</text>
+			</g>
+		</svg>
+		<textarea style="height:500px">解释：
+			<svg width="100%" height="400" version="1.1" >
+		  		<path id="lineAB" d="M 100 350 l 150 -300" stroke="red" stroke-width="3" fill="none" />
+				<path id="lineBC" d="M 250 50 l 150 300" stroke="red" stroke-width="3" fill="none" />
+				<path d="M 175 200 l 150 0" stroke="green" stroke-width="3"fill="none" />
+				<path d="M 100 350 q 150 -300 300 0" stroke="blue"stroke-width="5" fill="none" />
+				<!-- Mark relevant points -->
+				<g stroke="black" stroke-width="3" fill="black">
+				  <circle id="pointA" cx="100" cy="350" r="3" />
+				  <circle id="pointB" cx="250" cy="50" r="3" />
+				  <circle id="pointC" cx="400" cy="350" r="3" />
+				  <circle id="pointD" cx="250" cy="200" r="3" />
+				</g>
+				<!-- Label the points -->
+				<g font-size="30" font-family="sans-serif" fill="black" stroke="none" text-anchor="middle">
+				  <text x="100" y="350" dx="-30">A</text>
+				  <text x="250" y="50" dy="-10">B</text>
+				  <text x="400" y="350" dx="30">C</text>
+				  <text x="250" y="50" dy="140">D</text>
+				</g>
+			</svg>
+			贝塞尔曲线是一种非常顺滑的曲线。通常，用户需要提供两个端点和一个或两个控制点。使用一个控制点的贝塞尔曲线叫做二次方贝塞尔曲线，
+			使用两个控制点的贝塞尔曲线叫做三次方贝塞尔曲线。
+			下面的例子里使用了二次方贝塞尔曲线，其中 A 和 C 分别是两个端点，B是控制点
+		</textarea>
+		<h1>clipPath标记</h1>
+		<svg width="100%" height="220" version="1.1" >
+			<defs>
+		        <clipPath id="myClip">
+		            <circle cx="30" cy="30" r="20"/>
+		            <circle cx="70" cy="70" r="30"/>
+		        </clipPath>
+		    </defs>
+    
+    		<rect x="10" y="10" width="100" height="100" clip-path="url(#myClip)" fill='red' />
+		</svg>
+		<textarea style="height:300px;">解释：
+			<svg width="100%" height="220" version="1.1" >
+				<defs>
+			        <clipPath id="myClip">
+			            <circle cx="30" cy="30" r="20"/>
+			            <circle cx="70" cy="70" r="30"/>
+			        </clipPath>
+			    </defs>
+	    
+	    		<rect x="10" y="10" width="100" height="100" clip-path="url(#myClip)" fill='red' />
+			</svg>
+			在clipPath里面已经定义好圆，在rect里面再绘制出来。
+		</textarea>
+	</body>
+</html>

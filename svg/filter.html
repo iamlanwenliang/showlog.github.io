@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>SVG滤镜</title>
+		<style>
+			textarea{
+				height:200px;
+				width:100%;
+				background-color:#333;
+				color:#fff;
+				font-size:16px;
+				font-weight:700;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>svg里面的滤镜有一下这些</h2>
+		
+		<textarea style="height:450px;">滤镜：
+			<feBlend>
+			<feColorMatrix> – 颜色变换
+			<feComponentTransfer>
+			<feComposite>
+			<feConvolveMatrix>
+			<feDiffuseLighting>
+			<feDisplacementMap>
+			<feFlood>
+			<feGaussianBlur>
+			<feImage>
+			<feMerge>
+			<feMorphology>
+			<feOffset> – 阴影效果
+			<feSpecularLighting>
+			<feTile>
+			<feTurbulence>
+			<feDistantLight> – 灯光效果
+			<fePointLight> – 灯光效果
+			<feSpotLight> – 灯光效果
+			这些SVG滤镜都可以混合使用！
+			所有的SVG滤镜元素都需要定义在 ＜defs＞ 标记内。这个 ＜defs＞ 标记是 definitions 这个单词的缩写，可以包含很多种其它标签，包括各种滤镜。
+			＜filter＞ 标记用来定义SVG滤镜。 ＜filter＞ 标记需要一个id属性，它是这个滤镜的标志。SVG图形使用这个id来引用滤镜。
+		</textarea>
+		<h2>SVG模糊滤镜(1)</h2>
+		<svg height="110" width="110">
+		  <defs>
+		    <filter id="f1" x="0" y="0">
+		      <feGaussianBlur in="SourceGraphic" stdDeviation="15"/>
+		    </filter>
+		  </defs>
+		  <rect width="90" height="90" stroke="green" stroke-width="3"  fill="yellow" filter="url(#f1)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="110" width="110">
+			  <defs>
+			    <filter id="f1" x="0" y="0">
+			      <feGaussianBlur in="SourceGraphic" stdDeviation="15"/>
+			    </filter>
+			  </defs>
+			  <rect width="90" height="90" stroke="green" stroke-width="3"  fill="yellow" filter="url(#f1)" />
+			</svg>
+			id属性定义了这个滤镜的唯一标志
+			使用＜feGaussianBlur＞标记定义模糊效果
+			in="SourceGraphic"属性指明了模糊效果要应用于整个图片
+			stdDeviation属性定义了模糊的程度
+			＜rect＞标记内的filter属性里引用了过滤器“f1”
+		</textarea>
+		<h2>SVG模糊滤镜(2)</h2>
+		<svg width="230" height="120"xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink">
+		
+		  <filter id="blurMe">
+		    <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+		  </filter>
+		
+		  <circle cx="60"  cy="60" r="50" fill="green" />
+		
+		  <circle cx="170" cy="60" r="50" fill="green" filter="url(#blurMe)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg width="230" height="120"xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink">
+		
+			  <filter id="blurMe">
+			    <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+			  </filter>
+			
+			  <circle cx="60"  cy="60" r="50" fill="green" />
+			
+			  <circle cx="170" cy="60" r="50" fill="green"
+			          filter="url(#blurMe)" />
+			</svg>
+		</textarea>
+		<h2>SVG阴影滤镜(1)</h2>
+		<svg height="120" width="120">
+		  <defs>
+		    <filter id="f1" x="0" y="0" width="200%" height="200%">
+		      <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+		      <feBlend in="SourceGraphic" in2="offOut" mode="normal" />
+		    </filter>
+		  </defs>
+		  <rect width="90" height="90" stroke="green" stroke-width="3"fill="yellow" filter="url(#f1)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="120" width="120">
+			  <defs>
+			    <filter id="f1" x="0" y="0" width="200%" height="200%">
+			      <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+			      <feBlend in="SourceGraphic" in2="offOut" mode="normal" />
+			    </filter>
+			  </defs>
+			  <rect width="90" height="90" stroke="green" stroke-width="3"fill="yellow" filter="url(#f1)" />
+			</svg>
+			<feOffset>标记可以用来让图像产生阴影效果。这个效果的原理很简单，就是让SVG图像的副本沿着x、y轴移动一点。
+			下面的第一个例子，我们先偏移图像的副本(使用<feOffset>)，然后进行图像合并(使用<feBlend>)
+			<filter>标记里的id属性定义了这个滤镜的唯一标志
+			<rect>标记里的filter属性定义了需要引用的滤镜是“f1”
+		</textarea>
+		<h2>SVG阴影滤镜(2)</h2>
+		<svg height="140" width="140">
+		  <defs>
+		    <filter id="f2" x="0" y="0" width="200%" height="200%">
+		      <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+		      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		    </filter>
+		  </defs>
+		  <rect width="90" height="90" stroke="green" stroke-width="3"fill="yellow" filter="url(#f2)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="140" width="140">
+			  <defs>
+			    <filter id="f2" x="0" y="0" width="200%" height="200%">
+			      <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+			      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+			      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+			    </filter>
+			  </defs>
+			  <rect width="90" height="90" stroke="green" stroke-width="3"fill="yellow" filter="url(#f2)" />
+			</svg>
+			下面，我们将偏移的图形副本进行模糊处理(使用 <feGaussianBlur>)：
+			<feGaussianBlur>标记里的stdDeviation属性定义了模糊的程度
+		</textarea>
+		<h2>SVG阴影滤镜(3)</h2>
+		<svg height="140" width="140">
+		  <defs>
+		    <filter id="f3" x="0" y="0" width="200%" height="200%">
+		      <feOffset result="offOut" in="SourceAlpha" dx="20" dy="20" />
+		      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		    </filter>
+		  </defs>
+		  <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f3)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="140" width="140">
+			  <defs>
+			    <filter id="f3" x="0" y="0" width="200%" height="200%">
+			      <feOffset result="offOut" in="SourceAlpha" dx="20" dy="20" />
+			      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+			      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+			    </filter>
+			  </defs>
+			  <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f3)" />
+			</svg>
+			<feOffset>标记里的in属性的值现在使用的是"SourceAlpha"，意思是使用图片的Alpha通道进行模糊，而不是完整的RGBA图像
+		</textarea>
+		<h2>SVG阴影滤镜(4)</h2>
+		<svg height="140" width="140">
+		  <defs>
+		    <filter id="f4" x="0" y="0" width="200%" height="200%">
+		      <feOffset result="offOut" in="SourceGraphic" dx="20"dy="20" />
+		      <feColorMatrix result="matrixOut" in="offOut" type="matrix"values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0" />
+		      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="10" />
+		      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		    </filter>
+		  </defs>
+		  <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f4)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="140" width="140">
+			  <defs>
+			    <filter id="f4" x="0" y="0" width="200%" height="200%">
+			      <feOffset result="offOut" in="SourceGraphic" dx="20"dy="20" />
+			      <feColorMatrix result="matrixOut" in="offOut" type="matrix"values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0" />
+			      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="10" />
+			      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+			    </filter>
+			  </defs>
+			  <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f4)" />
+			</svg>
+			<feColorMatrix>滤镜的作用是用来将偏移后的副本图像颜色变成接近于黑色。在颜色矩阵中有三个‘0.2’，它们将会分别和红、绿、蓝三个通道的值相乘，得出新的颜色。新颜色将会很接近黑色(黑色值是0)
+
+		</textarea>
+		<h2>SVG颜色滤镜</h2>
+		<svg width="100%" height="700" viewBox="0 0 150 360" preserveAspectRatio="xMidYMid meet"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+		  <text x="70" y="50">原图效果</text>
+		  <g>
+		    <circle cx="30" cy="30" r="20" fill="blue" fill-opacity="0.5" />
+		    <circle cx="20" cy="50" r="20" fill="green" fill-opacity="0.5" />
+		    <circle cx="40" cy="50" r="20" fill="red" fill-opacity="0.5" />
+		  </g>
+		
+		
+		  <text x="70" y="120">type="matrix"</text>
+		
+		  <filter id="colorMeMatrix">
+		    <feColorMatrix in="SourceGraphic"type="matrix"
+		      values="0 0 0 0 0
+		              1 1 1 1 0
+		              0 0 0 0 0
+		              0 0 0 1 0" />
+		  </filter>
+		
+		  <g filter="url(#colorMeMatrix)">
+		    <circle cx="30" cy="100" r="20" fill="blue"  fill-opacity="0.5" />
+		    <circle cx="20" cy="120" r="20" fill="green" fill-opacity="0.5" />
+		    <circle cx="40" cy="120" r="20" fill="red"   fill-opacity="0.5" />
+		  </g>
+		
+		
+		  <text x="70" y="190">type="saturate"</text>
+		
+		  <filter id="colorMeSaturate">
+		    <feColorMatrix in="SourceGraphic"type="saturate"
+		      values="0.2" />
+		  </filter>
+		
+		  <g filter="url(#colorMeSaturate)">
+		    <circle cx="30" cy="170" r="20" fill="blue" fill-opacity="0.5" />
+		    <circle cx="20" cy="190" r="20" fill="green" fill-opacity="0.5" />
+		    <circle cx="40" cy="190" r="20" fill="red" fill-opacity="0.5" />
+		  </g>
+		
+		
+		  <text x="70" y="260">type="hueRotate"</text>
+		
+		  <filter id="colorMeHueRotate">
+		    <feColorMatrix in="SourceGraphic"type="hueRotate"
+		      values="180" />
+		  </filter>
+		
+		  <g filter="url(#colorMeHueRotate)">
+		    <circle cx="30" cy="240" r="20" fill="blue"  fill-opacity="0.5" />
+		    <circle cx="20" cy="260" r="20" fill="green" fill-opacity="0.5" />
+		    <circle cx="40" cy="260" r="20" fill="red"   fill-opacity="0.5" />
+		  </g>
+		
+		
+		  <text x="70" y="320">type="luminanceToAlpha"</text>
+		
+		  <filter id="colorMeLTA">
+		    <feColorMatrix in="SourceGraphic"type="luminanceToAlpha" />
+		  </filter>
+		
+		  <g filter="url(#colorMeLTA)">
+		    <circle cx="30" cy="310" r="20" fill="blue"  fill-opacity="0.5" />
+		    <circle cx="20" cy="330" r="20" fill="green" fill-opacity="0.5" />
+		    <circle cx="40" cy="330" r="20" fill="red"   fill-opacity="0.5" />
+		  </g>
+		</svg>
+		<textarea style="height:1300px;">代码说明：
+			<svg width="100%" height="100%" viewBox="0 0 150 360" preserveAspectRatio="xMidYMid meet"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	
+			  <text x="70" y="50">原图效果</text>
+			  <g>
+			    <circle cx="30" cy="30" r="20" fill="blue" fill-opacity="0.5" />
+			    <circle cx="20" cy="50" r="20" fill="green" fill-opacity="0.5" />
+			    <circle cx="40" cy="50" r="20" fill="red" fill-opacity="0.5" />
+			  </g>
+			
+			
+			  <text x="70" y="120">type="matrix"</text>
+			
+			  <filter id="colorMeMatrix">
+			    <feColorMatrix in="SourceGraphic"type="matrix"
+			      values="0 0 0 0 0
+			              1 1 1 1 0
+			              0 0 0 0 0
+			              0 0 0 1 0" />
+			  </filter>
+			
+			  <g filter="url(#colorMeMatrix)">
+			    <circle cx="30" cy="100" r="20" fill="blue"  fill-opacity="0.5" />
+			    <circle cx="20" cy="120" r="20" fill="green" fill-opacity="0.5" />
+			    <circle cx="40" cy="120" r="20" fill="red"   fill-opacity="0.5" />
+			  </g>
+			
+			
+			  <text x="70" y="190">type="saturate"</text>
+			
+			  <filter id="colorMeSaturate">
+			    <feColorMatrix in="SourceGraphic"type="saturate"
+			      values="0.2" />
+			  </filter>
+			
+			  <g filter="url(#colorMeSaturate)">
+			    <circle cx="30" cy="170" r="20" fill="blue" fill-opacity="0.5" />
+			    <circle cx="20" cy="190" r="20" fill="green" fill-opacity="0.5" />
+			    <circle cx="40" cy="190" r="20" fill="red" fill-opacity="0.5" />
+			  </g>
+			
+			
+			  <text x="70" y="260">type="hueRotate"</text>
+			
+			  <filter id="colorMeHueRotate">
+			    <feColorMatrix in="SourceGraphic"type="hueRotate"
+			      values="180" />
+			  </filter>
+			
+			  <g filter="url(#colorMeHueRotate)">
+			    <circle cx="30" cy="240" r="20" fill="blue"  fill-opacity="0.5" />
+			    <circle cx="20" cy="260" r="20" fill="green" fill-opacity="0.5" />
+			    <circle cx="40" cy="260" r="20" fill="red"   fill-opacity="0.5" />
+			  </g>
+			
+			
+			  <text x="70" y="320">type="luminanceToAlpha"</text>
+			
+			  <filter id="colorMeLTA">
+			    <feColorMatrix in="SourceGraphic"type="luminanceToAlpha" />
+			  </filter>
+			
+			  <g filter="url(#colorMeLTA)">
+			    <circle cx="30" cy="310" r="20" fill="blue"  fill-opacity="0.5" />
+			    <circle cx="20" cy="330" r="20" fill="green" fill-opacity="0.5" />
+			    <circle cx="40" cy="330" r="20" fill="red"   fill-opacity="0.5" />
+			  </g>
+			</svg>
+		</textarea>
+		<h2>SVG光照滤镜</h2>
+		<svg width="440" height="140" xmlns="http://www.w3.org/2000/svg">
+
+		  <!-- No light is applied -->
+		  <text text-anchor="middle" x="60" y="22">原图</text>
+		  <circle cx="60" cy="80" r="50" fill="green" />
+		
+		  <!-- the light source is a fePointLight element -->
+		  <text text-anchor="middle" x="170" y="22">点状光</text>
+		  <filter id="lightMe1">
+		    <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white">
+		      <fePointLight x="150" y="60" z="20" />
+		    </feDiffuseLighting>
+		
+		    <feComposite in="SourceGraphic" in2="light"operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+		  </filter>
+		
+		  <circle cx="170" cy="80" r="50" fill="green" filter="url(#lightMe1)" />
+		
+		  <!-- the light source is a feDistantLight element -->
+		  <text text-anchor="middle" x="280" y="22">平行光</text>
+		  <filter id="lightMe2">
+		    <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white">
+		      <feDistantLight azimuth="240" elevation="20"/>
+		    </feDiffuseLighting>
+		
+		    <feComposite in="SourceGraphic" in2="light"operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+		  </filter>
+		
+		  <circle cx="280" cy="80" r="50" fill="green" filter="url(#lightMe2)" />
+		
+		  <!-- the light source is a feSpotLight source -->
+		  <text text-anchor="middle" x="390" y="22">聚光</text>
+		  <filter id="lightMe3">
+		    <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white">
+		      <feSpotLight x="360" y="5" z="30" limitingConeAngle="20"pointsAtX="390" pointsAtY="80" pointsAtZ="0"/>
+		    </feDiffuseLighting>
+		
+		    <feComposite in="SourceGraphic" in2="light"operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+		  </filter>
+		
+		  <circle cx="390" cy="80" r="50" fill="green" filter="url(#lightMe3)" />
+		</svg>
+		<textarea style="height:900px;">代码说明：
+			<svg width="440" height="140" xmlns="http://www.w3.org/2000/svg">
+			  <!-- No light is applied -->
+			  <text text-anchor="middle" x="60" y="22">原图</text>
+			  <circle cx="60" cy="80" r="50" fill="green" />
+			
+			  <!-- the light source is a fePointLight element -->
+			  <text text-anchor="middle" x="170" y="22">点状光</text>
+			  <filter id="lightMe1">
+			    <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white">
+			      <fePointLight x="150" y="60" z="20" />
+			    </feDiffuseLighting>
+			
+			    <feComposite in="SourceGraphic" in2="light"operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+			  </filter>
+			
+			  <circle cx="170" cy="80" r="50" fill="green" filter="url(#lightMe1)" />
+			
+			  <!-- the light source is a feDistantLight element -->
+			  <text text-anchor="middle" x="280" y="22">平行光</text>
+			  <filter id="lightMe2">
+			    <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white">
+			      <feDistantLight azimuth="240" elevation="20"/>
+			    </feDiffuseLighting>
+			
+			    <feComposite in="SourceGraphic" in2="light"operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+			  </filter>
+			
+			  <circle cx="280" cy="80" r="50" fill="green" filter="url(#lightMe2)" />
+			
+			  <!-- the light source is a feSpotLight source -->
+			  <text text-anchor="middle" x="390" y="22">聚光</text>
+			  <filter id="lightMe3">
+			    <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white">
+			      <feSpotLight x="360" y="5" z="30" limitingConeAngle="20"pointsAtX="390" pointsAtY="80" pointsAtZ="0"/>
+			    </feDiffuseLighting>
+			
+			    <feComposite in="SourceGraphic" in2="light"operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+			  </filter>
+			
+			  <circle cx="390" cy="80" r="50" fill="green" filter="url(#lightMe3)" />
+			</svg>
+			<feDiffuseLighting>标记的作用是产生光照效果滤镜，它使用原图的alpha通道作为纹理图，输出的结果取决于光线颜色，光源位置和图片的物体表面纹理。下面的例子里将使用<feDiffuseLighting>元素产生点光、平行光、聚光照射的滤镜效果
+
+		</textarea>
+		<h2>SVG线性渐变色（1）</h2>
+		<svg height="150" width="400">
+			<defs>
+				<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+			<ellipse cx="200" cy="70" rx="85" ry="55"fill="url(#grad1)" />
+		</svg>
+		<textarea style="height:550px;">代码说明：
+			<svg height="150" width="400">
+				<defs>
+					<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+						<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+					</linearGradient>
+				</defs>
+				<ellipse cx="200" cy="70" rx="85" ry="55"fill="url(#grad1)" />
+			</svg>
+			渐变色(gradient)是指从一种颜色平滑的过渡到另外一种颜色。而且，我们可以将多种渐变色应用到同一个网页元素上。
+			在SVG里，有两种主要的渐变色类型：
+			线性渐变色 Linear
+			辐射式(放射式)渐变色 Radial
+			SVG线性渐变色 – <linearGradient>
+			<linearGradient>标记就是用来定义渐变色的。
+			<linearGradient>标记必须放在<defs>标记内。<defs>标记就是“definitions”单词的简写，用来容纳其它各种SVG标记。
+			线性渐变色可以定义成水平渐变色，垂直渐变色和斜向渐变色：
+			当y1和y2相等，而x1和x2不等时，就形成了水平渐变色
+			当y1和y2不等，而x1和x2相等时，就形成了垂直渐变色
+			当y1和y2不等，而x1和x2也不等时，就形成了斜向渐变色
+			
+			<linearGradient>标记的id属性定义了这个渐变色的唯一标志
+			<linearGradient>标记的x1, x2, y1,y2四个属性定义了渐变色的起始位置和终止位置
+			渐变色的颜色组成可以是2个或2个以上的颜色。每种颜色都使用一个<stop>标记定义。offset属性用来定义渐变色的开始和结束位置。
+			fill属性定义了需要引用的渐变色的ID
+
+		</textarea>
+		<h2>SVG线性渐变色（2）</h2>
+		<svg height="150" width="400">
+			<defs>
+				<linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+					<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		<ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="150" width="400">
+				<defs>
+					<linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+						<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+					</linearGradient>
+				</defs>
+			<ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
+			</svg>
+		</textarea>
+		<h2>SVG线性渐变色（3）</h2>
+		<svg height="150" width="400">
+			<defs>
+				<linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+					<stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+		<ellipse cx="200" cy="70" rx="85" ry="55"fill="url(#grad3)" />
+		  <text fill="#ffffff" font-size="45" font-family="Verdana" x="150" y="86">SVG</text>
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="150" width="400">
+				<defs>
+					<linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+						<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+						<stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+					</linearGradient>
+				</defs>
+			<ellipse cx="200" cy="70" rx="85" ry="55"fill="url(#grad3)" />
+			  <text fill="#ffffff" font-size="45" font-family="Verdana" x="150" y="86">SVG</text>
+			</svg>
+		</textarea>
+		<h2>SVG辐射式渐变色（1）</h2>
+		<svg height="150" width="500">
+		  <defs>
+		    <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+		        <stop offset="0%" style="stop-color:rgb(255,255,255);      stop-opacity:0" />
+		        <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+		    </radialGradient>
+		  </defs>
+		  <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="150" width="500">
+			  <defs>
+			    <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+			        <stop offset="0%" style="stop-color:rgb(255,255,255);      stop-opacity:0" />
+			        <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+			    </radialGradient>
+			  </defs>
+			  <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+			</svg>
+			SVG辐射式或放射式渐变色 – <radialGradient>
+			<radialGradient>标记用来定义一个辐射式渐变色
+			<radialGradient>标记必须放置在<defs>标记内。<defs>标记是单词“definitions”的简写，用来容纳各种其它标记。
+			<radialGradient>标记的id属性定义了这个渐变色的唯一标志
+			cx,cy和r属性定义了辐射的最大圆，fx和fy属性定义了辐射的焦点
+			渐变色是有两个或两个以上的颜色组成。各个颜色使用<stop>标记定义。offset定义了渐变色的起始位置和终止位置。
+			fill属性里指明了需要引用的渐变色的id
+		</textarea>
+		<h2>SVG辐射式渐变色（2）</h2>
+		<svg height="150" width="500">
+		  <defs>
+		    <radialGradient id="grad1" cx="20%" cy="20%" r="30%" fx="70%" fy="70%">
+		       <stop offset="0%" style="stop-color: #ffffff; stop-opacity: 1;"></stop>
+		      <stop offset="100%" style="stop-color: #0000ff; stop-opacity: 1;"></stop>
+		      
+		    </radialGradient>
+		  </defs>
+		  
+			<ellipse cx="200" cy="70" rx="85" ry="55"  style="fill:blue;" />
+			<ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+		  	Sorry, your browser does not support inline SVG.
+		</svg>
+		<textarea style="height:300px;">代码说明：
+			<svg height="150" width="500">
+			  <defs>
+			    <radialGradient id="grad1" cx="20%" cy="20%" r="30%" fx="70%" fy="70%">
+			       <stop offset="0%" style="stop-color: #ffffff; stop-opacity: 1;"></stop>
+			      <stop offset="100%" style="stop-color: #0000ff; stop-opacity: 1;"></stop>
+			      
+			    </radialGradient>
+			  </defs>
+			  
+				<ellipse cx="200" cy="70" rx="85" ry="55"  style="fill:blue;" />
+				<ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+			  	Sorry, your browser does not support inline SVG.
+			</svg>
+		</textarea>
+	</body>
+</html>
