@@ -178,28 +178,28 @@
         "children": [
 	    {
 		"name": "基础图形", 
-		"url": "css/shadow/box-shadow/index.html", 
+		"url": "svg/index.html", 
 		"isopen": false, 
 		"parent": false, 
 		"children": ""
 	    },
 	    {
 		"name": "基本属性", 
-		"url": "css/shadow/box-shadow/index.html", 
+		"url": "svg/attribute.html", 
 		"isopen": false, 
 		"parent": false, 
 		"children": ""
 	    },
 	    {
 		"name": "SVG结构元素", 
-		"url": "css/shadow/box-shadow/index.html", 
+		"url": "svg/contract.html", 
 		"isopen": false, 
 		"parent": false, 
 		"children": ""
 	    },
 	    {
 		"name": "SVG滤镜", 
-		"url": "css/shadow/box-shadow/index.html", 
+		"url": "svg/filter.html", 
 		"isopen": false, 
 		"parent": false, 
 		"children": ""
