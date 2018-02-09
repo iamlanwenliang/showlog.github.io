@@ -1,142 +1,209 @@
-[{
-	"name":"JavaScript",
-	"url":"",
-	"isopen":true,
-	"parent":true,
-	"children":[{
-		"name":"前言",
-		"url":"javascript/preface/index.html",
-		"isopen":false,
-		"active":true,
-		"parent":false,
-		"children":""
-	},{
-		"name":"数据类型和变量",
-		"url":"javascript/datatype/index.html",
-		"isopen":false,
-		"parent":false,
-		"children":""
-	},{
-		"name":"数组",
-		"url":"",
-		"isopen":false,
-		"parent":true,
-		"children":[{
-			"name":"数组",
-			"url":"",
-			"isopen":false,
-			"parent":true,
-			"children":[{
-				"name":"数组操作方法",
-				"url":"javascript/array/method/index.html",
-				"isopen":false,
-				"parent":false,
-				"children":""
-			},{
-				"name":"数组常用姿势",
-				"url":"javascript/array/oftenuse/index.html",
-				"isopen":false,
-				"parent":false,
-				"children":""
-			}
-				   ]
-		}]
-	},{
-		"name":"对象",
-		"url":"",
-		"isopen":false,
-		"parent":false,
-		"children":""
-	},{
-		"name":"字符串",
-		"url":"",
-		"isopen":false,
-		"parent":true,
-		"children":[{
-				"name":"字符串",
-				"url":"",
-				"isopen":false,
-				"parent":true,
-				"children":[{
-					"name":"字符串操作方法",
-					"url":"javascript/string/index.html",
-					"isopen":false,
-					"parent":false,
-					"children":""
-				},{
-					"name":"字符串常用姿势",
-					"url":"css/Gradients/linear/linear.html",
-					"isopen":false,
-					"parent":false,
-					"children":""
-				}]
-			}]
-	}]
-},{
-	"name":"CSS",
-	"url":"",
-	"isopen":false,
-	"parent":true,
-	"children":[{
-		"name":"transform",
-		"url":"",
-		"isopen":false,
-		"parent":true,
-		"children":[]
-	},{
-		"name":"animation",
-		"url":"",
-		"isopen":false,
-		"parent":false,
-		"children":""
-	},{
-		"name":"text-shadow",
-		"url":"",
-		"isopen":false,
-		"parent":false,
-		"children":""
-	},{
-		"name":"box-shadow",
-		"url":"",
-		"isopen":false,
-		"parent":false,
-		"children":""
-	},{
-		"name":"Gradients",
-		"url":"",
-		"isopen":false,
-		"parent":true,
-		"children":[{
-			"name":"Gradients",
-			"url":"",
-			"isopen":false,
-			"parent":true,
-			"children":[{
-				"name":"Linear Gradients",
-				"url":"css/Gradients/linear/linear.html",
-				"isopen":false,
-				"parent":false,
-				"children":""
-			},{
-				"name":"Radial Gradients",
-				"url":"",
-				"isopen":false,
-				"parent":false,
-				"children":""
-			}
-				   ]
-		},{
-			"name":"Shadow",
-			"url":"",
-			"isopen":false,
-			"parent":true,
-			"children":[{
-				"name":"box-shadow",
-				"url":"css/shadow/box-shadow/index.html",
-				"isopen":false,
-				"parent":false,
-				"children":""
-			}]
-		}]
-	}]
-}]
+[
+    {
+        "name": "JavaScript", 
+        "url": "", 
+        "isopen": true, 
+        "parent": true, 
+        "children": [
+            {
+                "name": "前言", 
+                "url": "javascript/preface/index.html", 
+                "isopen": false, 
+                "active": true, 
+                "parent": false, 
+                "children": ""
+            }, 
+            {
+                "name": "数据类型和变量", 
+                "url": "javascript/datatype/index.html", 
+                "isopen": false, 
+                "parent": false, 
+                "children": ""
+            }, 
+            {
+                "name": "数组", 
+                "url": "", 
+                "isopen": false, 
+                "parent": true, 
+                "children": [
+                    {
+                        "name": "数组", 
+                        "url": "", 
+                        "isopen": false, 
+                        "parent": true, 
+                        "children": [
+                            {
+                                "name": "数组操作方法", 
+                                "url": "javascript/array/method/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }, 
+                            {
+                                "name": "数组常用姿势", 
+                                "url": "javascript/array/oftenuse/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+                        ]
+                    }
+                ]
+            }, 
+            {
+                "name": "对象", 
+                "url": "", 
+                "isopen": false, 
+                "parent": false, 
+                "children": ""
+            }, 
+            {
+                "name": "字符串", 
+                "url": "", 
+                "isopen": false, 
+                "parent": true, 
+                "children": [
+                    {
+                        "name": "字符串", 
+                        "url": "", 
+                        "isopen": false, 
+                        "parent": true, 
+                        "children": [
+                            {
+                                "name": "字符串操作方法", 
+                                "url": "javascript/string/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }, 
+                            {
+                                "name": "字符串常用姿势", 
+                                "url": "css/Gradients/linear/linear.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }, 
+    {
+        "name": "CSS", 
+        "url": "", 
+        "isopen": false, 
+        "parent": true, 
+        "children": [
+            {
+                "name": "transform", 
+                "url": "", 
+                "isopen": false, 
+                "parent": true, 
+                "children": [ ]
+            }, 
+            {
+                "name": "animation", 
+                "url": "", 
+                "isopen": false, 
+                "parent": false, 
+                "children": ""
+            }, 
+            {
+                "name": "text-shadow", 
+                "url": "", 
+                "isopen": false, 
+                "parent": false, 
+                "children": ""
+            }, 
+            {
+                "name": "box-shadow", 
+                "url": "", 
+                "isopen": false, 
+                "parent": false, 
+                "children": ""
+            }, 
+            {
+                "name": "Gradients", 
+                "url": "", 
+                "isopen": false, 
+                "parent": true, 
+                "children": [
+                    {
+                        "name": "Gradients", 
+                        "url": "", 
+                        "isopen": false, 
+                        "parent": true, 
+                        "children": [
+                            {
+                                "name": "Linear Gradients", 
+                                "url": "css/Gradients/linear/linear.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }, 
+                            {
+                                "name": "Radial Gradients", 
+                                "url": "", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+                        ]
+                    }, 
+                    {
+                        "name": "Shadow", 
+                        "url": "", 
+                        "isopen": false, 
+                        "parent": true, 
+                        "children": [
+                            {
+                                "name": "box-shadow", 
+                                "url": "css/shadow/box-shadow/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "SVG", 
+        "url": "", 
+        "isopen": false, 
+        "parent": true, 
+        "children": [
+	    {
+		"name": "基础图形", 
+		"url": "css/shadow/box-shadow/index.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
+	    },
+	    {
+		"name": "基本属性", 
+		"url": "css/shadow/box-shadow/index.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
+	    },
+	    {
+		"name": "SVG结构元素", 
+		"url": "css/shadow/box-shadow/index.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
+	    },
+	    {
+		"name": "SVG滤镜", 
+		"url": "css/shadow/box-shadow/index.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
+	    }
+	]
+    }
+]
