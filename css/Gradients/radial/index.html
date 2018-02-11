@@ -51,16 +51,16 @@
 				语法：
 			</h5>
 			<p>
-				radial-gradient( [ circle || ＜length＞ ] [ at ＜position＞ ]? ,| [ ellipse || [＜length＞ | ＜percentage＞ ]{2}] [ at ＜position＞ ]? ,| [ [ circle | ellipse ] || ＜extent-keyword＞ ] [ at ＜position＞ ]? ,| at ＜position＞ ,＜color-stop＞ [ , ＜color-stop＞ ]+ )<br />
-				＜position＞<br />
+				radial-gradient( [ circle || ＜length＞ ] [ at ＜position＞ ]? ,| [ ellipse || [＜length＞ | ＜percentage＞ ]{2}] [ at ＜position＞ ]? ,| [ [ circle | ellipse ] || ＜extent-keyword＞ ] [ at ＜position＞ ]? ,| at ＜position＞ ,＜color-stop＞ [ , ＜color-stop＞ ]+ );<br />
+				＜position＞:<br />
 				＜position＞与background-position或者transform-origin类似。如缺省，默认为中心点。<br />
-				＜shape＞<br />
+				＜shape＞:<br />
 				渐变的形状。圆形（渐变的形状是一个半径不变的正圆）或椭圆形（轴对称椭圆）。默认值为椭圆。<br />
-				＜size＞<br />
+				＜size＞:<br />
 				渐变的尺寸大小。包含的值见下表尺寸常数表。<br />
-				＜color-stop＞<br />
+				＜color-stop＞:<br />
 				表示某个确定位置的固定色值，包含一个＜color＞值加上可选的位置值（相对虚拟渐变射线的＜percentage＞或者＜length＞长度值）。 百分比值0%，或者长度值0，表示渐变中心点；百分比值100%表示渐变射线与边缘形状相交的点。 其间的百分比值线性对应渐变射线上的点。<br />
-				＜extent-keyword＞<br />
+				＜extent-keyword＞:<br />
 					关键字用于描述边缘轮廓的具体位置。以下为关键字常量：<br />
 					常量	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                    描述    <br />
 					closest-side	 &nbsp; &nbsp;渐变的边缘形状与容器距离渐变中心点最近的一边相切（圆形）或者至少与距离渐变中心点最近的垂直和水平边相切（椭圆）。<br />
