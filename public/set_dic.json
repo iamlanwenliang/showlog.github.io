@@ -110,20 +110,6 @@
                 "children": ""
             }, 
             {
-                "name": "text-shadow", 
-                "url": "", 
-                "isopen": false, 
-                "parent": false, 
-                "children": ""
-            }, 
-            {
-                "name": "box-shadow", 
-                "url": "", 
-                "isopen": false, 
-                "parent": false, 
-                "children": ""
-            }, 
-            {
                 "name": "Gradients", 
                 "url": "", 
                 "isopen": false, 
@@ -160,6 +146,12 @@
                             {
                                 "name": "box-shadow", 
                                 "url": "css/shadow/box-shadow/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            },{
+                                "name": "text-shadow", 
+                                "url": "css/shadow/textshadow/index.html", 
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
