@@ -1,1 +1,101 @@
-11
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="../../../public/font/font.css" />
+		<title>text-shadow</title>
+		<style>
+			.demoshow{
+				height:200px;
+				width:500px;
+				border:1px solid rgba(0,0,0,.65);
+				background-color:rgba(0,0,0,.75);
+				display:inline-block;
+				color:#fff;
+				line-height:200px;
+				font-size:68px;
+			}
+			.demo1{
+				text-shadow: 0 0 25px red;
+			}
+			.demo2{
+				text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
+			}
+			.demo3{
+				text-shadow: 0 5px 5px #c33;
+			}
+			.demo4{
+				text-shadow: -3px -3px 0 #c33,3px 3px 0 #333,3px 3px 0 #444
+			}
+			.demo5{
+				text-shadow: 0 0 15px #fff;
+			}
+			.demo6{
+				text-shadow: 2px 2px 0 red,-2px 2px 0 red,2px -2px 0 red,-2px -2px 0 red;
+			}
+			.demo7{
+				text-shadow: 1px 1px rgba(197, 223, 248,0.8),2px 2px rgba(197, 223, 248,0.8),3px 3px rgba(197, 223, 248,0.8),4px 4px rgba(197, 223, 248,0.8),5px 5px rgba(197, 223, 248,0.8);
+			}
+			.demo8{
+				text-shadow: -1px -1px rgba(197, 223, 248,0.8),-2px -2px rgba(197, 223, 248,0.8),-3px -3px rgba(197, 223, 248,0.8),-4px -4px rgba(197, 223, 248,0.8),-5px -5px rgba(197, 223, 248,0.8);
+			}
+		</style>
+	</head>
+	<body>
+		<h2>CSS3的文字阴影—text-shadow</h2>
+		<div style="padding-left:25px;">
+			<p>在了解用法之前先来了解一下支持性</p>
+			<p><img src="img/text.jpg" /></p>
+			<p>看起来是大好河山一片绿啊，IE10往上也都支持了，所以以后在使用中就可以大胆使用了。作为我们前端人员，我觉得这个是要学习和掌握的基础技能。</p>
+			<h5>
+				语法：
+			</h5>
+			<p>
+				text-shadow:[颜色  x轴偏移量  y轴偏移量  模糊半径],[颜色  x轴偏移量  y轴偏移量  模糊半径 ]...<br />
+				text-shadow:[x轴偏移量  y轴偏移量  模糊半径  颜色 ],[x轴偏移量  y轴偏移量  模糊半径  颜色 ]...<br />
+				颜色取值：可以是色值或者rgba，<br />
+				x轴取值：在x轴上的偏移量，正值向右偏移，负值向左偏移，<br />
+				y轴取值：在y轴上的偏移量，正值向下偏移，负值向上偏移，<br />
+				模糊半径：指阴影的模糊程度，取值不能为负，取值越大阴影越模糊，反之则越清晰，<br />
+				不设置的话就是不写或者重置text-shadow:none;<br />
+			</p>
+			<p>
+				用法了解了来了解一下具体的展示效果：
+			</p>
+			<p>demo1外发光效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo1">展示效果一</div>
+			</div>
+			<p>demo2外发光效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo2">展示效果二</div>
+			</div>
+			<p>demo3投影效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo3">展示效果三</div>
+			</div>
+			<p>demo4投影效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo4">展示效果四</div>
+			</div>
+			<p>demo5模糊效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo5">展示效果五</div>
+			</div>
+			<p>demo6描边效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo6">展示效果六</div>
+			</div>
+			<p>demo7 3D效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo7">展示效果七</div>
+			</div>
+			<p>demo8 3D效果</p>
+			<div style="text-align:center;">
+				<div class="demoshow demo8">展示效果八</div>
+			</div>
+			<p>基本上这些效果就已经满足我们平时的开发需求了</p>
+		</div>
+	</body>
+</html>
+
