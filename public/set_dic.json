@@ -99,12 +99,12 @@
                 "name": "transform", 
                 "url": "", 
                 "isopen": false, 
-                "parent": true, 
+                "parent": false, 
                 "children": [ ]
             }, 
             {
                 "name": "animation", 
-                "url": "", 
+                "url": "css/animation/index.html", 
                 "isopen": false, 
                 "parent": false, 
                 "children": ""
