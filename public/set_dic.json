@@ -101,7 +101,7 @@
                         "children": [
                             {
                                 "name": "闭包浅析", 
-                                "url": "javascript/string/index.html", 
+                                "url": "javascript/TechnicalPoint/Closure/index.html", 
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
