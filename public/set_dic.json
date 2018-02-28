@@ -86,6 +86,36 @@
                         ]
                     }
                 ]
+            },
+	    {
+                "name": "常用技术点", 
+                "url": "", 
+                "isopen": false, 
+                "parent": true, 
+                "children": [
+                    {
+                        "name": "常用技术点", 
+                        "url": "", 
+                        "isopen": false, 
+                        "parent": true, 
+                        "children": [
+                            {
+                                "name": "闭包浅析", 
+                                "url": "javascript/string/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }, 
+                            {
+                                "name": "字符串常用姿势", 
+                                "url": "css/Gradients/linear/linear.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }, 
