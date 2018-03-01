@@ -1,1 +1,59 @@
-111
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>清除浮动</title>
+		<link href="../../public/font/font.css" rel="stylesheet" />
+		
+	</head>
+	<body>
+		<h2>常用清除浮动的几种方法</h2>
+		<div style="padding-left:25px;">
+    <p >
+	 常用有一下几种方法：
+	</p>
+	<h5>第一种： </h5>
+	<p>
+		结尾处加一个空的DIV，或者br标签，总之是非行内元素就行（不能独自占据一行）,添加样式clear：both；<br>
+		其优点就是简单，代码少，浏览器支持好，不容易出现怪问题，<br>
+		不好呢就是浮动布局多的话，会增加代码冗余。<br>
+	</p>
+	<h5>第二种： </h5>
+	<p>
+		父级元素加伪类：after和zoom：1；<br>
+		IE8以上和非IE浏览器才支持：after，zoom（IE专有属性）可解决IE6，IE7浮动问题。<br>
+		优点就是浏览器支持好，不容易出现怪问题。<br>
+		不好的地方就是代码多，两个代码都写才能让主流浏览器支持。<br>
+	</p>
+	<h5>第三种： </h5>
+	<p>
+		父级定义overflow：hidden；<br>
+		父级必须定义width或者zoom：1，同时不能定义height，使用overflow：hidden时，浏览器会自动检查浮动区域的高度。<br>
+		其优点就是简单代码少，浏览器支持好。<br>
+		缺点就是不能配合position使用，因为超出的尺寸会隐藏。<br>
+	</p>
+	<h5>第四种： </h5>
+	<p>
+		父级定义overflow：auto；<br>
+		父级必须定义width或者zoom：1，同时不能定义height，浏览器会自动检查浮动高度。<br>
+		其优点就是简单代码少，浏览器支持好。<br>
+		也有缺点，即内部宽高超出父级时，会出现滚动条。<br>
+	</p>
+	<h5>第五种： </h5>
+	<p>
+		父级也一起浮动<br>
+		这种方式个人觉得几乎不用的，缺点就是会产生新的浮动问题。<br>
+	</p>
+	<h5>第六种： </h5>
+	<p>
+		父级定义display：table。<br>
+		这种方法将会产生新的未知问题。
+	</p>
+	
+	
+</div>
+	
+	</body>
+</html>
+
+
