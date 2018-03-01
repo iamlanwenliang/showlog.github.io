@@ -107,8 +107,8 @@
                                 "children": ""
                             }, 
                             {
-                                "name": "字符串常用姿势", 
-                                "url": "css/Gradients/linear/linear.html", 
+                                "name": "var,let,const区别", 
+                                "url": "javascript/TechnicalPoint/vlc/index.html", 
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
