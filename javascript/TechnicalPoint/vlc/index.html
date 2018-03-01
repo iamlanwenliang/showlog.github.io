@@ -1,1 +1,79 @@
-vcvcvcvv
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript中const、let、var之间的区别</title>
+		<link href="../../../public/font/font.css" rel="stylesheet" />
+		
+	</head>
+	<body>
+		<h2>JavaScript中const、let、var之间的区别</h2>
+		<div style="padding-left:25px;">
+    <p >
+	 最近在使用ts编写代码的时候偶然混用了一下var声明变量，导致代码出现了异常，所以来研究下let、var和const的区别和适用场景。
+	</p>
+	<h5>var </h5>
+	<p>
+		1.var定义的变量可以修改，如果不初始化会输出undefined，不会报错.<br/>
+		2.申明了一个要么是全局，要么是函数级的变量，在JS函数中的var声明，其作用域是函数体的全部.<br/>
+		3.变量声明无论出现在代码的任何位置，都会在任何代码执行之前处理，也就是会被变量提升.<br/>
+	</p>
+	<p>
+		例如：<br/>
+		console.log(a)//undefined<br/>
+		var a ;<br/>
+		console.log(a)//undefined<br/>
+		function fn(){<br/>
+		&nbsp;&nbsp;	var b = 1;<br/>
+		&nbsp;&nbsp;	a = 22;<br/>
+		&nbsp;&nbsp;	console.log(b);//1<br/>
+		}<br/>
+		fn();<br/>
+		console.log(a);//22<br/>
+		console.log(b);// b is not defined
+	</p>
+	<h5>let </h5>
+	<p>
+		1.申明了一个块级域的局部变量，并且可以给它一个初始化值.<br/>
+		2.let声明的全局变量不是全局对象的属性.<br/>
+		3.形如for (let x...)的循环在每次迭代时都为x创建新的绑定。<br/>
+		4.用let重定义变量会抛出一个语法错误（SyntaxError）。<br/>
+	</p>
+	<p>
+		例如：<br/>
+		function fn(){<br/>
+		&nbsp;&nbsp;	var a = 0;<br/>
+		&nbsp;&nbsp;	{<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;		let b = 2;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;		for(var i=0;i<3;i++){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			console.log(i);//0,1,2<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			console.log(b);//2,2,2<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;		}<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;		console.log(b);//2<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;		console.log(a);//0<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;		let b = 2;//Identifier 'b' has already been declared<br/>
+		&nbsp;&nbsp;	}<br/>
+		&nbsp;&nbsp;	console.log(b);//b is not defined<br/>
+		&nbsp;&nbsp;	console.log(i);//3<br/>
+		}<br/>
+		fn();<br/>
+	</p>
+	<h5>const </h5>
+	<p>
+		1.在全局作用域或者函数内申明常量，但是必须初始化常量,定义的变量不可以修改；<br/>
+		2.常量不能和它所在作用域内其它变量或者函数拥有相同名称；<br/>
+	</p>
+	<p>
+		例如：<br/>
+		const a ;//Missing initializer in const declaration<br/>
+		const a = 0;<br/>
+		a = 1;//Assignment to constant variable.
+	</p>
+	<p>
+		以上就是三种声明的使用用法规则，适用场景各取所好！
+	</p>	
+</div>
+	
+	</body>
+</html>
+
