@@ -248,6 +248,13 @@
 		"parent": false, 
 		"children": ""
 	    }
+	    {
+		"name": "禁止网页中的粘贴复制", 
+		"url": "html/clearfloat/index2.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
+	    }
 	]
     }
 ]
