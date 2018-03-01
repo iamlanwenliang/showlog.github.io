@@ -83,12 +83,283 @@
 			下来举个例子说明：
 			
 		  </p >	
+	<h5>闭包</h5>
+			<p>
+				前面的概念可能对于初学者和基础比较薄弱的人来说有点难理解，闭包其实可以简单的这样理解：闭包就是能够读取其他函数内部变量的函数。为什么这样说呢，
+				在我们的实际运用中，很多时候我们需要访问到函数内部的变量，也就是访问函数内部的局部变量，正常的情况下这种需求是办不到的，因为在JavaScript语言中，
+				父域中不允许访问子域的变量，但是子域可以访问到父域中的变量，那就只有通过闭包的方式实现了，<br />
+				举例子说明。
+			</p>
+			<p>
+				function fn1(){<br />
+			　　&nbsp;&nbsp;　　var robot='闭包';<br />
+			　　&nbsp;&nbsp;　　function fn2(){<br />
+			　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　alert(robot); // 闭包<br />
+			　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+			　　}
+			</p>
+			<p>
+				简单的解释下这段代码：函数fn2在函数的fn1的内部，也就是说fn2内部的域是fn1的子域，那么fn1内部的所有局部变量对fn2都是可见的，也就是说fn2都是可以访问的，但是反过来就不行了，fn2内部的局部变量对于fn1是不可见的，也就是说fn1是访问不到的，这就是JavaScript语言特有的Chain Scope（链式作用域），子对象在调用非内部局部变量的时候，会一级一级向上寻找所有父对象的变量。因此，父对象的所有变量，对于子对象都是可见的，反之则不成立。<br />
+				那么fn2可以访问fn1中的局部变量了，那么只要把fn2作为返回的值，那么在fn1的外部就可以访问fn1内部的变量了，这样问题就解决了，那么fn2函数就是闭包。
+				
+			</p>
+			
+			
+			<h5>闭包的用处</h5>
+			<p>
+				闭包主要有两个用处：一个是可以访问函数内部的私有变量，另一个是让这些变量的值始终保持在内存中，不会被垃圾回收机制所清除。举例说明：
+			</p>
+			<p>
+				function fn1(){<br />
+			　　&nbsp;&nbsp;　　var myname='我叫张三！';<br />
+			　　&nbsp;&nbsp;　　opreat=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		myname = '我改名字了，叫李四';<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	}<br />
+			　　&nbsp;&nbsp;　　function fn2(){<br />
+			　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　console.log(myname);<br />
+			　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　}<br />
+			　　&nbsp;&nbsp;　return fn2;<br />
+			　　}<br />
+			　　var robot=fn1();<br />
+				　　&nbsp;&nbsp;robot(); // 我叫张三！<br />
+				　　&nbsp;&nbsp;opreat();<br />
+				　　&nbsp;&nbsp;robot(); // 我改名字了，叫李四<br />
+			</p>
+			<p>
+				在这段代码里面，robot函数也就是fn1函数运行了两次，第一次运行输出是“我叫张三！”，第二次运行输出是“我改名字了，叫李四”，这就说明函数fn1中的私有变量myname一直在内存中保存，并没有在第一次运行结束后被垃圾回收机制所清除，这就是由闭包的引用函数内部私有变量引起的，fn1是fn2的父函数，但是fn2被赋值给了一个全局变量，这样就会使fn2始终保存在内存中，但是fn2又依赖于fn1的存在而存在，所以它们就不会被垃圾回收机制所清除。<br />
+				还有其中的opreat函数，并没有使用var声明，所以就会默认是一个全局变量，再有就是opreat函数其实也是一个闭包，就是相当于一个在函数外面可以操作函数私有变量的函数，但是这样会导致在这一条作用域链上的函数和变量都不会被内存回收机制所清除，一直占用内存。那么问题来了，看下面这段代码会输出什么？
+			</p>
+			<p>
+				function fn1(){<br />
+			　　&nbsp;&nbsp;　var myname='我叫张三！';<br />
+			　　&nbsp;&nbsp;　opreat=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	myname = '我改名字了，叫李四';<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  }<br />
+			　　&nbsp;&nbsp;　function fn2(){<br />
+			　　&nbsp;&nbsp;&nbsp;&nbsp;　　　　console.log(myname);<br />
+			　　&nbsp;&nbsp;　}<br />
+			　　&nbsp;&nbsp;　return fn2;<br />
+			　　}<br />
+				fn1(); // ？？？<br />
+				opreat();<br />
+				fn1(); // ？？？<br />
+			</p>
+			<p>
+				输出是：<br />
+				//我叫张三！<br />
+				//我叫张三！<br />
+				
+				这样一对比是不是就比较轻易理解了呢，其实就是没有被全局引用所以不会在内存中保存myname变量。
+			</p>
+			<p>通过闭包实现模块模式</p>
+			<p>
+				function showModule(){<br />
+				&nbsp;&nbsp;	var someinfor="This is a module case.";<br />
+				&nbsp;&nbsp;	function doSomething(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;	  console.log(someinfor);<br />
+				&nbsp;&nbsp;	}<br />
+				&nbsp;&nbsp;	return {<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		'doSomething':doSomething<br />
+				&nbsp;&nbsp;	};<br />
+				}<br />
+				var obj=showModule();<br />
+				obj.doSomething() //This is a module case.<br />
+			</p>
+			<p>
+				我们通过调用showModule函数创建了一个模块实例，函数返回的这个对象，实质上可以看做是这个模块的公告API，是不是有些像其它面向对象语言中的class？(没有其他语言基础的人略过)
+			</p>
+			<p>再来通过闭包实现一个单例模式：</p>
+			<p>
+				var application = function(){<br />
+				&nbsp;&nbsp;	var components=[];<br />
+				&nbsp;&nbsp;	/*<br />
+				&nbsp;&nbsp;	一些初始化操作<br />
+				&nbsp;&nbsp;	*/<br />
+				&nbsp;&nbsp;	return{ //公共API<br />
+				&nbsp;&nbsp;		getComponentCount:function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		 return components.length;<br />
+				&nbsp;&nbsp;		},<br />
+				&nbsp;&nbsp;		registerComponent:function(component){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		 components.push(component);<br />
+				&nbsp;&nbsp;		}<br />
+				&nbsp;&nbsp;	};<br />
+				}();<br />
+			</p>
+			<p>
+				这个例子创建了一个单例对象，函数里返回的对象字面量是这个单例模式的公共接口。
+				通过闭包实现模块模式，可以做到很多强大的事情，模块模式能成功实现，最关键的是返回的
+				API还能继续引用定义时所在的作用域，从而进行一些操作，也就是说，作用域并没有因为函
+				数执行后被销毁，也就是没有被内存回收，之所以没有被回收是因为闭包的存在和JavaScript
+				的垃圾回收机制。
+			</p>
+			
+			<h5>闭包的注意事项</h5>
+			<p>
+				1）因为闭包使用过程中所引用到的变量都会被保存在内存中，所以对内存消耗很大，滥用会造成网页的性能问题，在IE中可能会导致内存泄漏，普遍的解决方法是在退出函数之前，将不使用的私有变量都删除掉。<br />
+2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。
+			</p>
+			<h5>闭包和循环</h5>
+			<p>
+				当循环和闭包结合在一起时，经常会产生让初学者觉得匪夷所思的问题。
+			</p>
+			<p>
+				function createFunction(){<br />
+				&nbsp;&nbsp;	var result=[];<br />
+				&nbsp;&nbsp;	for(var i=0;i<10;i++){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		 result[i]=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		  return i;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		 };<br /
+				&nbsp;&nbsp;}
+				&nbsp;&nbsp;&nbsp;&nbsp;	return result;<br />
+				}<br />
+				
+			</p>
+			<p>
+				这个函数执行后，会创建一个 由十个函数组成的数组 ， 并且产生十个互不相干的函数作用域 ，表面上看调用第几个函数就会输出几，但是结果并不是这样
+			</p>
+			<p>
+			var result=createFunction();<br />
+				&nbsp;&nbsp;result[0](); //10<br />
+				&nbsp;&nbsp;result[9](); //10<br />
+			</p>
+			<p>
+				产生这种奇怪的现象的原因就是之前说的，createFunction的变量对象因为闭包的存在没有被释放，注意 闭包保存的是整个变量对象，而不是只保存只被引用的变量 ，在createFunction执行后，创建了十个函数，同时变量 i 没有被释放，依然保存在内存中，所以此时它的值保留为停止循环后的10。<br />
+当我们在外部调用函数时，函数沿着它的作用域链开始搜索所需要的变量，前面说过，JavaScript的作用域链是基于定义时的作用域嵌套，所以当我们调用某个函数比如 result[0]它就会首先在自己的作用域里通过RSH搜索 i ，显然 i 不存在这个作用域中，于是它又沿着作用域链向上一级作用域中搜索 i ，然后找到了 i ，但是此时createFunction函数已经执行，循环也已经执行完毕了， i 的值为10，所以获取到的i，值就为10，同理，其他的函数执行时，查找的i 也会是10， 所以每个函数执行结果都是输出10。<br />
+关键所在就是尽管循环中的十个函数是在各自的迭代中分别定义的，但是它们都处于一个共享的上一级作用域中，所以它们获取到的都是一个 i，所以解决此类问题的关键就是让函数查找i时，不找到createFunction的变量对象那一级 ，因为一旦向上搜索到createFunction那里，得到的就是10。所以我们可以通过一些方法在中间来截断本该搜索到createFunction变量对象的一次查找。
+			</p>
+			<p>首先我们可以这样：</p>
+			<p>
+				functioncreateFunction(){<br />
+				&nbsp;&nbsp;	var result=[];<br />
+				&nbsp;&nbsp;	for(var i=0;i<10;i++){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		(function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			result[i]=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				return i;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			};<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		})();<br />
+				&nbsp;&nbsp;	}<br />
+				&nbsp;&nbsp;	return result;<br />
+				}<br />
+			</p>
+			<p>
+				我们通过定义一个立即执行函数表达式，在result[i]函数上一级创建了一个块级作用域，如果我
+们把这个块级作用域叫做 a，那么它查找i时是这样一条链 result[i]->a-
+>createFunction，之所以还会查找到createFunction中，是因为 a中没有 i这个变量，所以
+我们需要做些什么，让它搜索到 a时就停下
+			</p>
+			<p>
+				function createFunctions(){<br />
+				&nbsp;&nbsp;	var result=newArray();<br />
+				&nbsp;&nbsp;	for(var i=0;i<10;i++){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		(function(i){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			result[i]=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				return i;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;			};<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		})(i);<br />
+				&nbsp;&nbsp;	}<br />
+				&nbsp;&nbsp;	return result;<br />
+				}<br />
+			</p>
+			<p>
+				现在a这个块级作用域里定义了一个变量 i ，这个 i 与上级的 i 不会互相影响，因为它们存在各
+自的作用域里， 同时我们将该次迭代时的 i 值赋给了 a这个块级作用域里的 i ，即a中的 i 保存了当次迭代的 i ，result[i]在外部执行时，是这样的调用链 result i -> a在a中就能找到需要
+的变量，不需要再向上搜索，也不会查找到值为10的 i ，所以调用哪个result[i]函数，就会输出
+哪个 i 。
+			</p>
+			<p>
+				在 ES6 中我们还可以使用 let 来解决此类问题<br />
+				function createFunction(){<br />
+				&nbsp;&nbsp;	var result=[];<br />
+				&nbsp;&nbsp;	for(var i=0;i<10;i++){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		let j=i;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		result[i]=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			return j;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		};<br />
+				&nbsp;&nbsp;	}<br />
+				&nbsp;&nbsp;	return result;<br />
+				}<br />
+				
+				//输出一下<br />
+				console.log(createFunction()[2]()); //2<br />
+				let会创建一个块级作用域，并在这个作用域中声明一个变量。所以我们相当于在result[i]上套了
+				一层块级作用域<br />
+				function createFunction(){<br />
+				&nbsp;&nbsp;	var result=[];<br />
+				&nbsp;&nbsp;	for(var i=0;i<10;i++){<br />
+				&nbsp;&nbsp;		//块的开始<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		letj=i;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		result[i]=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		return j;<br />
+				&nbsp;&nbsp;	};<br />
+				&nbsp;&nbsp;	//块的结束<br />
+				&nbsp;&nbsp;	}<br />
+				&nbsp;&nbsp;	return result;<br />
+				}<br />
+				这种方式解决此类问题，与前面没有多大分别，总之就是为了不让函数调用时去查找到最上级
+				的那个 i 。
+			</p>
+			<p>其实，如果在for循环头部来进行 let声明还会有一个有趣的行为：</p>
+			<p>
+				function createFunction(){<br />
+				&nbsp;&nbsp;	var result=[];<br />
+				&nbsp;&nbsp;	for(let i=0;i<10;i++){ //每次迭代，都会声明一次i，总共声明10次<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		result[i]=function(){<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			return i;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;		};<br />
+				&nbsp;&nbsp;	}<br />
+				&nbsp;&nbsp;	return result;<br />
+				}<br />
+				console.log(createFunction()[2]()); //2
+			</p>
+			<p>
+				这样在for头部使用 let声明， 每次迭代都会进行声明，随后每次迭代都会使用上一个迭代结
+束时的值来初始化这个变量。
+			</p>
+			<p>var 和 let 以及const声明的区别在后面章节会补充。</p>
+			<h5>闭包和定时器（或者延时器）</h5>
+			<p>
+				模拟下场景，比如说现在需要第一秒输出1，第二秒输出2，第三秒输出3......等，这样的需求呢？
+			</p>
+			<p>
+				for (var i = 1; i <= 5; i++) {<br />
+				 &nbsp;&nbsp;   setTimeout(function timer() {<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;        console.log(i);<br />
+				 &nbsp;&nbsp;   }, i*1000);<br />
+				}<br />
+			</p>
+			<p>
+				会是理想的那样输出吗？<br />
+				输出都是6，隔一秒输出一个，<br />
+				为什么呢？<br />
+				i是一个全局变量，在第一次输出的时候i就已经是6了，所以往后的都是6了，那可以修改下使之达到功能呢？
+			</p>
+			<p><br />
+				for (var i = 1; i <= 5; i++) {<br />
+				 &nbsp;&nbsp;   setTimeout(function timer(i) {<br />
+				 &nbsp;&nbsp;&nbsp;&nbsp;       console.log(i);<br />
+				 &nbsp;&nbsp;   }, i*1000);<br />
+				}<br />
+				这样子可以了吗?在我初学的第一感觉是,妥妥的,完美.我承认有这样的想法的确实还是有点功底的,但是没有分清立即执行函数和函数声明,改成这样就可以了:
+			</p>
+			<p>
+				for (var i = 1; i <= 5; i++) {<br />
+				 &nbsp;&nbsp;   setTimeout(function timer(i) {<br />
+				 &nbsp;&nbsp;&nbsp;&nbsp;       console.log(i);<br />
+				 &nbsp;&nbsp;   }(i), i*1000);<br />
+				}<br />
+				或者这样改动:<br />
+				for (var i = 1; i <= 5; i++) {<br />
+				  &nbsp;&nbsp;  {<br />
+				  &nbsp;&nbsp;    let j = i;<br />
+				  &nbsp;&nbsp;    setTimeout(function timer() {<br />
+				  &nbsp;&nbsp;&nbsp;&nbsp;          console.log(j);<br />
+				  &nbsp;&nbsp;      }, i * 1000);<br />
+				 &nbsp;&nbsp;   }<br />
+				}<br />
+				利用let创建作用域块,就可以实现功能了.
+			</p>
 </div>
-	<script>
-		(function(){})();
-		var a = (function(){return 1;}());
-		alert(a);
-	</script>
+	
 	</body>
 </html>
 
