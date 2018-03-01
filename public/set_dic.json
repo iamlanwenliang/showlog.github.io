@@ -240,6 +240,13 @@
 		"isopen": false, 
 		"parent": false, 
 		"children": ""
+	    },
+	    {
+		"name": "清除浮动常用方法", 
+		"url": "html/clearfloat/index.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
 	    }
 	]
     }
