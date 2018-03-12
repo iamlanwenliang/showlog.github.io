@@ -10,9 +10,9 @@
 		<h2>字符串的操作方法</h2>
 		<div style="padding-left:25px;">
 		<p>
-在这篇里面会详细的讲到字符串相关的用法，注意事项等等
+在这篇里面会详细的讲到字符串相关的用法，注意事项等等</p>
 			<h2>一、定义</h2>
-			字符串就是用单引号或者双引号括起来的字符，其中的字符可以是任何字符，
+			<p>字符串就是用单引号或者双引号括起来的字符，其中的字符可以是任何字符，
 声明有两种方式：</br>
 var str = new String();</br>(效果等于str = {})这种方式严格的来说也可以，但是平时不建议使用，因为使用new出来的数据类型是object，但是这种声明出来的是一个类似于数组的字符串，将字符串按照length分割开来分别存在对象里面了。
 Var str = ‘’;</br>这是常用的字符串声明方式，这种声明出来数据类型就是string的，也是比较正常的使用方式；</br>
@@ -25,40 +25,41 @@ Var str = ‘’;</br>这是常用的字符串声明方式，这种声明出来�
   var using = ‘看起来’;</br>
   var strong = ‘很强壮’;</br>
   var talk = ‘${man}${using}${strong}’;</br>
-  这样就拼起来了，是不是很方便呢</br>
+  这样就拼起来了，是不是很方便呢</br></p>
 
 			<h2>二用法</h2>这里将一一介绍我们使用中用到的方法</br>
-<h5>1、Length</h5>这是字符串的一个属性，类似于数组的下标，例如</br>
+<h5>1、Length</h5><p>这是字符串的一个属性，类似于数组的下标，例如</br>
    var str =’HELLO’;</br>这时想取到字符串指定位置的一个字符，那就是：
    Str[指定位置的下标]，str[0],str[1],str[2].</br>
 但是这里你要是想改变字符串指定位置的字符怎么办呢？</br>
-Str[0]=’P’;</br>这样可以改变字符串第一个位置的字符吗？答案是否定的，那么该用什么方式去实现这种需求呢？下面会讲到。</br>
-<h5>2、CharAt</h5>获取字符串中的指定下标字符，不操作原字符串，返回获取到的字符。</br>
+Str[0]=’P’;</br>这样可以改变字符串第一个位置的字符吗？答案是否定的，那么该用什么方式去实现这种需求呢？下面会讲到。</br></p>
+<h5>2、CharAt</h5><p>获取字符串中的指定下标字符，不操作原字符串，返回获取到的字符。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 str1.charAt(0);</br>
 console.log(str1.charAt(2));/l</br>
-console.log(str1);//hello friends!</br>
-<h5>3、charCodeAt</h5>获取指定下标字符的ASCII码，返回字符的ASCII码，不操作原字符串。</br>
+console.log(str1);//hello friends!</br></p>
+<h5>3、charCodeAt</h5><p>获取指定下标字符的ASCII码，返回字符的ASCII码，不操作原字符串。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.charCodeAt(5));//32</br>
-console.log(str1);//hello friends!</br>
-<h5>4、fromCharCode</h5>获取指定编码的字符。</br>
+console.log(str1);//hello friends!</br></p>
+<h5>4、fromCharCode</h5><p>获取指定编码的字符。</br>
 用法：console.log(String.fromCharCode(104));//h</br>
-<h5>5、indexOf</h5>查找字符串中指定字符第一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
+</p>
+<h5>5、indexOf</h5><p>查找字符串中指定字符第一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.indexOf('e'));//1</br>
 console.log(str1.indexOf('k'));//-1</br>
-console.log(str1);//hello friends!</br>
-<h5>6、lastIndexOf</h5>查找字符串中指定字符最后一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
+console.log(str1);//hello friends!</br></p>
+<h5>6、lastIndexOf</h5><p>查找字符串中指定字符最后一次出现的位置，返回指定字符出现的下标，如果没找到指定字符串，则返回-1，不改变原字符串。（从第一个位置开始查找）</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.lastIndexOf('e'));//9</br>
 console.log(str1.lastIndexOf('k'));//-1</br>
-console.log(str1);//hello friends!</br>
-<h5>7、replace</h5>将字符串中的一部分替换为指定部分或者字符，返回新的字符串，不改变原字符串。</br>
+console.log(str1);//hello friends!</br></p>
+<h5>7、replace</h5><p>将字符串中的一部分替换为指定部分或者字符，返回新的字符串，不改变原字符串。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.replace('hello','hi'));//hi friends!</br>
-console.log(str1);//hello friends!</br>
-<h5>8、substring</h5>从指定位置开始截取字符串，不包括结束的下标，返回新的字符串，不改变原字符串，</br>
+console.log(str1);//hello friends!</br></p>
+<h5>8、substring</h5><p>从指定位置开始截取字符串，不包括结束的下标，返回新的字符串，不改变原字符串，</br>
 当开始下标大于结束下标时，就返回来截取，</br>
 当结束下标不写时，就会从起始下标截完，</br>
 当结束下标为负数时，从0开始截取，</br>
@@ -68,41 +69,41 @@ console.log(str1.substring(0,3));//hel</br>
 console.log(str1.substring(3,0));//hel</br>
 console.log(str1.substring(3));//lo friends!</br>
 console.log(str1.substring(-3));//hello friends!</br>
-console.log(str1);//hello friends!</br>
-<h5>9、substr</h5>从指定位置开始截取指定长度的字符串，返回截取的字符串，不改变原字符串，</br>
+console.log(str1);//hello friends!</br></p>
+<h5>9、substr</h5><p>从指定位置开始截取指定长度的字符串，返回截取的字符串，不改变原字符串，</br>
 当长度为0或者负数时，会返回一个空字符串，</br>
 当长度不写时，从开始位置截取完。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.substr(0,3));//hel</br>
 console.log(str1.substr(3,0));//空</br>
 console.log(str1.substr(3));//lo friends!</br>
-console.log(str1);//hello friends!</br>
-<h5>10、split</h5>根据指定分隔符将字符串分割为数组，不改变原字符串，返回分割成的数组。</br>
+console.log(str1);//hello friends!</br></p>
+<h5>10、split</h5></p>根据指定分隔符将字符串分割为数组，不改变原字符串，返回分割成的数组。</br>
 用法：</br>var str1 = 'hello friends!'</br>
 console.log(str1.split(' '));//["hello", "friends!"]</br>
 console.log(str1.split('e'));//["h", "llo fri", "nds!"]</br>
-console.log(str1);//hello friends!</br>
-<h5>11、toLowerCase</h5>将字符串转为小写，不操作原字符串，返回转换后的字符串。</br>
+console.log(str1);//hello friends!</br></p>
+<h5>11、toLowerCase</h5><p>将字符串转为小写，不操作原字符串，返回转换后的字符串。</br>
 用法：</br>var str1 = 'hEllo fRiends!'</br>
 console.log(str1.toLowerCase());//hello friends!</br>
-console.log(str1);//hEllo fRiends!</br>
-<h5>12、toUpperCase</h5>将字符转换为大写，不操作原字符串，返回转换后的字符串。</br>
+console.log(str1);//hEllo fRiends!</br></p>
+<h5>12、toUpperCase</h5><p>将字符转换为大写，不操作原字符串，返回转换后的字符串。</br>
 用法：</br>var str1 = 'hEl4lo fRie3nds!'</br>
 console.log(str1.toUpperCase());//HEL4LO FRIE3NDS!</br>
-console.log(str1);//hEl4lo fRie3nds!</br>
-<h5>13、trim</h5>去掉字符串中的前后空格，返回修改后的字符串，不改变原字符串。</br>
+console.log(str1);//hEl4lo fRie3nds!</br></p>
+<h5>13、trim</h5><p>去掉字符串中的前后空格，返回修改后的字符串，不改变原字符串。</br>
 用法：var str1 = '  hello friends!  '</br>
 console.log(str1.trim());//'hello friends!'</br>
-console.log(str1)'  hello friends!  '</br>
-<h5>14、trimLeft</h5>去掉字符串中的前空格，返回修改后的字符串，不改变原字符串。
+console.log(str1)'  hello friends!  '</br></p>
+<h5>14、trimLeft</h5><p>去掉字符串中的前空格，返回修改后的字符串，不改变原字符串。
 用法：</br>var str1 = '  hello friends!  '</br>
 console.log(str1.trim());//'hello friends  !'</br>
-console.log(str1)'  hello friends!  '</br>
-<h5>15、trimRight</h5>去掉字符串中的后空格，返回修改后的字符串，不改变原字符串。</br>
+console.log(str1)'  hello friends!  '</br></p>
+<h5>15、trimRight</h5><p>去掉字符串中的后空格，返回修改后的字符串，不改变原字符串。</br>
 用法：</br>var str1 = '  hello friends!  '</br>
 console.log(str1.trim());//'  hello friends!'</br>
-console.log(str1)'  hello friends!  </br>
-<h5>16、fromCharCode</h5>
+console.log(str1)'  hello friends!  </br></p>
+<h5>16、fromCharCode</h5><p>
 fromCharCode() 方法返回使用指定的Unicode值序列创建的字符串。</br>
 用法：</br>String.fromCharCode(num1, ..., numN) </br>
 
@@ -111,9 +112,9 @@ num1, ..., numN</br>
 该方法返回一个字符串，而不是一个 String 对象。</br>
 例如：</br>
 String.fromCharCode(65,66,67)//ABC</br>
-
+</p>
 <h5>17、fromCodePoint</h5>
-fromCodePoint() 静态方法返回使用指定的代码点序列创建的字符串。</br>
+<p>fromCodePoint() 静态方法返回使用指定的代码点序列创建的字符串。</br>
 用法：</br>String.fromCodePoint(num1[, ...[, numN]])</br>
 num1, ..., numN</br>
 一串 Unicode 编码。</br>
@@ -125,11 +126,11 @@ String.fromCodePoint(65, 90);   // "AZ"</br>
 String.fromCodePoint(0x404);    // "\u0404"</br>
 String.fromCodePoint(0x2F804);  // "\uD87E\uDC04"</br>
 String.fromCodePoint(194564);   // "\uD87E\uDC04"</br>
-
+</p>
 
 
 <h5>18、endsWith</h5>
-endsWith()方法用来判断当前字符串是否是以另外一个给定的子字符串“结尾”的，根据判断结果返回 true 或 false。（ES6规范，使用注意兼容性）</br>
+<p>endsWith()方法用来判断当前字符串是否是以另外一个给定的子字符串“结尾”的，根据判断结果返回 true 或 false。（ES6规范，使用注意兼容性）</br>
 用法：</br>str.endsWith(searchString [, position]);</br>
 searchString</br>
 要搜索的子字符串。</br>
@@ -142,9 +143,9 @@ alert( str.endsWith("question.") );  // true</br>
 alert( str.endsWith("to be") );      // false</br>
 alert( str.endsWith("to be", 19) );  // true</br>
 alert( str.endsWith("To be", 5) );   // true</br>
-
+</p>
 <h5>19、includes</h5>
-
+<p>
 includes() 方法用于判断一个字符串是否包含在另一个字符串中，根据情况返回true或false。</br>
 用法：</br>str.includes(searchString[, position])</br>
 searchString</br>
@@ -162,20 +163,20 @@ console.log(str.includes('nonexistent')); // false</br>
 console.log(str.includes('To be', 1));    // false</br>
 console.log(str.includes('TO BE'));       // false</br>
 
-
+</p>
 
 <h5>20、match</h5>
-当一个字符串与一个正则表达式匹配时， match()方法检索匹配项。</br>
+<p>当一个字符串与一个正则表达式匹配时， match()方法检索匹配项。</br>
 语法：</br>
 str.match(regexp);</br>
 regexp</br>
 一个正则表达式对象。如果传入一个非正则表达式对象，则会隐式地使用 new RegExp(obj) 将其转换为一个 RegExp 。如果你未提供任何参数，直接使用 match() ，那么你会得到一个包含空字符串的 Array ：[""] 。
 </br>array</br>
 如果字符串匹配到了表达式，会返回一个数组，数组的第一项是进行匹配完整的字符串，之后的项是用圆括号捕获的结果。如果没有匹配到，返回null</br>
-
+</p>
 
 <h5>21、padEnd</h5>
-padEnd()  方法会用一个字符串填充当前字符串（如果需要的话则重复填充），返回填充后达到指定长度的字符串。从当前字符串的末尾（右侧）开始填充。</br>
+<p>padEnd()  方法会用一个字符串填充当前字符串（如果需要的话则重复填充），返回填充后达到指定长度的字符串。从当前字符串的末尾（右侧）开始填充。</br>
 语法：</br>str.padEnd(targetLength [, padString])</br>
 targetLength</br>
 当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。</br>
@@ -187,11 +188,11 @@ padString 可选</br>
 'abc'.padEnd(10, "foo");   // "abcfoofoof"</br>
 'abc'.padEnd(6, "123456"); // "abc123"</br>
 'abc'.padEnd(1);           // "abc"</br>
-
+</p>
 
 
 <h5>22、padStart</h5>
-padStart() 方法用另一个字符串填充当前字符串(重复，如果需要的话)，以便产生的字符串达到给定的长度。填充从当前字符串的开始(左侧)应用的。</br>
+<p>padStart() 方法用另一个字符串填充当前字符串(重复，如果需要的话)，以便产生的字符串达到给定的长度。填充从当前字符串的开始(左侧)应用的。</br>
 用法：</br>str.padStart(targetLength [, padString])</br>
 
 targetLength</br>
@@ -205,12 +206,12 @@ padString 可选</br>
 'abc'.padStart(6,"123465"); // "123abc"</br>
 'abc'.padStart(8, "0");     // "00000abc"</br>
 'abc'.padStart(1);          // "abc"</br>
-
+</p>
 
 
 <h5>23、repeat</h5>
 
-repeat() 构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。</br>
+<p>repeat() 构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。</br>
 /** </br>
  * str: String</br>
  * count: Number</br>
@@ -231,10 +232,10 @@ count</br>
 ({toString : () => "abc", repeat : String.prototype.repeat}).repeat(2)   
 //"abcabc",repeat是一个通用方法,也就是它的调用者可以不是一个字符串对象.</br>
 
-
+</p>
 
 <h5>24、search</h5>
-search() 方法执行正则表达式和 String对象之间的一个搜索匹配。</br>
+<p>search() 方法执行正则表达式和 String对象之间的一个搜索匹配。</br>
 用法：</br>str.search(regexp)</br>
 regexp</br>
 一个正则表达式（regular expression）对象。如果传入一个非正则表达式对象，则会使用 new RegExp(obj) 隐式地将其转换为正则表达式对象。</br>
@@ -250,9 +251,9 @@ function testinput(re, str){</br>
     midstring = " does not contain ";</br>
   }</br>
   console.log (str + midstring + re);</br>
-}</br>
+}</br></p>
 <h5>25、startsWith</h5>
-startsWith()方法用来判断当前字符串是否是以另外一个给定的子字符串“开头”的，根据判断结果返回 true 或 false。（ES6新规范，使用注意兼容）</br>
+<p>startsWith()方法用来判断当前字符串是否是以另外一个给定的子字符串“开头”的，根据判断结果返回 true 或 false。（ES6新规范，使用注意兼容）</br>
 用法：</br>
 str.startsWith(searchString [, position]);</br>
 searchString</br>
@@ -265,7 +266,7 @@ var str = "To be, or not to be, that is the question.";</br>
 alert(str.startsWith("To be"));         // true</br>
 alert(str.startsWith("not to be"));     // false</br>
 alert(str.startsWith("not to be", 10)); // true</br>
-
+</p>
 
 
 
@@ -287,6 +288,7 @@ alert(str.startsWith("not to be", 10)); // true</br>
 
 
 </br></br></br>
+<p>
 补充：在上面讲到了字符串中的字符查找和字符替换，这里就有一些实践的问题了，在字符串造作中会经常用到将字符串中的特定字符全部替换为指定字符，并且是全部替换，那就需要下面的这几种方法的配合使用了。
 1)var reg=new RegExp("我们","g"); //创建正则RegExp对象   </br>
 var stringObj="大家是幸福的，大家是快乐的";   </br>
