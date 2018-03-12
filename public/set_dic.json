@@ -55,7 +55,30 @@
                 "url": "", 
                 "isopen": false, 
                 "parent": false, 
-                "children": ""
+                "children": [
+			{
+                        "name": "对象", 
+                        "url": "", 
+                        "isopen": false, 
+                        "parent": true, 
+                        "children": [
+                            {
+                                "name": "对象操作方法", 
+                                "url": "javascript/array/method/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }, 
+                            {
+                                "name": "对象常用姿势", 
+                                "url": "javascript/array/oftenuse/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+                        ]
+                    }
+		]
             }, 
             {
                 "name": "字符串", 
