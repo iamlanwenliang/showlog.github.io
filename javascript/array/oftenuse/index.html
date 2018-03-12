@@ -10,15 +10,15 @@
 		<h2>数组的排序</h2>
 		<div style="padding-left:25px;">
     <p >
-      var Arr = [1, 7, 5, 4, 3, 2, 6];
-		<h5>1.按数组元素大小从小到大进行排序</h5>
+      var Arr = [1, 7, 5, 4, 3, 2, 6];</p >
+		<h5>1.按数组元素大小从小到大进行排序</h5><p >
       Arr.sort((a, b) => a - b); //[1, 2, 3, 4, 5, 6, 7]
 	</p >
   <h5>2.按数组元素大小从大到小进行排序</h5>
 <p >
-  Arr.sort((a, b) => b - a); //[7, 6, 5, 4, 3, 2, 1]
+  Arr.sort((a, b) => b - a); //[7, 6, 5, 4, 3, 2, 1]</p >
 	<h5>对象排序</h5>
-		const Arrobj = [</br>
+		<p >const Arrobj = [</br>
     { id: 3, name: "c" },</br>
     { id: 1, name: "a" },</br>
     { id: 2, name: "b" }</br>
@@ -28,10 +28,10 @@
 <p >
   Arrobj.sort((a, b) => a.id - b.id);
 
-  //[{ id: 1, name: "a"},{id: 2, name: "b"},{id: 3, name: "c"}]
+  //[{ id: 1, name: "a"},{id: 2, name: "b"},{id: 3, name: "c"}]</p >
 
   <h5>4.按数组元素的id从大到小进行排序</h5>
-
+<p >
   Arrobj.sort((a, b) => b.id - a.id); 
   
   //[{ id: 3, name: "c" },{ id: 2, name: "b" },{ id: 1, name: "a" }]
@@ -95,9 +95,9 @@ console.log(splitAry(ary,2)); // [[1,2],[3,4],[5,6],[7]]</p>
 </div>
 	<h2>多维数组扁平化</h2>
 <div style="padding-left:25px;">
-	<p>
+	
 	<h5>	二维数组扁平化</h5>
-
+<p>
 const ary = [[1, 2], [3, 4], [5, 6]];</br>
 
 const flatten = ary => ary.reduce((a, b) => [...a, ...b]);</br>
