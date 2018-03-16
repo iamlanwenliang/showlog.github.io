@@ -48,8 +48,38 @@
 		（2）:visited,例如：a:visited,选择所有访问过的链接。<br />
 		（3）:hover,例如：a:hover,鼠标停留在链接上的状态。<br />
 		（4）:active,例如：a:active,选择激活中的链接。<br />
-		（5）:focus,例如：input:focus,选择元素输入后具有的焦点。
-		
+		（5）:focus,例如：input:focus,选择元素输入后具有的焦点。<br />
+		（6）:first-child，例如p:first-child,选择p元素的第一个子元素。<br />
+		（7）:first-of-type,例如p:first-of-type,选择每个父元素是p元素的第一个p子元素。<br />
+		（8）:last-child,例如p:last-child,选择所有p元素的最后一个子元素。<br />
+		（9）:last-of-type,例如p:last-of-type,选择每个p元素是其母元素的最后一个p元素。<br />
+		（10）:not(selector),例如:not(p),选择所有p以外的元素。<br />
+		（11）:nth-child(n),例如p:nth-child(2),选择所有p元素的第二个子元素。<br />
+		（12）:nth-last-child(n),例如p:nth-last-child(2),	选择所有p元素倒数的第二个子元素。<br />
+		（13）:nth-last-of-type(n),例如p:nth-last-of-type(2),选择所有p元素倒数的第二个为p的子元素。<br />
+		（14）:nth-of-type(n),例如p:nth-of-type(2),选择所有p元素第二个为p的子元素。<br />
+		（15）:only-of-type,例如	p:only-of-type,选择所有仅有一个子元素为p的元素。<br />
+		（16）:only-child,例如p:only-child,选择所有仅有一个子元素的p元素。<br />
+		（17）:target,例如#news:target,选择当前活动#news元素(点击URL包含锚的名字)。<br />
+		（18）:disabled,例如input:disabled,选择所有禁用的表单元素。<br />
+		（19）:enabled,例如input:enabled,	选择没有设置 disabled 属性的表单元素。<br />
+		（20）:in-range,例如input:in-range,选择在指定区域内的元素。<br />
+		（21）:out-of-range,例如input:out-of-range,选择不在指定区域内的元素。<br />
+		（22）:valid,例如input:valid,选择条件验证正确的表单元素。<br />
+		（23）:invalid,例如input:invalid,选择条件验证错误的表单元素。<br />
+		（24）:required,例如input:required,选择设置 required 属性的表单元素。<br />
+		（25）:optional,例如input:optional,选择没有 required 属性，即设置 optional 属性的表单元素。<br />
+		（26）:read-only,例如input:read-only,选择设置 readonly 只读属性的元素。<br />
+		（27）:read-write,例如input:read-write,选择处于编辑状态的元素；input，textarea 和设置 contenteditable 的 HTML 元素获取焦点时即处于编辑状态。<br />
+		（28）:checked,例如input:checked，匹配被选中的input元素，input元素包括radio和Checkbox。<br />
+		（29）:empty,例如p:empty,匹配所有没有子元素的p元素。<br />
+		（30）:default,匹配默认选中的元素(提交按钮总是表单的默认按钮)。<br />
+		（31）:indeterminate,当某组中的单选框或复选框还没有选取状态时，:indeterminate 匹配该组中所有的单选框或复选框。<br />
+		（32）:scope,匹配处于 style 作用域下的元素。当 style 没有设置 scope 属性时，style 内的样式会对整个 html 起作用。(试验阶段，注意兼容)<br />
+		（33）:lang(language),匹配设置了特定语言的元素。设置特定语言可以通过为了 HTML 元素设置 lang=”” 属性，设置 meta 元素的 charset=”” 属性，或者是在 http 头部上设置语言属性。实际上，lang=”” 属性不只可以在 html 标签上设置，也可以在其他的元素上设置。<br />
+		（34）:dir,匹配指定阅读方向的元素。当 HTML 元素中设置了 dir 属性时该伪类才能生效。现时支持的阅读方向有两种：ltr（从左往右）和 rtl（从右往左）。目前，只有火狐浏览器支持 :dir 伪类，并在火狐浏览器中使用时需要添加前缀( -moz-dir() )(试验阶段，注意兼容)。<br />
+		（35）:root,匹配文档的根元素。一般的 html 文件的根元素是 html 元素。<br />
+		（36）:fullscreen,匹配处于全屏模式下的元素。全屏模式不是通过按 F11 来打开的全屏模式，而是通过 Javascript 的 Fullscreen API 来打开的，不同的浏览器有不同的 Fullscreen API。目前，:fullscreen 需要添加前缀才能使用。
 	</p>
 	
 	<h5>伪元素选择器</h5>
