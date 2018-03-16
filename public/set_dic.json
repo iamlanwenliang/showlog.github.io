@@ -148,6 +148,20 @@
         "isopen": false, 
         "parent": true, 
         "children": [
+	    {
+                "name": "css优先级", 
+                "url": "", 
+                "isopen": false, 
+                "parent": false, 
+                "children": [ ]
+            }, 
+	    {
+                "name": "css选择器", 
+                "url": "", 
+                "isopen": false, 
+                "parent": false, 
+                "children": [ ]
+            }, 
             {
                 "name": "transform", 
                 "url": "", 
