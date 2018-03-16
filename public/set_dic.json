@@ -150,14 +150,14 @@
         "children": [
 	    {
                 "name": "css优先级", 
-                "url": "", 
+                "url": "css/cssbasic/csspriority.html", 
                 "isopen": false, 
                 "parent": false, 
                 "children": [ ]
             }, 
 	    {
                 "name": "css选择器", 
-                "url": "", 
+                "url": "css/cssbasic/cssselecter.html", 
                 "isopen": false, 
                 "parent": false, 
                 "children": [ ]
