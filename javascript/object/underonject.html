@@ -211,7 +211,14 @@
 		<p>
 			这样就剔除了父类构造函数中其庞大的处理过程，也就相当是将父类构造函数中的prototype切除出来放置在一个空函数中，然后再new。
 		</p>
-		
+		<p>
+			这里差点忘记说一下对象的constructor了， 原型对象prototype中都有个预定义的constructor属性，用来引用它的函数对象。这是一种循环引用。具体看下面例子：
+		</p>
+		<p>
+			Animal.prototype.constructor === Animal //true
+			Mammal.prototype.constructor === Mammal //true
+			Horse.prototype.constructor === Horse //true
+		</p>
 		
 	</div>
 	</body>
