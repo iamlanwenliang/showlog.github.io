@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this指针的使用</title>
+		<link href="../../../public/font/font.css" rel="stylesheet" />
+		
+	</head>
+	<body>
+		<h2>this</h2>
+		<div style="padding-left:25px;">
+   
+			<h5>this前言 </h5>
+			<p>
+				this是Javascript语言的一个关键字。<br />
+				它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用。随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。
+				下面就分情况讨论下this的用法：
+			</p>
+			<h5>全局中的this</h5>
+			<p>
+				在全局中使用this，那么this的指向是什么呢？看下面代码：
+			</p>
+			<p>
+				console.log(this);<br />
+				console.log(this === window);<br />
+				console.log(this == window);<br />
+				// 毫无疑问输出为 window  true true
+			</p>
+			<p>
+				<img src="value3.png"  />
+			</p>
+			<p>
+				也就是说，如果没有当前方法（或者该方法不属于任何其他的对象），那么this的指向就是全局的window，这样的话那我们平时访问全局变量就可以使用window来访问，例如：window['全局变量名或者全局方法名']/window.全局变量名/window.全局方法名()。
+			</p>
+			<h5>函数调用（非构造函数）里面的this</h5>
+			<p>
+				//第一种<br />
+				function fn(){<br />
+				<kon></kon>	console.log(this);<br />
+				}<br />
+				//第二种<br />
+				function fn1(){<br />
+				<kon></kon>	this.hand = function(){<br />
+				<kon></kon><kon></kon>		console.log(this);<br />
+				<kon></kon>	}<br />
+				<kon></kon>	hand();<br />
+				}<br />
+				fn();<br />
+				fn1();<br />
+			</p>
+			<p>
+				这种情况下也是window，也就是说这个函数是全局的，那么this就指全局，也就是说最后的两句可以直接写成window.fn()和window.fn1()。
+			</p>
+			<h5>构造函数中this指向</h5>
+			<p>
+				function Aaa(name){<br />
+				 <kon></kon> this.name= name;<br />
+				<kon></kon>  this.getName=function(){<br />
+				 <kon></kon><kon></kon>   console.log(this.name)<br />
+				 <kon></kon> }<br />
+				}<br />
+				var a = new Aaa('kitty');<br />
+				a.getName()        //  'kitty'<br />
+				var b = new Aaa('bobo');<br />
+				b.getName()        //  'bobo'<br />
+			</p>
+			<p>
+				这种情况下，this指向新生成的实例，上面打印就是objfn.
+			</p>
+			<h5>对象方法（方法调用）中this指向</h5>
+			<p>
+				let objfn = {<br />
+				<kon></kon>	name:'Job',<br />
+				<kon></kon>	active:function(){<br />
+				<kon></kon><kon></kon>		console.log(this);<br />
+				<kon></kon>	}<br />
+				}<br />
+				objfn.active()//objfn
+			</p>
+			<p>
+				这种情况下，this指向方法所在的对象，上面打印就是objfn.
+			</p>
+			<h5>apply/call调用模式的this</h5>
+			<p>
+				call方法:<br />
+				语法：call(thisObj，Object)<br />
+				定义：调用一个对象的一个方法，以另一个对象替换当前对象。<br />
+				说明：<br />
+				call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。<br />
+				如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。<br />
+				
+				apply方法:<br />
+				语法：apply(thisObj，[argArray])<br />
+				定义：应用某一对象的一个方法，用另一个对象替换当前对象。<br />
+				说明：<br />
+				如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。<br />
+				如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+			</p>
+			<p>
+				 var value = "Global value";<br />
+
+			    function FunA() {<br />
+			    <kon></kon>    this.value = "AAA";<br />
+			    }<br />
+			
+			    function FunB() {<br />
+			     <kon></kon>   console.log(this.value);<br />
+			    }<br />
+			    FunB(); //Global value 因为是在全局中调用的FunB(),this.value指向全局的value<br />
+			    FunB.call(window); //Global value,this指向window对象，因此this.value指向全局的value<br />
+			    FunB.call(new FunA()); //AAA, this指向参数new FunA()，即FunA对象<br />
+			
+			    FunB.apply(window); //Global value<br />
+			    FunB.apply(new FunA()); //AAA<br />
+			</p>
+			<p>
+				this指向apply/call方法中的第一个参数,在上述代码中，this的指向在call和apply中是一致的，只不过是调用参数的形式不一样。call是一个一个调用参数，而apply是调用一个数组。
+			</p>
+			<h5>setTimeout、setInterval和匿名函数中的this</h5>
+			<p>在浏览器中setTimeout、setInterval和匿名函数执行时的当前对象是全局对象window,例如：</p>
+			<p>
+				setTimeout(function(){<br />
+				<kon></kon>	console.log(this);//window<br />
+				},10);<br />
+				setInterval(function(){<br />
+				<kon></kon>	console.log(this);//window<br />
+				},10);<br />
+				(function(){<br />
+				<kon></kon>	console.log(this);//window<br />
+				})();
+			</p>
+			<p>放在函数里面或者对象方法里面：</p>
+			<p>
+				var myname = "Bob";  <br />
+				var nameObj ={  <br />
+				<kon></kon>     myname : "Tom",  <br />
+				<kon></kon>     showMyName : function(){  <br />
+				<kon></kon><kon></kon>         console.log(this.myname);  <br />
+				<kon></kon>     },  <br />
+				 <kon></kon>    twiceshowname : function(){  <br />
+				 <kon></kon><kon></kon>        (function(fn){<br />
+				  <kon></kon><kon></kon><kon></kon>          fn();<br />
+				   <kon></kon><kon></kon>     })(this.showMyName);  <br />
+				    <kon></kon> }  <br />
+				 };  <br />
+				 
+				 nameObj.twiceshowname();　　//Bob
+			</p>
+			<p>
+				在调用nameObj.twiceshowname，我们运行了一个匿名函数，将nameObj.showMyName作为回调函数传进这个匿名函数，然后匿名函数运行时，运行这个回调函数。由于匿名函数的当前对象是window，所以当在该匿名函数中运行回调函数时，回调函数的this指向了window，所以打印出来window.myname,有多余精力的同学可以将var替换成let试试，慢慢摸索吧。
+			</p>
+			<p>
+				var myname = "Bob";  <br />
+				var nameObj ={  <br />
+				 <kon></kon>    myname : "Tom", <br /> 
+				<kon></kon>     showMyName : function(){  <br />
+				 <kon></kon><kon></kon>        console.log(this); <br /> 
+				 <kon></kon>    },  <br />
+				 <kon></kon>    twiceshowname : function(){  <br />
+				 <kon></kon><kon></kon>        setTimeout(function(){<br />
+				  <kon></kon><kon></kon><kon></kon>       	this.showMyName();<br />
+				   <kon></kon><kon></kon>      },100)<br />
+				   <kon></kon>  }  <br />
+				 };  <br />
+				 
+				 nameObj.twiceshowname();　　//这样就会报错啦
+			</p>
+			<p>
+				为什么会报错呢，因为其中的this指向是window，那么在window里面是没有方法showMyName的，所以浏览器找不到就报错啦。setInterval也是同样的结果！
+			</p>
+			
+			<h5>eval中的this</h5>
+			<p>
+				var name = "I am window";<br />
+
+				var Bob = {<br />
+				  <kon></kon>  name: "I am Bob",<br />
+				 <kon></kon>   showName: function(){<br />
+				<kon></kon><kon></kon>        eval("console.log(this.name)");<br />
+				  <kon></kon>  }<br />
+				};<br />
+				
+				Bob.showName();    //I am Bob<br />
+				eval("console.log(this.name)");//I am window
+				
+			</p>
+			<p>
+				这似乎就清晰了，也就是说eval中的this指向就是执行作用域。
+			</p>
+			
+			
+			
+			
+			
+			
+			<h5>箭头函数中的this</h5>
+			<p>
+				//在对象方法中<br />
+				var x = {<br />
+				<kon></kon>  name: 'bw2',<br />
+				 <kon></kon> getName1: () => {<br />
+				<kon></kon><kon></kon>    console.log(this)<br />
+				<kon></kon>  },<br />
+				 <kon></kon> getName2: function() {<br />
+				 <kon></kon><kon></kon>   return function() {<br />
+				<kon></kon><kon></kon><kon></kon>      console.log(this)<br />
+				<kon></kon><kon></kon>    }<br />
+				<kon></kon>  }<br />
+				}<br />
+				x.getName1() ; // Window <br />
+				x.getName2()(); // Window 
+			</p>
+			<p>
+				和匿名函数一样都指向window。
+			</p>
+			<p>
+				//在延时器中<br />
+				var Test = {<br />
+				  <kon></kon>name: 'bw2',<br />
+				 <kon></kon> getName1: function() {// 指向该对象<br />
+				 <kon></kon><kon></kon>   console.log(this);<br />
+				 <kon></kon> },<br />
+				 <kon></kon> getName2: function() {//在延时器里面指向该对象<br />
+				  <kon></kon><kon></kon>  setTimeout(() => {<br />
+				 <kon></kon><kon></kon><kon></kon>     console.log(this);<br />
+				  <kon></kon><kon></kon>  },0);<br />
+				  <kon></kon>},<br />
+				  <kon></kon>getName3: () => {//箭头函数在对象方法中指向window<br />
+				 <kon></kon><kon></kon>   console.log(this);<br />
+				<kon></kon>  },<br />
+				 <kon></kon> getName4: function() {//指向该对象<br />
+				 <kon></kon><kon></kon>   return ()=> {<br />
+				  <kon></kon><kon></kon><kon></kon>    console.log(this);<br />
+				  <kon></kon><kon></kon>  };<br />
+				  <kon></kon>}<br />
+				}<br />
+				Test.getName1();  // Test<br />
+				Test.getName2();  // Test<br />
+				Test.getName3();  // Window <br />
+				Test.getName4()(); //Test
+			</p>
+			<p>
+				箭头函数没有独立的this作用域，所以继续往外层走,也就是说箭头函数会去找离它最近的作用域。
+			</p>
+		</div>
+	</body>
+</html>
