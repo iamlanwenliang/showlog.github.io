@@ -70,7 +70,7 @@
                                 "children": ""
                             }, 
                             {
-                                "name": "我理解面向对象", 
+                                "name": "理解面向对象", 
                                 "url": "javascript/object/underonject.html", 
                                 "isopen": false, 
                                 "parent": false, 
@@ -132,6 +132,13 @@
                             {
                                 "name": "var,let,const区别", 
                                 "url": "javascript/TechnicalPoint/vlc/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            },
+			    {
+                                "name": "this指向问题", 
+                                "url": "javascript/TechnicalPoint/this/index.html", 
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
