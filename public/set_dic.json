@@ -182,7 +182,28 @@
                 "isopen": false, 
                 "parent": false, 
                 "children": [ ]
-            }, 
+            },
+	    {
+                "name": "calc的使用", 
+                "url": "css/cssbasic/cssselecter.html", 
+                "isopen": false, 
+                "parent": false, 
+                "children": [ ]
+            },
+	    {
+                "name": "flex布局", 
+                "url": "css/cssbasic/cssselecter.html", 
+                "isopen": false, 
+                "parent": false, 
+                "children": [ ]
+            },
+	    {
+                "name": "字体的适配", 
+                "url": "css/cssbasic/cssselecter.html", 
+                "isopen": false, 
+                "parent": false, 
+                "children": [ ]
+            },
             {
                 "name": "animation", 
                 "url": "css/animation/index.html", 
