@@ -142,6 +142,13 @@
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
+                            },
+			    {
+                                "name": "ES6箭头函数", 
+                                "url": "javascript/TechnicalPoint/arrowfn/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
                             }
                         ]
                     }
