@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>布局之道flex</title>
+		<link href="../../public/font/font.css" rel="stylesheet" />
+		<style>
+			kon{
+				display:inline-block;
+	width:40px;
+	height:15px;
+			}
+			.box{
+				height:180px;
+				width:180px;
+				background-color:#008000;
+				display:flex;
+				margin:5px;
+			}
+			.box_child{
+				height:50px;
+				width:50px;
+				background-color:#ff5c2a;
+				color:#fff;
+				text-align:center;
+				line-height:50px;
+				border:1px solid #999;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>flex布局</h2>
+		<div style="padding-left:25px;">
+   
+			<h5>前言 </h5>
+			<p>
+				网页布局（layout）是我们前端的一个基本功，也是css应用的一个重点，也就是说这个css技能是我们前端必备技能。传统的布局也就是盒模型中加之display、position、float属性来实现盒模型中的布局，而且传统方式布局，基本都是固定的，如果需要小的变动会需要重新去改动，在2009年的时候W3C提出了一种新的布局方案---flex布局，可以简便完整的实现目前常用的各种布局，直至目前，各浏览器的支持性也都很良好，对于IE也都部分支持了，移动端更是一片绿，所以flex布局的未来会很广阔(Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性)。
+			</p>
+			<p>
+				<img src="flexsup.png"  />
+			</p>
+			<h5>概念</h5>
+			<p>
+				flex布局首先是建立在盒模型基础上的，也就是说至少要拥有容器和容器成员，那么这个容器会存在两个轴，也就是两个方向，水平方向和垂直方向，水平的方向是面对屏幕，从左往右的，垂直方向是从上往下的。实际上就是说在容器内的容器成员是自上而下和自左而右的方向去排列。
+			</p>
+			<p>
+				<img src="flexc.png"  />
+			</p>
+			<h5>设置在容器上的属性</h5>
+			<p>
+				以下这几个属性是设置在容器上的：<br />
+				<kon></kon>（1）flex-direction<br />
+				<kon></kon>（2）flex-wrap<br />
+				<kon></kon>（3）flex-flow<br />
+				<kon></kon>（4）justify-content<br />
+				<kon></kon>（5）align-items<br />
+				<kon></kon>（6）align-content<br />
+				
+			</p>
+			<div style="padding-left:40px;">
+				<h6>flex-direction</h6>
+				<p>
+					这个属性决定主轴的方向（即容器元素的排列方向）。<br />
+					.box {<br />
+					 <kon></kon> flex-direction: row(默认值,主轴为水平方向，起点在左端) <br />
+					<kon></kon><kon></kon>  | row-reverse(主轴为水平方向，起点在右端) <br />
+					 <kon></kon><kon></kon> | column(主轴为垂直方向，起点在上沿) <br />
+					<kon></kon><kon></kon>  | column-reverse(主轴为垂直方向，起点在下沿);<br />
+					}<br />
+					例如下面demo：
+				</p>
+				<p>
+					<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="flex-direction:row;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="flex-direction:row-reverse;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="flex-direction:column;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="flex-direction:column-reverse;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						
+					</div>
+				</p>
+				<h6>flex-wrap</h6>
+				<p>
+					默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行.<br />
+					.box{<br />
+					 <kon></kon> flex-wrap: nowrap(默认值，不换行) <br />
+					 <kon></kon><kon></kon> | wrap（换行，换行的展示在下面） <br />
+					 <kon></kon><kon></kon> | wrap-reverse（换行，换行的展示在上面）;<br />
+					}<br />
+					例如下面demo：
+				</p>
+				<p>
+					<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="flex-wrap:nowrap;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+						</div>
+						<div class="box" style="flex-wrap:wrap">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+						</div>
+						<div class="box" style="flex-wrap:wrap-reverse;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+						</div>
+						
+						
+					</div>
+				</p>
+				<h6>flex-flow</h6>
+				<p>
+					flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap（两个属性值之间以空格隔开）。
+				</p>
+				<h6>justify-content</h6>
+				<p>
+					justify-content属性定义了项目在主轴上的对齐方式。取值有这几种：<br />
+					.box {<br />
+					 <kon></kon> justify-content: flex-start（默认值，左对齐） <br />
+					 <kon></kon><kon></kon> | flex-end（右对齐） <br />
+					 <kon></kon><kon></kon> | center（居中） <br />
+					 <kon></kon><kon></kon> | space-between（两端对齐，容器元素之间的间隔都相等） <br />
+					 <kon></kon><kon></kon> | space-around（每个项目两侧的间隔相等）;<br />
+					}<br />
+					例如下面demo：
+				</p>
+				<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="justify-content:flex-end;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="justify-content:center;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="justify-content:space-between;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="justify-content:space-around;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						
+					</div>
+					<h6>align-items</h6>
+				<p>
+					align-items属性定义项目在交叉轴（垂直方向）上如何对齐。取值有这几种：<br />
+					.box {<br />
+					 <kon></kon> align-items: flex-start（交叉轴的起点对齐） <br />
+					 <kon></kon><kon></kon> | flex-end（交叉轴的终点对齐） <br />
+					 <kon></kon><kon></kon> | center（交叉轴的中点对齐） <br />
+					  <kon></kon><kon></kon>| baseline（项目的第一行文字的基线对齐，如果容器的文字行高增加，元素也随着会移动） <br />
+					 <kon></kon><kon></kon> | stretch（默认值，如果项目未设置高度或设为auto，将占满整个容器的高度）;<br />
+					}<br />
+					例如下面demo：(最后两个都是属性为stretch，最后一个是容器元素高度设置为auto)
+				</p>
+				<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="align-items:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="align-items:flex-end;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="align-items:center;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="align-items:baseline;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="justify-content:stretch;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="justify-content:stretch;">
+							<div class='box_child' style="height:auto;">1</div>
+							<div class='box_child' style="height:auto;">2</div>
+							<div class='box_child' style="height:auto;">3</div>
+						</div>
+						
+					</div>
+					<h6>align-content</h6>
+				<p>
+					align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。取值有这几种：<br />
+					.box {<br />
+					 <kon></kon> align-content: flex-start(与交叉轴的起点对齐) <br />
+					 <kon></kon><kon></kon> | flex-end(与交叉轴的终点对齐) <br />
+					 <kon></kon><kon></kon> | center(与交叉轴的中点对齐) <br />
+					 <kon></kon><kon></kon> | space-between(与交叉轴两端对齐，轴线之间的间隔平均分布) <br />
+					 <kon></kon><kon></kon> | space-around(每根轴线两侧的间隔都相等) <br />
+					 <kon></kon><kon></kon> | stretch(默认值,轴线占满整个交叉轴);<br />
+					}<br />
+					例如下面demo：
+				</p>
+				<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="align-content:flex-start;flex-wrap: wrap;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+							<div class='box_child'>7</div>
+						</div>
+						<div class="box" style="align-content:flex-end;flex-wrap: wrap;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+							<div class='box_child'>7</div>
+						</div>
+						<div class="box" style="align-content:center;flex-wrap: wrap;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+							<div class='box_child'>7</div>
+						</div>
+						<div class="box" style="align-content:space-between;flex-wrap: wrap;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+							<div class='box_child'>7</div>
+						</div>
+						<div class="box" style="align-content:space-around;flex-wrap: wrap;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+							<div class='box_child'>7</div>
+						</div><div class="box" style="align-content:stretch;flex-wrap: wrap;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+							<div class='box_child'>5</div>
+							<div class='box_child'>6</div>
+							<div class='box_child'>7</div>
+						</div>
+						
+					</div>
+				
+			</div>
+		
+			<h5>设置在容器成员上的属性</h5>
+			<p>
+				以下这几个属性是设置在容器上的：<br />
+				<kon></kon>（1）order<br />
+				<kon></kon>（2）flex-grow<br />
+				<kon></kon>（3）flex-shrink<br />
+				<kon></kon>（4）flex-basis<br />
+				<kon></kon>（5）flex<br />
+				<kon></kon>（6）align-self<br />
+				
+			</p>
+			<div style="padding-left:40px;">
+				<h6>order</h6>
+				<p>
+					属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+				</p>
+				<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child' style="order:-1;">3</div>
+						</div>
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'style="order:5;">2</div>
+							<div class='box_child'>3</div>
+						</div>
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child'>3</div>
+						</div>
+						
+					</div>
+				<h6>flex-grow</h6>
+				<p>
+					flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+				</p>
+					<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child' style="flex-grow:-1;">3</div>
+						</div>
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'style="flex-grow:2;">2</div>
+							<div class='box_child'>3</div>
+						</div>
+						
+					</div>
+				<h6>flex-shrink</h6>
+				<p>
+					flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
+负值对该属性无效。
+				</p>
+				<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child' style="flex-shrink:-1;">3</div>
+						</div>
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'style="flex-shrink:10;">2</div>
+							<div class='box_child'>3</div>
+							<div class='box_child'>4</div>
+						</div>
+						
+					</div>
+				<h6>flex-basis</h6>
+				<p>
+					flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。(意味着会压缩其他项目来满足此项目的设定)
+				</p>
+				<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'>2</div>
+							<div class='box_child' style="flex-basis:120px;">3</div>
+						</div>
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child'>1</div>
+							<div class='box_child'style="flex-basis:80px;">2</div>
+							<div class='box_child'>3</div>
+						</div>
+						
+					</div>
+				<h6>flex</h6>
+				<p>
+					flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。
+建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
+				</p>
+				
+				<h6>align-self</h6>
+				<p>
+					align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。该属性可能取6个值，除了auto，其他都与align-items属性完全一致。
+					取值如下：<br />
+					.item {<br />
+					 <kon></kon> align-self: auto | flex-start | flex-end | center | baseline | stretch;<br />
+					}<br />
+				</p>
+				<div style="width:100%;height:200px;display:flex;">
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child' style="align-self:auto;">1</div>
+							<div class='box_child' style="align-self:flex-start;">2</div>
+							<div class='box_child' style="align-self:flex-end;">3</div>
+						</div>
+						<div class="box" style="justify-content:flex-start;">
+							<div class='box_child' style="align-self:center;">1</div>
+							<div class='box_child' style="align-self:baseline;">2</div>
+							<div class='box_child' style="align-self:stretch;">3</div>
+						</div>
+						
+					</div>
+			</div>
+		</div>
+	</body>
+</html>
