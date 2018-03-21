@@ -192,7 +192,7 @@
             },
 	    {
                 "name": "flex布局", 
-                "url": "css/cssbasic/cssselecter.html", 
+                "url": "css/cssbasic/flex.html", 
                 "isopen": false, 
                 "parent": false, 
                 "children": [ ]
