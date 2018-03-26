@@ -225,6 +225,13 @@
                 "parent": false, 
                 "children": ""
             }, 
+	    {
+                "name": "border-radius", 
+                "url": "css/animation/index.html", 
+                "isopen": false, 
+                "parent": false, 
+                "children": ""
+            },
             {
                 "name": "Gradients", 
                 "url": "", 
