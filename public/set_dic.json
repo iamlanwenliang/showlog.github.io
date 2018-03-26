@@ -227,7 +227,7 @@
             }, 
 	    {
                 "name": "border-radius", 
-                "url": "css/animation/index.html", 
+                "url": "css/cssbasic/border_radius.html", 
                 "isopen": false, 
                 "parent": false, 
                 "children": ""
