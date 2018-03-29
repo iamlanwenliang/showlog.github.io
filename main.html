@@ -8,25 +8,33 @@
 <link rel="stylesheet" type="text/css" href="public/css/index.css">
 	<style>
 		.arrow{
-			height:150px;
-			width:60px;
-			background-color:#333;
-			border-radius:5px;
+			height:80px;
+			width:35px;
+			background-color:rgba(255,255,255,.25);
+			
 			overflow:hidden;
-			line-height:150px;
+			line-height:800px;
 			text-align:center;
 		}
 		.arrow-left{
 			position:absolute;
 			top:50%;
-			right:-15px;
+			right:0px;
 			transform:translateY(-50%);
+			border-top-left-radius: 5px;
+    			border-bottom-left-radius: 5px;
 		}
 		.arrow-right{
 			position:absolute;
 			top:50%;
 			right:-30px;
 			transform:translateY(-50%);
+			border-top-right-radius: 5px;
+    			border-bottom-right-radius: 5px;
+		}
+		#directory{
+			overflow-x: hidden; 
+    		        overflow-y: auto; 
 		}
 	</style>
 </head>
