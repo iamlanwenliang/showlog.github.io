@@ -116,6 +116,43 @@ summary {
 	transition: margin-left 1s;
 	position:relative;
 }
+.arrow{
+		height:50px;
+		width:35px;
+		background-color:rgba(0,0,0,.45);
+		cursor:pointer;
+		overflow:hidden;
+		line-height:800px;
+		text-align:center;
+		position:absolute;
+		top:50%;
+		right:0px;
+		transform:translateY(-50%) rotate(180deg);
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		background-image: url(public/img/rights.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+
+	.arrow-right{
+		position:absolute;
+		top:50%;
+		right:-40px;
+		transform:translateY(-50%);
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		background-image: url(public/img/rights.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+	#directory{
+		overflow-x: hidden; 
+		overflow-y: auto; 
+	}
+	.tipsmain{
+		margin-left:-300px;
+	}
 .right_content{
 /*width:calc(100% - 300px );*/
 	width:100%;
