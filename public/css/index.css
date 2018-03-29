@@ -189,7 +189,7 @@ summary:hover{
 	color:#f0cfae;
 	text-decoration: none;
 }
-@media screen and (max-width:740px) {
+@media screen and (max-width:420px) {
     .header{
 	height:20px;
 	width:100%;
