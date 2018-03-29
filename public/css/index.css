@@ -192,11 +192,9 @@ summary:hover{
 @media screen and (max-width:420px) {
     .header{
 	height:20px;
-	width:100%;
 	padding:5px;
-	text-align:center;
 	line-height:20px;
-	border-bottom:5px solid #84502f;
+	font-size:12px;
 }
 	.main_content {
 	    width: 100%;
