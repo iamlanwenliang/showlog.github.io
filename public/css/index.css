@@ -103,25 +103,7 @@ summary {
 	justify-content:space-between;
 	position:relative;
 }
-.arrow{
-	height:15px;
-	width:60px;
-	background-color:#fff;
-	border-radius:5px;
-	overflow:hidden;
-}
-.arrow-left{
-	position:absolute;
-	top:50%;
-	right:-5px;
-	transform:translateY(-50%);
-}
-.arrow-right{
-	position:absolute;
-	top:50%;
-	right:-5px;
-	transform:translateY(-50%);
-}
+
 .left_dic{
 	min-width:300px;
 	height:100%;
