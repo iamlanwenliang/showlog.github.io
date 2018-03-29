@@ -104,7 +104,7 @@ summary {
 
 }
 .left_dic{
-	width:300px;
+	min-width:300px;
 	height:100%;
 	border-right:5px #84502f solid;
 	padding:10px;
@@ -116,7 +116,7 @@ summary {
 	overflow-y:auto;
 }
 .right_content{
-	width:calc(100% - 300px );
+/*width:calc(100% - 300px );*/
 	height:100%;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
