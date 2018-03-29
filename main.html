@@ -6,6 +6,29 @@
 <title>我的主页</title>
 <link rel="stylesheet" type="text/css" href="font/iconfont.css">
 <link rel="stylesheet" type="text/css" href="public/css/index.css">
+	<style>
+		.arrow{
+			height:150px;
+			width:60px;
+			background-color:#fff;
+			border-radius:5px;
+			overflow:hidden;
+			line-height:150px;
+			text-align:center;
+		}
+		.arrow-left{
+			position:absolute;
+			top:50%;
+			right:-15px;
+			transform:translateY(-50%);
+		}
+		.arrow-right{
+			position:absolute;
+			top:50%;
+			right:-30px;
+			transform:translateY(-50%);
+		}
+	</style>
 </head>
 
 <body style="background: url(//www.sinaimg.cn/rny/sinamail57/skins/140924/12/bg_body.jpg?v=12041814);">
@@ -15,6 +38,7 @@
 		</div>
 		<div class="main_content"> 
 			<div class="left_dic" id="directory">
+				<div class="arrow arrow-left"><</div>
 				<details class="details" style="padding-left:0;"> 
 					<summary><span class="iconfont  icon-file-b-"></span>
 						<span class="iconfont  icon-wenjian"></span>
