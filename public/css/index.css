@@ -113,7 +113,7 @@ summary {
 	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	
+	transition: margin-left 1s;
 	position:relative;
 }
 .right_content{
