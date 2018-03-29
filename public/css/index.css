@@ -136,6 +136,7 @@ summary {
 }
 .right_content{
 /*width:calc(100% - 300px );*/
+	width:100%;
 	height:100%;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
