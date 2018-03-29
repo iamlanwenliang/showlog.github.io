@@ -133,6 +133,7 @@ summary {
 	-moz-box-sizing: border-box;
 	overflow-x:hidden;
 	overflow-y:auto;
+	position:relative;
 }
 .right_content{
 /*width:calc(100% - 300px );*/
