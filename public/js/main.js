@@ -52,15 +52,11 @@ var dic_create = {};
 				   $('#content').attr('src','javascript/preface/index.html');
 				}
 			});
-			var toggleindex = 1;
+			
 			$('body').on('click','.arrow',function(){
 				$(this).toggleClass('arrow-right');
-				if(toggleindex%2 == 0){
-				   $('.left_dic').animate({"margin-left":'0px'},1000);
-				 }else{
-				   $('.left_dic').animate({"margin-left":'300px'},1000);
-				 }
-				toggleindex++;
+				$('.left_dic').toggleClass('tipsmain');
+				
 			});
 			
 //tips_sign
