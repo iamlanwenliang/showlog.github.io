@@ -113,8 +113,7 @@ summary {
 	-webkit-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	overflow-x:hidden;
-	overflow-y:auto;
+	
 	position:relative;
 }
 .right_content{
