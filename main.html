@@ -8,9 +8,9 @@
 <link rel="stylesheet" type="text/css" href="public/css/index.css">
 	<style>
 		.arrow{
-			height:80px;
+			height:50px;
 			width:35px;
-			background-color:rgba(255,255,255,.25);
+			background-color:rgba(0,0,0,.45);
 			
 			overflow:hidden;
 			line-height:800px;
@@ -20,18 +20,23 @@
 			position:absolute;
 			top:50%;
 			right:0px;
-			transform:translateY(-50%);
-			border-top-left-radius: 5px;
-    			border-bottom-left-radius: 5px;
-			background-img:url(public/img/rights.png) 100%;
+			transform:translateY(-50%) rotate(180deg);
+			border-top-right-radius: 5px;
+    			border-bottom-right-radius: 5px;
+			background-image: url(public/img/rights.png);
+    			background-repeat: no-repeat;
+   			background-size: 100% 100%;
 		}
 		.arrow-right{
 			position:absolute;
 			top:50%;
-			right:-30px;
+			right:-40px;
 			transform:translateY(-50%);
 			border-top-right-radius: 5px;
     			border-bottom-right-radius: 5px;
+			background-image: url(public/img/rights.png);
+    			background-repeat: no-repeat;
+   			background-size: 100% 100%;
 		}
 		#directory{
 			overflow-x: hidden; 
