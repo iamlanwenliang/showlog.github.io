@@ -198,4 +198,8 @@ summary:hover{
 	line-height:20px;
 	border-bottom:5px solid #84502f;
 }
+	.main_content {
+	    width: 100%;
+	    height: calc(100% - 35px);
+	}
 }
