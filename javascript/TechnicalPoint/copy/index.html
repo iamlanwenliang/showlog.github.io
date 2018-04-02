@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>深浅拷贝</title>
+		<link href="../../../public/font/font.css" rel="stylesheet" />
+		<style>
+			kon{
+				display:inline-block;
+	width:40px;
+	height:15px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>掌握深浅拷贝</h2>
+		<div style="padding-left:25px;">
+   
+			<h5>前言 </h5>
+			<p>
+				对于深浅拷贝这块，很早很早就有想法说整理一下这块的东西了，可是鉴于自己的菜鸟水平对这里确实是有点模糊的，实际在内存里面的存储什么的都是似懂非懂的状况，也一直没敢起手写，终于准备了一段时间，有点眉目了，今天就把这块的东西我理解的深度范围内归纳总结一下，是归纳总结的同时也是重新系统的学习的过程，有描述错误的地方请大佬不啬赐教。
+			</p>
+			<h5>场景</h5>
+			<p>
+				现在有这样的一个需求，从服务端得到一组基础数据，然后需要修改得到的这份数据，但是同时也需要用到之前未改动的数据，所以有下面代码：
+			</p>
+			<p>
+				//这是从服务端接收到的数据<br />
+				var obj = {<br />
+				<kon></kon>	"name":"前端菜鸟",<br />
+				<kon></kon>	"age":25,<br />
+				<kon></kon>	"sex":"男"<br />
+				};<br />
+				//这是我拷贝得到的数据<br />
+				var objchange = obj;<br />
+				//接下来我需要修改年龄<br />
+				objchange.age = 27;<br />
+				//好了，我修改完了，按照常规我所期望的就是，obj.age的值是25，而objchange.age的值是27，这是我所需要的结果，可是。。。。<br />
+				//结果并不是这样obj.age的值也变成了27，好了接下来我们就开始我们的深浅拷贝的研究了。
+			</p>
+			<p>
+				所谓的深浅拷贝就是进行复制，那么之间的区别主要在于复制出来的新对象和原来的对象是否会互相影响，也就是上面例子中的，改一个，另一个也会改变，另一个改变的话那就是浅拷贝，反之就是深拷贝。那么下来我们就从原理来解释下深浅拷贝。
+			</p>
+			<h5>JavaScript中的变量类型</h5>
+			<p>
+				ECMAScript中的变量类型分为两种：<br />
+				1.基本类型：undefined，null，Boolean，String，Number。<br />
+				2.引用类型：大的分的话就是object类型，细的分的话那就有Object类型，Array类型，Date类型，Function类型等。
+			</p>
+			<h5>存储方式</h5>
+			<p>
+				基本数据类型保存在栈内存，栈内存中分别存储着变量的标识符以及变量的值。<br />
+				例如这段代码的存储：<br />
+				var a = '字符串';<br />
+				var b = 123409;<br />
+				<img src="copy1.png"  /><br />
+				基本类型的复制时，相当于把值也一并复制给了新的变量比如：<br />
+				var a = 1;<br />
+				var  a2 = b;<br />
+				console.log(a === a2);<br />
+				console.log(a == a2);<br />
+				a = 0;<br />
+				console.log(a);<br />
+				console.log(a2);<br />
+			</p>
+			<p>
+				引用类型保存在堆内存中，栈内存存储的是变量的标识符和对象在堆内存中的存储地址，当需要访问引用类型的值时，首先从栈中得到该对象的指针（地址），然后再从对应的堆内存中获取所需要的数据。下面的代码的存储：
+				var obj = {<br />
+				<kon></kon>	name:'Job'<br />
+				}<br />
+				var obj2 =obj;<br />
+				var arr = [1,2,3,4];<br />
+				var arr2 = [[1,2],3];<br />
+				var arr3 = arr;<br />
+				<img src="cope2.png"  /><br />
+				引用类型的复制时，实际上只是复制了指向堆内存的地址给了新的变量，也就是原来的变量与复制的新变量指向了同一个地址。
+				例如：<br />
+				var obj = {name:"jack",age:20};<br />
+				var obj2 = obj;<br />
+				console.log(obj === obj2);<br />
+				obj.age = 30;<br />
+				console.log(obj);<br />
+				console.log(obj2);<br />
+			</p>
+			<p>
+				明白的深浅拷贝以后，对于仅仅是复制了指针的，也就是说复制了之后，原来的变量和新的变量指向同一个地址，彼此各自操作会影响对方的就是<span style="color:#c33;">浅拷贝</span>。反之，是在堆中重新分配内存，拥有不同的指针，但是值是一样的各自操作也不会影响对方的是<span style="color:#c33;">深拷贝。</span>
+			</p>
+			<h5>如何实现深拷贝</h5>
+			<p>
+				我们常用的数据类型对象和数组的深拷贝改如何去实现呢？<br />
+				下面提供两种方法：<br />
+				1.利用递归实现深拷贝，对属性中所有引用类型的值进行遍历，直到是基本类型为止。<br />
+				例如：<br />
+				function deepClone(source){    <br />
+				 <kon></kon> if(!source && typeof source !== 'object'){      <br />
+				 <kon></kon><kon></kon>   throw new Error('error arguments', 'shallowClone');    <br />
+				 <kon></kon> }    <br />
+				 <kon></kon> var targetObj = Array.isArray(source) ? [] : {};    <br />
+				 <kon></kon> for(var keys in source){       <br />
+				 <kon></kon><kon></kon>   if(source.hasOwnProperty(keys)){          <br />
+				 <kon></kon><kon></kon><kon></kon>     if(source[keys] && typeof source[keys] === 'object'){  <br />
+				  <kon></kon><kon></kon><kon></kon><kon></kon>      targetObj[keys] = deepClone(source[keys]);    //递归      <br />
+				   <kon></kon><kon></kon><kon></kon>   }else{            <br />
+				     <kon></kon><kon></kon><kon></kon><kon></kon>   targetObj[keys] = source[keys];   <br />      
+				   <kon></kon><kon></kon><kon></kon>   }       <br />
+				   <kon></kon><kon></kon> }    <br />
+				  <kon></kon>}    <br />
+				  <kon></kon>return targetObj; <br />
+				}<br />
+				有实际操作的可以实践下，测试下这个方法的健壮性。<br />
+				这个方法一眼就能看出来也只是处理对象和数组的，首先function类型没有处理，类型用typeof和instanceof也不完全靠谱等。
+			</p>
+			<p>
+				2.JSON 对象的 JSON.parse() 和 JSON.stringify().但是这个方法也不是全部的能实现的，例如对象中有一些不安全的值（undefined，function，symbol等）就无法实现了，好奇的同学可以测试下。
+			</p>
+			<p>
+				下面说下数组中的slice 和 concat方法：<br />
+				两者都会返回一个新的数组实例，例如：<br />
+				var a = [1,2,3];<br />
+				var b = a.slice(); //slice<br />
+				console.log(b === a);//false<br />
+				a[0] = 0;<br />
+				console.log(a);//[0,2,3]<br />
+				console.log(b);//[1,2,3]<br />
+				var c = [1,2,3];<br />
+				var d = c.concat();  //concat<br />
+				console.log(d === c);//false<br />
+				c[0] = 0;<br />
+				console.log(c);//[0,2,3]<br />
+				console.log(d);//[1,2,3]<br />
+				看样子是深拷贝呢，的确很有迷惑性，但是答案是否定的，Array 的 slice 和 concat 方法 他们在拷贝的时候，第一层的时候都是深拷贝，但是到了第二层之后就是浅拷贝了，例如下面例子：（在jQuery中也提供了一种深拷贝的方法，extend同样也可以实现）<br />
+				var a = [[1,2,3],4,5];<br />
+				var b = a.slice();<br />
+				console.log(a === b);<br />
+				a[0][0] = 6;<br />
+				console.log(a);<br />
+				console.log(b);
+			</p>
+			<p>暂时就说到这，其实还有个最重要的问题是：有没有一个完美的方式处理好深拷贝的问题呢？后续会补充的。</p>
+		</div>
+	</body>
+</html>
