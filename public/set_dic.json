@@ -149,6 +149,13 @@
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
+                            },
+				{
+                                "name": "深浅拷贝", 
+                                "url": "javascript/TechnicalPoint/copy/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
                             }
                         ]
                     }
