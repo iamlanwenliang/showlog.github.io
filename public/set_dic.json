@@ -328,6 +328,21 @@
 	    }
 	]
     },
+	{
+        "name": "TypeScript", 
+        "url": "", 
+        "isopen": false, 
+        "parent": true, 
+        "children": [
+	    {
+		"name": "简介", 
+		"url": "svg/index.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
+	    }
+	]
+    },
     {
         "name": "HTML", 
         "url": "", 
