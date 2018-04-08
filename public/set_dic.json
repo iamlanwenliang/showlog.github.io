@@ -157,6 +157,14 @@
                                 "parent": false, 
                                 "children": ""
                             }
+				,
+				{
+                                "name": "JavaScript运行机制", 
+                                "url": "javascript/TechnicalPoint/copy/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
                         ]
                     }
                 ]
