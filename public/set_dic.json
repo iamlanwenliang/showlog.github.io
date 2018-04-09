@@ -165,6 +165,14 @@
                                 "parent": false, 
                                 "children": ""
                             }
+				,
+				{
+                                "name": "typeof 和instanceof", 
+                                "url": "javascript/TechnicalPoint/typeof/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
                         ]
                     }
                 ]
