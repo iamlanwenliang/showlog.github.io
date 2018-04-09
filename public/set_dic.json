@@ -181,6 +181,22 @@
                                 "parent": false, 
                                 "children": ""
                             }
+				,
+				{
+                                "name": "async函数", 
+                                "url": "javascript/TechnicalPoint/promise/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+				,
+				{
+                                "name": "h5的数据存储以及读取", 
+                                "url": "javascript/TechnicalPoint/promise/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
                         ]
                     }
                 ]
