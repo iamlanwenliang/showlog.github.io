@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>初识promise</title>
+		<link href="../../../public/font/font.css" rel="stylesheet" />
+		<style>
+			kon{
+				display:inline-block;
+	width:40px;
+	height:15px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>初识promise</h2>
+		<div style="padding-left:25px;">
+   
+			<h5>开门见山</h5>
+			<p>
+				一个 Promise 就是一个代表了异步操作最终完成或者失败的对象。大多数人都在使用由其他函数创建并返回的promise，因此，本教程将首先探讨返回promise的使用情况。
+			本质上，一个promise是某个函数返回的对象，你可以把回调函数绑定在这个对象上，而不是把回调函数当作参数传进函数。 
+			</p>
+			<p>
+				我们之前的回调方式是这样：<br />
+				function successCallback(result) {<br />
+				 <kon></kon> //do something<br />
+				}<br />
+				
+				function failureCallback(error) {<br />
+				 <kon></kon> //do something<br />
+				}<br />
+				doSomething(successCallback, failureCallback);
+			</p>
+			<p>
+				使用了promise之后就简洁多了，如下：<br />
+				doSomething().then(successCallback, failureCallback);<br />
+				我们把这个称为异步函数调用。
+			</p>
+			<p>
+				promise不像旧式函数那样传递回调函数：<br />
+
+				★在JavaScript事件队列的当前运行完成之前，回调函数永远不会被调用。<br />
+				★通过 .then 形式添加的回调函数，甚至都在异步操作完成之后才被添加的函数，都会被调用，如上所示。<br />
+				★通过多次调用 .then，可以添加多个回调函数，它们会按照插入顺序并且独立运行。<br />
+				但是，promise最直接的好处就是链式调用。
+			</p>
+			<p>
+				链式调用:<br />
+				一个常见的需求就是连续执行两个或者多个异步操作，这种情况下，每一个后来的操作都在前面的操作执行成功之后，带着上一步操作所返回的结果开始执行。我们可以通过创造一个promise chain来完成这种需求.<br />
+				const promise = doSomething();<br />
+				const promise2 = promise.then(successCallback, failureCallback);<br />
+				或者<br />
+				const promise2 = doSomething().then(successCallback, failureCallback);<br />
+				第二个promise不仅代表doSomething()函数的完成，也代表了你传入的 successCallback 或者failureCallback 的完成，这也可能是其他异步函数返回的promise。这样的话，任何被添加给 promise2 的回调函数都会被排在 successCallback 或 failureCallback 返回的promise后面。<br />
+				基本上，每一个promise代表了链式中另一个异步过程的完成。
+			</p>
+			<p>
+				在过去，做多重的异步操作，会导致经典的回调地狱(之前在维护代码的时候见一个同事这样写了十几层，简直看的人头皮发麻)：<br />
+				doSomething(function(result) {<br />
+				 <kon></kon> doSomethingElse(result, function(newResult) {<br />
+				  <kon></kon><kon></kon>  doThirdThing(newResult, function(finalResult) {<br />
+				   <kon></kon><kon></kon><kon></kon>   console.log('Got the final result: ' + finalResult);<br />
+				   <kon></kon><kon></kon> }, failureCallback);<br />
+				  <kon></kon>}, failureCallback);<br />
+				}, failureCallback);<br />
+				通过现代的函数，我们把回调附加到被返回的promise上代替以往的做法，形成一个promise 链：<br />
+				doSomething().then(function(result) {<br />
+				 <kon></kon> return doSomethingElse(result);<br />
+				})<br />
+				.then(function(newResult) {<br />
+				 <kon></kon> return doThirdThing(newResult);<br />
+				})<br />
+				.then(function(finalResult) {<br />
+				 <kon></kon> console.log('Got the final result: ' + finalResult);<br />
+				})<br />
+				.catch(failureCallback);<br />
+				then里的参数是可选的，catch(failureCallback) 是 then(null, failureCallback) 的缩略形式。如下所示，也可以用 arrow functions（箭头函数）来表示：<br />
+				doSomething()<br />
+				.then(result => doSomethingElse(result))<br />
+				.then(newResult => doThirdThing(newResult))<br />
+				.then(finalResult => {<br />
+				  <kon></kon>console.log(`Got the final result: ${finalResult}`);<br />
+				})<br />
+				.catch(failureCallback);<br />
+				如果想要在回调中获取上个promise中的结果，上个promise中必须要返回结果
+			</p>
+		</div>
+	</body>
+</html>
