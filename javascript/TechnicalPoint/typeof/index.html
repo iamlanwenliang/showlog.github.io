@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>typeof 和instanceof</title>
+		<link href="../../../public/font/font.css" rel="stylesheet" />
+		<style>
+			kon{
+				display:inline-block;
+	width:40px;
+	height:15px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>typeof 和instanceof</h2>
+		<div style="padding-left:25px;">
+   
+			<h5>typeof </h5>
+			<p>
+				typeof操作符返回一个字符串，表示未经计算的操作数的类型。
+			</p>
+			<p>
+				语法：<br />
+				typeof operand 或者 typeof (operand)<br />
+				operand 是一个表达式，表示对象或原始值，其类型将被返回。括号是可选的。
+			</p>
+			<p>
+				有关的typeof可能的返回值。<br />
+				1.Undefined 返回 "undefined"。<br />
+				2.Null 返回 "object"。<br />
+				3.Boolean 返回 "boolean"。<br />
+				4.Number 返回 "number"。<br />
+				5.String 返回 "string"。<br />
+				6.Symbol  返回 "symbol"。<br />
+				7.宿主对象 返回 Implementation-dependent。<br />
+				8.函数对象 返回 "function"。<br />
+			</p>
+			<p>
+				使用 new 操作符:<br />
+				var fn1 = new String()<br />
+				fn1//String {"", length: 0}length: 0__proto__: String[[PrimitiveValue]]: ""<br />
+				fn1 instanceof String<br />
+				//true<br />
+				typeof fn1<br />
+				//"object"<br />
+				fn2 = new Function()<br />
+				typeof fn2<br />
+				//"function"<br />
+			</p>
+			<h5>instanceof </h5>
+			<p>
+				instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。
+			</p>
+			<p>
+				语法：<br />
+				object instanceof constructor<br />
+				object，要检测的对象.constructor，某个构造函数。<br />
+				instanceof 运算符用来检测 constructor.prototype 是否存在于参数 object 的原型链上。
+			</p>
+			<p>
+				instanceof 返回的值是 Boolean。
+			</p>
+			<p>
+				例如：<br />
+				function Car(make, model, year) {<br />
+				 <kon></kon> this.make = make;<br />
+				  <kon></kon>this.model = model;<br />
+				  <kon></kon>this.year = year;<br />
+				}<br />
+				var mycar = new Car("Honda", "Accord", 1998);<br />
+				var a = mycar instanceof Car;    // 返回 true<br />
+				var b = mycar instanceof Object; // 返回 true
+			</p>
+		</div>
+	</body>
+	
+</html>
