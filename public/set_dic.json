@@ -173,6 +173,14 @@
                                 "parent": false, 
                                 "children": ""
                             }
+				,
+				{
+                                "name": "promise", 
+                                "url": "javascript/TechnicalPoint/promise/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
                         ]
                     }
                 ]
