@@ -184,7 +184,7 @@
 				,
 				{
                                 "name": "async函数", 
-                                "url": "javascript/TechnicalPoint/promise/index.html", 
+                                "url": "javascript/TechnicalPoint/async/index.html", 
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
@@ -193,6 +193,14 @@
 				{
                                 "name": "h5的数据存储以及读取", 
                                 "url": "javascript/TechnicalPoint/promise/index.html", 
+                                "isopen": false, 
+                                "parent": false, 
+                                "children": ""
+                            }
+				,
+				{
+                                "name": "Generator函数", 
+                                "url": "javascript/TechnicalPoint/Generator/index.html", 
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
