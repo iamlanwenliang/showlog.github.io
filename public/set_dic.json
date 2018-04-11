@@ -204,7 +204,14 @@
                                 "isopen": false, 
                                 "parent": false, 
                                 "children": ""
-                            }
+                            },
+				{
+				"name": "draggable属性使用", 
+				"url": "javascript/TechnicalPoint/draggable/index.html", 
+				"isopen": false, 
+				"parent": false, 
+				"children": ""
+			    }
                         ]
                     }
                 ]
