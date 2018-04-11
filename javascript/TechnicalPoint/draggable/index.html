@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽归纳</title>
+		<link href="../../../public/font/font.css" rel="stylesheet" />
+		<style>
+			
+			kon{
+				display:inline-block;
+				width:40px;
+				height:15px;
+			}
+			table{
+				    border-collapse: collapse;
+    				border-spacing: 0;
+    				border-color:#fff;
+    				width:100%;
+			}
+			th{
+				background-color:#0490A6;
+				color:#fff;
+			}
+			td{
+				border-color:#fff;
+				text-align: center;
+			}
+			tr{
+				border-bottom:1px solid #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>拖拽案例</h2>
+		<div style="padding-left:25px;">
+   
+			<h5>前言 </h5>
+			<p >
+				拖拽是一种常见的特性，即抓取对象以后拖到另一个位置，这也是HTML5新特性之一，可以说这种特性出来之后对于我们开发也是很便捷了。
+			</p>
+			<p>
+				在网页中，有些情况下会使用默认拖拽行为。这些包括文本选择，图像和链接。当图像或链接被拖动时，图像或链接的URL被设置为拖动数据，并开始拖动。对于其他元素，它们必须是默认拖动发生的选择的一部分。要看到这个效果，请选择一个网页区域，然后单击并按住鼠标并拖动所选内容。随着拖动的发生，将出现选择操作系统特定的渲染并跟随鼠标指针。但是，如果没有侦听器调整要拖动的数据，此行为只是默认的拖动行为。
+			</p>
+			<p>
+				在HTML中，除了图像，链接和选择的默认行为之外，默认情况下没有其他元素可拖动。
+				要使另一个HTML元素可拖动，必须完成三件事：
+				
+			</p>
+			<p>
+				1.将该draggable属性设置为true您希望可拖动的元素。<br />
+				2.为该dragstart事件添加一个侦听器。<br />
+				3.设置 drag data 在上面定义的监听器中。<br />
+				例如：
+			</p>
+			<p>
+				＜div draggable="true" ondragstart="event.dataTransfer.setData('text/plain', 'This text may be dragged')"＞<br />
+				<kon></kon>  This text ＜strong＞may＜/strong＞ be dragged.<br />
+				＜/div＞<br />
+			</p>
+			<p>
+				该draggable属性设置为true，因此该元素变为可拖动。如果该属性被省略或设置为false，则该元素不会被拖动，而是选择文本。该draggable属性可用于任何元素，包括图像和链接。但是，对于最后两个，默认值为true，因此您只能使用draggable具有值的属性false来禁用拖动这些元素。
+			</p>
+			<p>
+				请注意，当元素被拖动时，通过用鼠标单击和拖动，可以不再以正常方式选择元素内的文本或其他元素。相反，用户必须按住alt键以使用鼠标选择文本，或使用键盘.
+			</p>
+			<p>
+				当用户开始拖动时，dragstart事件被触发。在这个例子中，dragstart监听器被添加到可拖动元素本身; 然而，随着大多数其他事件的发生，拖动事件也会随之升温，您可以听更高的祖先。在dragstart事件中，您可以指定拖动数据，反馈图像和拖动效果，所有这些都在下面进行描述。但是，只需要拖动数据; 默认的图像和拖动效果适用于许多情况
+			</p>
+			<h2>draggable API</h2>
+			<h5>拖动数据</h5>
+			<p>
+				所有drag events都有一个属性dataTransfer，它保存拖动数据（dataTransfer是一个DataTransfer对象）。
+			</p>
+			<p>
+				当发生拖拽时，数据必须用其识别拖动相关联什么被拖动。例如，在文本框中拖动所选文本时，与拖动数据项关联的数据就是文本本身。类似地，当拖动网页上的链接时，拖动数据项是链接的URL。
+			</p>
+			<p>
+				在drag data包含两个部分信息，类型（或格式）的数据，并且所述数据值。格式是一个字符串类型（例如text / plain用于文本数据），该值是一串文本。当拖动开始时，您通过提供类型和数据来添加数据。在拖动期间，在一个事件侦听器dragenter和dragover事件，您可以使用被拖动的数据的数据类型检查的下降是否是允许的。例如，接受链接的放置目标将检查链接类型text / uri-list。在放置事件期间，侦听器将检索被拖动的数据并将其插入放置位置。
+			</p>
+			<p>
+				该属性返回像s 一样的MIME类型列表，例如text / plain或image / jpeg。你也可以创建你自己的类型。文章推荐的拖动类型列出了最常用的类型。drag data's typesDOMString
+			</p>
+			<p>
+				拖动可能包括几种不同类型的数据项。这允许以更具体的类型（通常是自定义类型）提供数据，但仍然为不支持更多特定类型的放置目标提供后备数据。通常情况下，最不特定的类型将是使用text / plain类型的普通文本数据。这些数据将是一个简单的文字表示。<br />
+
+要在其中设置拖动数据项dataTransfer，请使用该setData()方法。它有两个参数，数据类型和数据值。例如：
+
+			</p>
+			<p>
+				event.dataTransfer.setData("text/plain", "Text to drag");
+			</p>
+			<p>
+				在这种情况下，数据值是“要拖动的文本”，格式为text / plain。<br />
+
+您可以提供多种格式的数据。为此，请setData()以不同的格式多次调用该方法。您应该从格式按照从最具体到最不具体的顺序调用它。
+			</p>
+			<p>
+				var dt = event.dataTransfer;<br />
+				dt.setData("application/x-bookmark", bookmarkString);<br />
+				dt.setData("text/uri-list", "http://www.mozilla.org");<br />
+				dt.setData("text/plain", "http://www.mozilla.org");<br />
+			</p>
+			<p>
+				这里，数据以三种不同的类型添加。第一个类型'application / x-bookmark'是一个自定义类型。其他应用程序不支持此类型，但您可以使用自定义类型在同一站点或应用程序的区域之间进行拖动。通过提供其他类型的数据，我们也可以支持以较不具体的形式拖到其他应用程序。'application / x-bookmark'类型可以为应用程序中的数据提供更多的细节，而其他类型可以包含一个URL或文本版本。
+			</p>
+			<p>
+				您可以使用该clearData()方法清除数据，该方法接受一个参数，即要删除的数据的类型。
+			</p>
+			<p>
+				event.dataTransfer.clearData("text/uri-list");
+			</p>
+			<p>
+				该clearData()方法的类型参数是可选的。如果未指定类型，则会删除与所有类型关联的数据。如果拖动不包含拖动数据项目，或者所有项目都已被清除，则不会发生拖动。
+			</p>
+			<p>
+				您可以使用该getData()方法获取存储的数据，该方法接受一个参数，即要获取的数据的类型。
+			</p>
+			<p>
+				event.dataTransfer.getData("Text");
+			</p>
+			<h5>
+				拖动图片
+			</h5>
+			<p>
+				发生拖动时，将从拖动目标（“ dragstart”事件触发的元素）生成半透明图像，并在拖动过程中跟随鼠标指针。该图像是自动创建的，因此您不需要自己创建它。但是，您可以使用setDragImage()指定自定义拖动反馈图像。
+			</p>
+			<p>
+				event.dataTransfer.setDragImage(image, xOffset, yOffset);
+			</p>
+			<p>
+				三个参数是必要的。第一个是对图像的引用。这个引用通常是一个图像元素，但它也可以是一个画布或任何其他元素。反馈图像将从屏幕上的任何图像生成，但对于图像，它们将以原始大小绘制。方法的第二个和第三个参数setDragImage()是图像相对于鼠标指针出现的偏移量。<br />
+
+也可以使用不在文档中的图像和画布。使用canvas元素绘制自定义拖动图像时，此技术很有用，如下例所示：
+			</p>
+			<p>
+				function dragWithCustomImage(event) {<br />
+				 <kon></kon> var canvas = document.createElementNS("http://www.w3.org/1999/xhtml","canvas");<br />
+				 <kon></kon> canvas.width = canvas.height = 50;<br />
+				
+				 <kon></kon> var ctx = canvas.getContext("2d");<br />
+				 <kon></kon> ctx.lineWidth = 4;<br />
+				 <kon></kon> ctx.moveTo(0, 0);<br />
+				 <kon></kon> ctx.lineTo(50, 50);<br />
+				 <kon></kon> ctx.moveTo(0, 50);<br />
+				 <kon></kon> ctx.lineTo(50, 0);<br />
+				 <kon></kon> ctx.stroke();<br />
+				
+				  <kon></kon>var dt = event.dataTransfer;<br />
+				  <kon></kon>dt.setData('text/plain', 'Data to Drag');<br />
+				  <kon></kon>dt.setDragImage(canvas, 25, 25);<br />
+				}
+			</p>
+			<p>
+				在这个例子中，我们使一个画布成为拖动图像。由于画布的宽度为50像素，高度为50像素，因此我们使用此偏移量（25和25）的一半，以使图像以鼠标指针为中心显示。
+			</p>
+			<h5>
+				拖动效果
+			</h5>
+			<p>
+				拖动时，可能会执行多个操作。该copy操作用于指示被拖动的数据将从当前位置复制到放置位置。该move操作用于指示被拖动的数据将被移动，并且该link操作用于指示将在源位置和放置位置之间创建某种形式的关系或连接。<br />
+
+您可以通过设置事件侦听器中的effectAllowed属性来指定拖动源的三种操作中的哪一种dragstart。
+			</p>
+			<p>
+				event.dataTransfer.effectAllowed = "copy";
+			</p>
+			<p>
+				在这个例子中，只允许一个副本。您可以通过各种方式组合值：<br />
+
+				none:不允许操作<br />
+				copy:只复制<br />
+				move:只移动<br />
+				link:仅链接<br />
+				copyMove:仅复制或移动<br />
+				copyLink:仅复制或链接<br />
+				linkMove:链接或仅移动<br />
+				all:复制，移动或链接<br />
+			</p>
+			<p>
+				请注意，这些值必须完全按照上面列出的方式使用。例如，将该effectAllowed属性设置为copyMove允许复制或移动操作，但阻止用户执行链接操作。如果您不更改effectAllowed属性，则允许进行任何操作，就像使用“全部”值一样。因此，除非要排除特定类型，否则不需要调整此属性。
+			</p>
+			<p>
+				在拖动操作期间，这些dragenter或dragover事件的侦听器可以检查该effectAllowed属性以查看哪些操作是允许的。dropEffect应该在这些事件之一中设置相关的属性，以指定应该执行哪一个单独的操作。有效值dropEffect是none，copy，move，或link。组合值不用于此属性。
+			</p>
+			<p>
+				使用dragenter和dragover事件，该dropEffect属性被初始化为用户请求的效果。用户可以通过按修改键来修改所需的效果。虽然使用的确切键值因平台而异，但通常Shift和Control键将用于在复制，移动和链接之间切换。鼠标指针将会改变，以指示需要哪个操作; 例如，对于副本，光标可能会在其旁边显示一个加号。
+			</p>
+			<p>
+				例如，如果特定的放置目标仅支持某些操作，则可以dropEffect在dragenteror dragover事件期间修改该属性。您可以修改该dropEffect属性以覆盖用户效果，并强制执行特定的放置操作。请注意，此效果必须是effectAllowed属性中列出的效果。否则，它将被设置为允许的替代值。
+			</p>
+			<p>
+				event.dataTransfer.dropEffect = "copy";
+			</p>
+			<p>
+				在这个例子中，复制是执行的效果。<br />
+
+您可以使用该值none指示在此位置不允许放置，但在此情况下，最好不要取消该放置。<br />
+
+在drop和dragend事件中，您可以检查该dropEffect属性以确定最终选择哪个效果。如果选择的效果是“移动”，那么原始数据应该从dragend事件内的拖动源中移除。
+			</p>
+			<h5>
+				指定放置目标
+			</h5>
+			<p>
+				用于dragenter和dragover事件的侦听器用于指示有效的放置目标，即可拖放项目的位置。网页或应用程序的大部分区域都无法放置数据。因此，这些事件的默认处理不允许丢弃。
+
+如果您想允许放置，您必须通过取消该事件来阻止默认处理。您可以通过false从属性定义的事件侦听器返回或通过调用事件的preventDefault()方法来完成此操作。后者在单独的脚本中定义的函数中可能更加可行。
+			</p>
+			<p>
+				＜div ondragover="return false"＞<br />
+				＜div ondragover="event.preventDefault()"＞<br />
+			</p>
+			<p>
+				preventDefault()在 dragenter和dragoverevent 期间调用该方法将指示在该位置允许放置。但是，您通常只希望preventDefault()在某些情况下调用该方法，例如，仅当正在拖动链接时才调用该方法。要做到这一点，调用一个函数来检查一个条件，只有当条件满足时才会取消该事件。如果条件不满足，请不要取消该事件，并且如果用户释放鼠标按钮，将不会发生放置。
+			</p>
+			<p>
+				根据数据传输中的拖拽数据的类型来接受或拒绝放置是最常见的 - 例如，允许图像或链接或两者兼而有之。为此，您可以检查types事件dataTransfer（属性）的属性。该types属性返回拖动开始时添加的字符串类型的数组，顺序从最重要到最不重要。
+			</p>
+			<p>
+				function contains(list, value) {<br />
+				 <kon></kon>   for( var i = 0; i < list.length; ++i ) {<br />
+				  <kon></kon><kon></kon>      if(list[i] === value) return true;<br />
+				 <kon></kon>   }<br />
+				 <kon></kon>   return false;<br />
+				}<br />
+				
+				function doDragOver(event) {<br />
+				 <kon></kon> var isLink = contains( event.dataTransfer.types, "text/uri-list");<br />
+				 <kon></kon> if (isLink) {<br />
+				<kon></kon><kon></kon>    event.preventDefault();<br />
+				<kon></kon>  }<br />
+				}
+			</p>
+			<p>
+				在这个例子中，我们使用该contains方法来检查类型text / uri-list是否存在于类型列表中。如果是这样，我们将取消该事件，以便允许放弃。如果拖动数据不包含链接，则该事件不会被取消，并且该位置不会发生拖放。
+			</p>
+			<p>
+				如果您希望更具体地了解将执行的操作类型，您可能还希望同时设置effectAllowed，dropEffect属性或两者。当然，如果您不取消该活动，更改任一属性也不会产生任何影响。
+			</p>
+			<h5>
+				放置反馈
+			</h5>
+			<p>
+				您可以通过几种方式向用户指出在某个位置允许放置。根据dropEffect属性的值，鼠标指针将根据需要进行更新。虽然确切的外观取决于用户的平台，但例如，通常会出现一个加号图标用于“复制”，并且当不允许放置时会出现“不能放置在此处”图标。在许多情况下，这个鼠标指针反馈就足够了。
+			</p>
+			<p>
+				但是，您也可以根据需要使用插入点或高亮来更新用户界面。为了简单突出显示，您可以-moz-drag-over在放置目标上使用CSS伪类。
+			</p>
+			<p>
+				.droparea:-moz-drag-over {<br />
+				 <kon></kon> border: 1px solid black;<br />
+				}<br />
+			</p>
+			<p>
+				在这个例子中，带有这个类的元素droparea将会收到一个1像素的黑色边框，而这是一个有效的放置目标，也就是说，如果该preventDefault()方法在dragenter事件中被调用。请注意，您必须取消dragenter该伪类应用的事件，因为此状态未针对该dragover事件进行检查。
+			</p>
+			<p>
+				对于更复杂的视觉效果，您还可以在dragenter事件期间执行其他操作，例如，通过在发生放置的位置插入元素。例如，这可能是一个插入标记或一个元素，表示其新位置中的拖动元素。为此，您可以创建一个图像或分隔符元素，并在dragenter事件过程中将其插入文档。
+			</p>
+			<p>
+				该dragover事件将触发鼠标指向的元素。当然，您也可能需要将插入标记移动到dragover事件的周围。您可以像使用其他鼠标事件一样使用事件clientX和clientY属性来确定鼠标指针的位置。
+			</p>
+			<p>
+				最后，dragleave当拖动离开元素时，事件将触发元素。这是您应该删除任何插入标记或突出显示的时间。你不需要取消这个事件。任何使用-moz-drag-over伪类指定的突出显示或其他视觉效果都将被自动删除。dragleave即使拖动被取消，该事件也会始终激活，因此您可以始终确保在此事件期间可以完成任何插入点清理。
+			</p>
+			<h5>执行一个放置</h5>
+			<p>
+				当用户释放鼠标时，拖放操作结束。如果鼠标是通过一个有效放置目标的元素释放的，也就是说，取消了最后一个dragenter或dragover事件，然后放下将会成功，并且drop事件将触发目标。否则，拖动操作将被取消，并且不会drop触发事件。
+			</p>
+			<p>
+				在drop活动期间，您应该检索从事件中删除的数据并将其插入到放置位置。您可以使用该dropEffect属性来确定所需的拖动操作。
+			</p>
+			<p>
+				与所有与拖动相关的事件一样，事件的domxref("DragEvent.dataTransfer","dataTransfer")}}属性将保存正在拖动的数据。该getData()方法可用于再次检索数据。
+			</p>
+			<p>
+				function onDrop(event) {<br />
+				 <kon></kon> var data = event.dataTransfer.getData("text/plain");<br />
+				 <kon></kon> event.target.textContent = data;<br />
+				 <kon></kon> event.preventDefault();<br />
+				}
+			</p>
+			<p>
+				该getData()方法接受一个参数，即要检索的数据类型。它将返回setData()在拖动操作开始时被调用时设置的字符串值。如果该类型的数据不存在，将返回一个空字符串。当然，你可能会知道正确的数据类型是可用的，因为之前在dragover事件中检查过。
+			</p>
+			<p>
+				在这里的例子中，一旦我们检索了数据，我们插入字符串作为目标的文本内容。这具有在拖放文本的位置插入拖放文本的效果，假定放置目标是诸如a p或div元素之类的文本区域。
+			</p>
+			<p>
+				在网页中，preventDefault()如果您接受了放置，则应该调用事件的方法，以便默认的浏览器处理不会处理丢弃的数据。例如，当链接被拖到网页上时，Firefox将打开链接。通过取消事件，此行为将被阻止。
+			</p>
+			<p>
+				您也可以检索其他类型的数据。如果数据是链接，它应该有text / uri-list类型。然后你可以在内容中插入一个链接。
+			</p>
+			<p>
+				function doDrop(event) {<br />
+				 <kon></kon> var lines = event.dataTransfer.getData("text/uri-list").split("\n");<br />
+				  <kon></kon>for (let line of lines) {<br />
+				 <kon></kon><kon></kon>   if (line.startsWith("#"))<br />
+				 <kon></kon><kon></kon><kon></kon>     continue;<br />
+				
+				<kon></kon><kon></kon>    let link = document.createElement("a");<br />
+				 <kon></kon><kon></kon>   link.href = line;<br />
+				<kon></kon><kon></kon>    link.textContent = line;<br />
+				<kon></kon><kon></kon>    event.target.appendChild(link);<br />
+				<kon></kon>  }<br />
+				<kon></kon>  event.preventDefault();<br />
+				}
+			</p>
+			<p>
+				本示例从拖动的数据中插入一个链接。正如您可以从名称中猜出的那样，文本/ uri-list类型实际上可能包含一个URL列表，每个URL都在一个单独的行上。在这段代码中，我们使用拆分拆分串入行，然后遍历行的名单，将每个作为链接到文档中。还要注意，我们跳过以数字符号（＃）开头的链接，因为这些是注释。
+			</p>
+			<p>
+				对于简单情况，您可以使用特殊类型URL来检索列表中的第一个有效URL。例如：<br />
+				var link = event.dataTransfer.getData("URL");
+			</p>
+			<p>
+				这消除了检查评论或自行迭代的需要; 但是，它仅限于列表中的第一个URL。<br />
+
+该URL类型是一种仅用作简写的特殊类型，它不出现在types属性中指定的类型列表中。<br />
+
+有时您可能会支持一些不同的格式，并且您想要检索支持的最具体的数据。在这个例子中，一个放置目标支持三种格式。
+			</p>
+			<p>
+				以下示例返回与支持最佳格式相关的数据：
+			</p>
+			<p>
+				function doDrop(event) {<br />
+				 <kon></kon> var types = event.dataTransfer.types;<br />
+				 <kon></kon> var supportedTypes = ["application/x-moz-file", "text/uri-list", "text/plain"];<br />
+				 <kon></kon> types = supportedTypes.filter((value) => types.includes(value));<br />
+				<kon></kon>  if (types.length)<br />
+				 <kon></kon><kon></kon>   var data = event.dataTransfer.getData(types[0]);<br />
+				<kon></kon>  event.preventDefault();<br />
+				}<br />
+			</p>
+			<p>
+				此方法依赖于Firefox 3中提供的JavaScript功能。但是，可以调整代码以支持其他平台。
+			</p>
+			<h5>完成一个拖动</h5>
+			<p>
+				一旦拖动完成，dragend就会在拖动源（与接收dragstart事件相同的元素）中触发一个事件。如果拖动成功[1]或者它被取消，此事件将会触发。但是，您可以使用该dropEffect属性来确定发生了什么拖放操作。
+			</p>
+			<p>
+				如果该dropEffect属性none在a期间具有该值dragend，则该拖动被取消。否则，效果将指定执行了哪个操作。移动操作后，源可以使用此信息从旧位置移除拖动的项目。mozUserCancelled如果用户取消拖动（通过按Escape键），则该属性将设置为true;如果由于其他原因（如无效拖放目标或其成功）而取消拖动，则该属性将设置为true。
+			</p>
+			<p>
+				放置可能发生在同一个窗口内或另一个应用程序内。dragend无论如何，该事件将始终开启。事件screenX和screenY属性将被设置为发生丢弃的屏幕坐标。<br />
+
+在后dragend事件已完成传播，拖放操作完成。
+			</p>
+			<h2>下面主要分类对拖拽文件、拖拽图片和拖拽URL等</h2>
+			<h5>拖动文字</h5>
+			<p>
+				拖动文字时，请使用text/plain类型。数据应该是要拖动的字符串。例如：
+			</p>
+			<p>
+				event.dataTransfer.setData("text/plain", "This is text to drag")
+			</p>
+			<p>
+				在文本框中拖动文本和在网页上进行选择是自动完成的，因此您无需自己处理拖动操作。
+建议您始终将该text/plain类型的数据添加为应用程序的后备或删除不支持其他类型的目标，除非没有逻辑文本替代方案。总是最后添加纯文本类型，因为它是最不具体的。
+			</p>
+			<h5>拖动链接</h5>
+			<p>
+				链接应包含两种类型的数据; 第一个应该是使用该类型的URL text/uri-list，第二个是使用该text/plain类型的URL 。这两种类型都应使用相同的数据，即链接的URL。例如：
+			</p>
+			<p>
+				var dt = event.dataTransfer;<br />
+				dt.setData("text/uri-list", "http://www.mozilla.org");<br />
+				dt.setData("text/plain", "http://www.mozilla.org");<br />
+			</p>
+			<p>
+				像往常一样，将text/plain类型设置为最后一个，因为它比uri类型更具体
+			</p>
+			<p>
+				要拖动多个链接，您还可以用换行符分隔每个链接。以数字符号（＃）开头的行是注释，不应被视为有效的URL。您可以使用注释来指示链接的目的，或者保留与链接关联的标题。text/plain拖动数据的版本应包含所有链接，但不应包含评论。
+			</p>
+			<p>
+				http://www.mozilla.org<br />
+				#A second link<br />
+				http://www.example.com<br />
+			</p>
+			<p>
+				此示例text/uri-list数据包含两个链接和一条评论。<br />
+				在检索丢弃的链接时，应确保处理多个链接可能已被拖动的情况，包括数据中出现的任何注释。为了方便起见，URL可以使用特殊类型来引用该text/uri-list类型数据中的第一个有效链接。您不应该使用URL类型添加数据; 试图这样做只会设置text/uri-list类型的值。
+			</p>
+			<p>
+				var url = event.dataTransfer.getData("URL");
+			</p>
+			<p>
+				您也可以使用Mozilla特定类型查看数据text/x-moz-url。如果它出现，它应该在text/uri-list类型之前使用。它包含链接的URL，后跟链接的标题，并由换行符分隔。例如：
+			</p>
+			<p>
+				http://www.mozilla.org<br />
+				Mozilla<br />
+				http://www.example.com<br />
+				Example<br />
+			</p>
+			<h5>
+				拖动HTML和XML
+			</h5>
+			<p>
+				HTML内容可能会使用该text/html类型。这种类型的数据应该是序列化的HTML进行拖动。例如，将此类型的数据值设置为innerHTML元素属性的值将是合适的。
+
+XML内容可能会使用该text/xml类型，但您应该确保该数据值是格式良好的XML。<br />
+
+您还可以使用该text/plain类型包含HTML或XML数据的纯文本表示。数据应该只是文本，不应包含任何源标签或属性。例如：
+			</p>
+			<p>
+				var dt = event.dataTransfer;<br />
+				dt.setData("text/html", "Hello there, ＜strong＞stranger＜/strong＞");<br />
+				dt.setData("text/plain", "Hello there, stranger");<br />
+			</p>
+			<h5>
+				拖动文件
+			</h5>
+			<p>
+				使用application/x-moz-file具有nsIFile对象的数据值的类型拖动本地文件。非特权网页无法检索或修改此类型的数据。由于文件不是字符串，因此您必须使用该mozSetDataAt()方法分配数据。同样，在检索数据时，您必须使用该mozGetDataAt()方法。
+			</p>
+			<p>
+				event.dataTransfer.mozSetDataAt("application/x-moz-file", file, 0);
+			</p>
+			<p>
+				如果可能的话，您也可以使用text/uri-list和/或text/plain类型包含文件的文件URL 。应该最后添加这些类型，以便更具体的application/x-moz-file类型具有更高的优先级。<br />
+
+在数据传输过程中，多个文件将作为多个项目丢失。有关详细信息，请参阅拖放多个项目。<br />
+
+以下示例显示如何创建一个用于接收拖放文件的区域：
+			</p>
+			<p>
+				＜listbox ondragenter="return checkDrag(event)"<br />
+				   <kon></kon> <kon></kon>     ondragover="return checkDrag(event)"<br />
+				  <kon></kon> <kon></kon>      ondrop="doDrop(event)"/＞<br />
+				
+				＜script＞<br />
+				function checkDrag(event){<br />
+				<kon></kon>  return event.dataTransfer.types.contains("application/x-moz-file");<br />
+				}<br />
+				
+				function doDrop(event){<br />
+				 <kon></kon> var file = event.dataTransfer.mozGetDataAt("application/x-moz-file", 0);<br />
+				<kon></kon>  if (file instanceof Components.interfaces.nsIFile)<br />
+				 <kon></kon><kon></kon>   event.currentTarget.appendItem(file.leafName);<br />
+				}<br />
+				＜/script＞<br />
+			</p>
+			<p>
+				在本例中，仅当数据传输包含application/x-moz-file类型时，事件才会返回false 。在放置事件期间，将检索与该文件类型关联的数据，并将该文件的文件名添加到列表框中。请注意，instanceof此处使用该运算符，因为该mozGetDataAt()方法将返回nsISupports需要检查并转换为nsIFile的运算符。这也是一个很好的额外检查，以防某人犯了一个错误，并为此类型添加了非文件。
+			</p>
+			<h5>
+				拖动图像
+			</h5>
+			<p>
+				直接图像拖动不常用。事实上，Mozilla不支持在Mac或Linux平台上直接拖放图像。相反，图片通常只能通过网址拖动。为此，请使用该text/uri-list类型与其他URL链接一样。如果图像未存储在网站或磁盘上，数据应该是图像的URL或数据URL。有关数据URL的更多信息，请参阅数据URL方案。
+			</p>
+			<p>
+				与其他链接一样，该text/plain类型的数据也应该包含URL。但是，数据网址在文本上下文中通常不会很有用，因此您可能希望text/plain在这种情况下排除数据。
+			</p>
+			<p>
+				在Chrome或其他特权的代码，你也可以使用image/jpeg，image/png或image/gif类型，根据图像的类型。数据应该是实现nsIInputStream接口的对象。当读取这个数据流时，它应该为图像提供数据位，就好像图像是该类型的文件一样。
+			</p>
+			<p>
+				application/x-moz-file如果图像位于磁盘上，您还应该包含该类型。实际上，这是拖动图像文件的常用方式。
+			</p>
+			<p>
+				从最具体到最不具体的方面，按照正确的顺序设置数据非常重要。图像类型image/jpeg应该先来，然后是application/x-moz-file类型。接下来，你应该设置text/uri-list数据，最后是text/plain数据。例如：
+			</p>
+			<p>
+				var dt = event.dataTransfer;<br />
+				dt.mozSetDataAt("image/png", stream, 0);<br />
+				dt.mozSetDataAt("application/x-moz-file", file, 0);<br />
+				dt.setData("text/uri-list", imageurl);<br />
+				dt.setData("text/plain", imageurl);<br />
+			</p>
+			<p>
+				请注意，该mozGetDataAt()方法用于非文本数据。由于某些上下文可能只包含其中一些类型，因此在接收丢弃的图像时检查哪些类型可用可用。
+			</p>
+			<h5>拖动节点</h5>
+			<p>
+				可以使用该application/x-moz-node类型拖动文档中的节点和元素。该类型的数据应该是一个DOM节点。这允许放置目标接收从其开始拖动的实际节点。请注意，来自不同域的呼叫者即使在被删除时也不能访问该节点。<br />
+
+您应该始终为节点包含一个纯文本备选项。
+			</p>
+			<h2>事件</h2>
+			<h5>API</h5>
+			<p>
+				HTML拖放使用DOM event model和drag events继承mouse events。当用户使用鼠标选择可拖动元素，将鼠标移至可放置元素，然后释放鼠标时，就会开始一个典型的拖动操作。在操作过程中，会触发多个事件类型，并且可能会多次触发某些事件类型（例如drag和dragover事件类型）。
+			</p>
+			<p>
+				所有的拖动事件类型都有一个关联的全局事件处理程序。每个拖动事件类型和拖动全局属性都有一个描述事件的参考文档。下表提供了事件类型的简要说明以及参考文档的链接。
+			</p>
+			<p>
+				<table >
+					<thead>
+						<th style="width:15%;">事件</th>
+						<th colspan="2" style="width:25%;"> 在事件处理程序上</th>
+						
+						<th colspan="4" style="width:60%;">描述</th>
+						
+					</thead>
+					<tr>
+						<td>drag</td>
+						<td colspan="2">ondrag</td>
+						<td colspan="4">正在拖动元素或文本选择时触发。</td>
+						
+					</tr>
+					<tr>
+						<td>dragend</td>
+						<td colspan="2">ondragend</td>
+						<td colspan="4">拖动操作正在结束时触发（例如，释放鼠标按钮或按下退出键）</td>
+						
+					</tr>
+					<tr>
+						<td>dragenter</td>
+						<td colspan="2">ondragenter</td>
+						<td colspan="4">拖动元素或文本选择进入有效放置目标时触发</td>
+						
+					</tr>
+					<tr>
+						<td>dragexit</td>
+						<td colspan="2">ondragexit</td>
+						<td colspan="4">元素不再是拖动操作的立即选择目标时触发。</td>
+						
+					</tr>
+					<tr>
+						<td>dragleave</td>
+						<td colspan="2">ondragleave</td>
+						<td colspan="4">拖动元素或文本选择离开有效放置目标时触发</td>
+						
+					</tr>
+					<tr>
+						<td>dragover</td>
+						<td colspan="2">ondragover</td>
+						<td colspan="4">将元素或文本选择拖动到有效放置目标上时（每几百毫秒）触发。</td>
+						
+					</tr>
+					<tr>
+						<td>dragstart</td>
+						<td colspan="2">ondragstart</td>
+						<td colspan="4">用户开始拖动元素或文本选择时触发</td>
+						
+					</tr>
+					<tr>
+						<td>drop</td>
+						<td colspan="2">ondrop</td>
+						<td colspan="4">将元素或文本选择放置在有效放置目标上时触发。</td>
+						
+					</tr>
+				</table>
+			</p>
+			<h5>接口</h5>
+			<p>
+				该HTML拖放接口DragEvent，DataTransfer，DataTransferItem和DataTransferItemList
+			</p>
+			<p>
+				该DragEvent接口有一个构造函数和一个属性，dataTransfer属性是一个DataTransfer对象。DataTransfer对象包括拖动事件的状态，例如拖动的类型（例如copy或move），拖动的数据（一个或多个项目）以及每个拖动项目（MIME类型）的类型。DataTransfer对象也有方法将项目添加到拖动的数据并删除拖动项目。应用程序DragEvent和DataTransfer接口应该是唯一需要向应用程序添加HTML拖放功能的接口。但是，请注意，Firefox支持某些可能使用的对象的Gecko特定扩展DataTransfer，尽管这些扩展仅适用于Firefox。
+			</p>
+			<p>
+				每个DataTransfer对象包含一个items属性，该属性是一个list的DataTransferItem对象。每个DataTransferItem对象表示一个单一的拖动项目和每个项目都有一个kind属性，该属性是种类的数据（或者string或file）和type作为数据项的类型（即，MIME类型）属性。该DataTransferItem对象还具有获取拖动项目数据的方法。
+			</p>
+			<p>
+				该DataTransferItemList对象是一个对象列表DataTransferItem。列表对象具有以下方法：将拖动项目添加到列表中，从列表中删除拖动项目并清除所有拖动项目的列表。
+			</p>
+			<p>
+				DataTransfer与DataTransferItem接口之间的主要区别在于前者使用同步getData()方法访问拖动项目的数据，而后者使用异步getAsString()方法访问拖动项目的数据。
+			</p>
+			<h2>实现流程</h2>
+			<h5>首先确定什么是可拖动的</h5>
+			<p>
+				要使元素可拖动，需要添加draggable属性加ondragstart全局事件处理程序，如以下代码示例所示
+			</p>
+			<p>
+				function dragstart_handler(ev) {<br />
+				<kon></kon> console.log("dragStart");<br />
+				<kon></kon> // Add the target element's id to the data transfer object<br />
+				<kon></kon> ev.dataTransfer.setData("text/plain", ev.target.id);<br />
+				}<br />
+				
+				＜body＞<br />
+				 <kon></kon>＜p id="p1" draggable="true" ondragstart="dragstart_handler(event);"＞This element is draggable.＜/p＞<br />
+				＜/body＞<br />
+			</p>
+			<h5>然后定义拖动的数据</h5>
+			<p>
+				应用程序可以在拖拽操作中自由地包含任意数量的数据项。每个数据项都是string特定的type，通常是一种MIME类型，例如text/html。<br />
+
+每个人drag event都有一个拥有事件数据的dataTransfer属性。这个属性（它是一个对象）也有管理拖动数据的方法。该方法用于将项目添加到拖动数据，如以下示例所示。DataTransfersetData()
+			</p>
+			<p>
+				function dragstart_handler(ev) {<br />
+				 <kon></kon> // Add the drag data<br />
+				 <kon></kon> ev.dataTransfer.setData("text/plain", ev.target.id);<br />
+				 <kon></kon> ev.dataTransfer.setData("text/html", "<p>Example paragraph</p>");<br />
+				 <kon></kon> ev.dataTransfer.setData("text/uri-list", "http://developer.mozilla.org");<br />
+				}
+			</p>
+			<h5>或者定义拖动图像</h5>
+			<p>
+				默认情况下，浏览器在拖动操作期间提供出现在鼠标指针旁边的图像。但是，应用程序可以使用setDragImage()以下示例中所示的方法来定义自定义图像。
+			</p>
+			<p>
+				function dragstart_handler(ev) {<br />
+				 <kon></kon> // Create an image and then use it for the drag image.<br />
+				  <kon></kon>// NOTE: change "example.gif" to an existing image or the image <br />
+				 <kon></kon> // will not be created and the default drag image will be used.<br />
+				 <kon></kon> var img = new Image(); <br />
+				 <kon></kon> img.src = 'example.gif'; <br />
+				  <kon></kon>ev.dataTransfer.setDragImage(img, 10, 10);<br />
+				}
+			</p>
+			<h5>接着定义拖动效果</h5>
+			<p>
+				该dropEffect属性用于控制用户在拖放操作期间的反馈（通常为可视化）。它影响浏览器在拖动时显示哪个光标。例如，当用户将鼠标悬停在目标放置元素上时，浏览器的光标可能会指示将发生的操作类型。<br />
+
+可以定义三种效果:
+			</p>
+			<p>
+				copy 表示被拖动的数据将从当前位置复制到放置位置。 <br />
+
+move 表示正在拖动的数据将被移动<br />
+
+link 表示源和放置位置之间将创建某种形式的关系或连接。 <br />
+
+在拖动操作期间，可以修改拖拽效果以指示在某些位置允许某些效果。如果允许，可能会在该位置发生跌落。
+			</p>
+			<p>
+				以下示例显示如何使用此属性。
+			</p>
+			<p>
+				function dragstart_handler(ev) {<br />
+				 <kon></kon> // Set the drag effect to copy<br />
+				 <kon></kon> ev.dataTransfer.dropEffect = "copy";<br />
+				}
+			</p>
+			<h5>接着定义拖放区域</h5>
+			<p>
+				默认情况下，浏览器可以防止在将某些东西放到HTML元素上时发生任何事情。要改变这种行为，这样的元素成为放置区或可放开，该元素必须同时ondragover和  ondrop事件处理程序的属性。以下示例显示如何使用这些属性并包含每个属性的基本事件处理程序。
+			</p>
+			<p>
+				function dragover_handler(ev) {<br />
+				 <kon></kon>ev.preventDefault();<br />
+				 <kon></kon>// Set the dropEffect to move<br />
+				<kon></kon> ev.dataTransfer.dropEffect = "move"<br />
+				}<br />
+				function drop_handler(ev) {<br />
+				 <kon></kon>ev.preventDefault();<br />
+				<kon></kon> // Get the id of the target and add the moved element to the target's DOM<br />
+				<kon></kon> var data = ev.dataTransfer.getData("text");<br />
+				 <kon></kon>ev.target.appendChild(document.getElementById(data));<br />
+				}<br />
+				＜body＞<br />
+				 <kon></kon>＜div id="target" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"＞Drop Zone＜/div＞<br />
+				＜/body＞<br />
+			</p>
+			<p>
+				注意每个处理程序调用preventDefault()以防止针对此预防的其他事件处理（例如触摸事件或指针事件）。
+			</p>
+			<h5>然后处理拖放效果</h5>
+			<p>
+				该drop事件的处理程序可以以特定于应用程序的方式自由处理拖动数据。通常，应用程序将使用该getData()方法来检索拖动项目并相应地处理它们。此外，应用程序语义可能会因dropEffect修改键的值和/或状态而有所不同。
+			</p>
+			<p>
+				以下示例显示了一个拖放处理程序，它从拖动数据中获取源元素的id，然后使用该id将源元素移动到拖放元素。
+			</p>
+			<p>
+				function dragstart_handler(ev) {<br />
+				<kon></kon> // Add the target element's id to the data transfer object<br />
+				<kon></kon> ev.dataTransfer.setData("text/plain", ev.target.id);<br />
+				<kon></kon> ev.dropEffect = "move";<br />
+				}<br />
+				function dragover_handler(ev) {<br />
+				 <kon></kon>ev.preventDefault();<br />
+				<kon></kon> // Set the dropEffect to move<br />
+				<kon></kon> ev.dataTransfer.dropEffect = "move"<br />
+				}<br />
+				function drop_handler(ev) {<br />
+				 <kon></kon>ev.preventDefault();<br />
+				 <kon></kon>// Get the id of the target and add the moved element to the target's DOM<br />
+				<kon></kon> var data = ev.dataTransfer.getData("text");<br />
+				 <kon></kon>ev.target.appendChild(document.getElementById(data));<br />
+				}<br />
+				＜body＞<br />
+				 <kon></kon>＜p id="p1" draggable="true" ondragstart="dragstart_handler(event);"＞This element is draggable.＜/p＞<br />
+				<kon></kon> ＜div id="target" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"＞Drop Zone＜/div＞<br />
+				＜/body＞
+			</p>
+			<h5>最后拖动结束</h5>
+			<p>
+				在拖动操作结束时，dragend事件触发源元素 - 作为拖动开始目标的元素。此事件触发拖动完成或被取消。该dragend事件处理程序可以检查的价值dropEffect属性来确定拖动操作成功与否。
+			</p>
+      <p><a href="">元素拖动demo</a></p>
+		</div>
+	</body>
+	
+	
+</html>
