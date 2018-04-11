@@ -591,7 +591,7 @@ XML内容可能会使用该text/xml类型，但您应该确保该数据值是格
 				function dragstart_handler(ev) {<br />
 				 <kon></kon> // Add the drag data<br />
 				 <kon></kon> ev.dataTransfer.setData("text/plain", ev.target.id);<br />
-				 <kon></kon> ev.dataTransfer.setData("text/html", "<p>Example paragraph</p>");<br />
+				 <kon></kon> ev.dataTransfer.setData("text/html", "＜p＞Example paragraph＜/p＞");<br />
 				 <kon></kon> ev.dataTransfer.setData("text/uri-list", "http://developer.mozilla.org");<br />
 				}
 			</p>
