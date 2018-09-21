@@ -405,6 +405,21 @@
 	    }
 	]
     },
+	{
+        "name": "测试", 
+        "url": "", 
+        "isopen": false, 
+        "parent": false, 
+        "children": [
+	    {
+		"name": "简介", 
+		"url": "svg/index.html", 
+		"isopen": false, 
+		"parent": false, 
+		"children": ""
+	    }
+	]
+    },
     {
         "name": "HTML", 
         "url": "", 
