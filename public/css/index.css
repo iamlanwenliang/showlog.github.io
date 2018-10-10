@@ -149,6 +149,9 @@ summary {
 	#directory{
 		overflow-x: hidden; 
 		overflow-y: auto; 
+		width: calc(100% + 15px);
+                height: 100%;
+                padding-right: 10px;
 	}
 	.tipsmain{
 		margin-left:-300px;
